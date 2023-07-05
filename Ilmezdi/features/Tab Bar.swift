@@ -12,7 +12,7 @@ struct Tab_Bar: View {
         TabView{
             Text("AnaSayfa")
                 .tabItem {
-                    Label("AnaSayfa", systemImage: "house")
+                    Label("Ana Sayfa", systemImage: "house")
                        
                 }
             Text("Favorilerim")
@@ -28,7 +28,7 @@ struct Tab_Bar: View {
         Label("Ayarlar", systemImage: "gear")
               }
         }
-        .accentColor(Color("accent"))
+       
     }
 }
 
