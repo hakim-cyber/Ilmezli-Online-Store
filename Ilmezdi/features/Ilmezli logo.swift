@@ -1,0 +1,22 @@
+//
+//  Ilmezli logo.swift
+//  Ilmezdi
+//
+//  Created by aplle on 7/5/23.
+//
+
+import SwiftUI
+
+struct Ilmezli_logo: View {
+    let font:Double
+    var body: some View {
+        Text("İlməzli")
+            .font(.custom("American Typewriter", size: font))
+    }
+}
+
+struct Ilmezli_logo_Previews: PreviewProvider {
+    static var previews: some View {
+        Ilmezli_logo(font: 40.0)
+    }
+}

@@ -11,6 +11,7 @@
 		08767CA82A5572C500F634D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CA72A5572C500F634D3 /* ContentView.swift */; };
 		08767CAA2A5572C700F634D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CA92A5572C700F634D3 /* Assets.xcassets */; };
 		08767CAD2A5572C700F634D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CAC2A5572C700F634D3 /* Preview Assets.xcassets */; };
+		08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CB32A5572F700F634D3 /* Ilmezli logo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		08767CA72A5572C500F634D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		08767CA92A5572C700F634D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08767CAC2A5572C700F634D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		08767CB32A5572F700F634D3 /* Ilmezli logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ilmezli logo.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				08767CA52A5572C500F634D3 /* IlmezdiApp.swift */,
 				08767CA72A5572C500F634D3 /* ContentView.swift */,
+				08767CB52A5573D600F634D3 /* features */,
 				08767CA92A5572C700F634D3 /* Assets.xcassets */,
 				08767CAB2A5572C700F634D3 /* Preview Content */,
 			);
@@ -65,6 +68,14 @@
 				08767CAC2A5572C700F634D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		08767CB52A5573D600F634D3 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				08767CB32A5572F700F634D3 /* Ilmezli logo.swift */,
+			);
+			path = features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
 				08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */,
+				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
