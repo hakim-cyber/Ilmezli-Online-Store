@@ -10,8 +10,9 @@ import SwiftUI
 struct Ilmezli_logo: View {
     let font:Double
     var body: some View {
-        Text("İlməzli")
+        Text("İLMƏZLI")
             .font(.custom("American Typewriter", size: font))
+            .tracking(5)
     }
 }
 
