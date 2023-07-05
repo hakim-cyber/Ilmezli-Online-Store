@@ -22,7 +22,7 @@ struct Categories_Bar: View {
     var body: some View {
         
             ScrollView(.horizontal,showsIndicators: false){
-                LazyHStack(spacing: screen.width / 13){
+                LazyHStack(spacing: screen.width / 15){
                     ForEach(categories,id: \.title) { category in
                         VStack(alignment: .center,spacing: 15){
                            Image(systemName: "\(category.image)")
@@ -30,13 +30,16 @@ struct Categories_Bar: View {
                                 .padding(10)
                                 .background(RoundedRectangle(cornerRadius: 8).fill(.ultraThinMaterial))
                                 .opacity(0.7)
+                               
                             Text("\(category.title)")
                                 .foregroundColor(.gray.opacity(0.7))
                         }
+                        
                     
                         
                     }
-                }.padding(.horizontal)
+                }
+                .padding(.horizontal)
             }
         
         
