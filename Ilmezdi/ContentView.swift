@@ -11,9 +11,7 @@ struct ContentView: View {
     @State private var h = false
     var body: some View {
         VStack {
-           Toggle("", isOn: $h)
-                .labelsHidden()
-                .toggleStyle(HeartToggleStyle(font: 36.6))
+           Tab_Bar()
         }
         .padding()
     }

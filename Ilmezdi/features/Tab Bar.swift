@@ -1,0 +1,39 @@
+//
+//  Tab Bar.swift
+//  Ilmezdi
+//
+//  Created by aplle on 7/5/23.
+//
+
+import SwiftUI
+
+struct Tab_Bar: View {
+    var body: some View {
+        TabView{
+            Text("AnaSayfa")
+                .tabItem {
+                    Label("AnaSayfa", systemImage: "house")
+                       
+                }
+            Text("Favorilerim")
+                .tabItem {
+                   Label("Favorilerim", systemImage: "heart")
+                }
+            Text("Əlaqə")
+                .tabItem {
+                Label("Əlaqə", systemImage: "phone")
+                }
+            Text("Ayarlar")
+                .tabItem {
+        Label("Ayarlar", systemImage: "gear")
+              }
+        }
+        .accentColor(Color("accent"))
+    }
+}
+
+struct Tab_Bar_Previews: PreviewProvider {
+    static var previews: some View {
+        Tab_Bar()
+    }
+}
