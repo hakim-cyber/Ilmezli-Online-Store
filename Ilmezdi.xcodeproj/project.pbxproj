@@ -12,6 +12,8 @@
 		08767CAA2A5572C700F634D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CA92A5572C700F634D3 /* Assets.xcassets */; };
 		08767CAD2A5572C700F634D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CAC2A5572C700F634D3 /* Preview Assets.xcassets */; };
 		08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CB32A5572F700F634D3 /* Ilmezli logo.swift */; };
+		08767CB72A55758100F634D3 /* heart toglle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CB62A55758100F634D3 /* heart toglle.swift */; };
+		08767CB92A5576FB00F634D3 /* Cart .swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CB82A5576FB00F634D3 /* Cart .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		08767CA92A5572C700F634D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08767CAC2A5572C700F634D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		08767CB32A5572F700F634D3 /* Ilmezli logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ilmezli logo.swift"; sourceTree = "<group>"; };
+		08767CB62A55758100F634D3 /* heart toglle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "heart toglle.swift"; sourceTree = "<group>"; };
+		08767CB82A5576FB00F634D3 /* Cart .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cart .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				08767CB32A5572F700F634D3 /* Ilmezli logo.swift */,
+				08767CB62A55758100F634D3 /* heart toglle.swift */,
+				08767CB82A5576FB00F634D3 /* Cart .swift */,
 			);
 			path = features;
 			sourceTree = "<group>";
@@ -150,6 +156,8 @@
 			files = (
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
 				08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */,
+				08767CB92A5576FB00F634D3 /* Cart .swift in Sources */,
+				08767CB72A55758100F634D3 /* heart toglle.swift in Sources */,
 				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

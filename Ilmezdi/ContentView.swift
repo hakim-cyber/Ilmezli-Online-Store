@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var h = false
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+           Toggle("", isOn: $h)
+                .labelsHidden()
+                .toggleStyle(HeartToggleStyle(font: 36.6))
         }
         .padding()
     }
