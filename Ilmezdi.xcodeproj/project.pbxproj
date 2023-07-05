@@ -17,6 +17,7 @@
 		08767CBB2A557A3E00F634D3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBA2A557A3E00F634D3 /* SearchBar.swift */; };
 		08767CBD2A557BF300F634D3 /* Tab Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBC2A557BF300F634D3 /* Tab Bar.swift */; };
 		08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBE2A5590E800F634D3 /* Categories_Bar.swift */; };
+		08767CC12A55962600F634D3 /* Product View Tab Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CC02A55962600F634D3 /* Product View Tab Bar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		08767CBA2A557A3E00F634D3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		08767CBC2A557BF300F634D3 /* Tab Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Bar.swift"; sourceTree = "<group>"; };
 		08767CBE2A5590E800F634D3 /* Categories_Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories_Bar.swift; sourceTree = "<group>"; };
+		08767CC02A55962600F634D3 /* Product View Tab Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product View Tab Bar.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		08767CB52A5573D600F634D3 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				08767CC02A55962600F634D3 /* Product View Tab Bar.swift */,
 				08767CB32A5572F700F634D3 /* Ilmezli logo.swift */,
 				08767CB62A55758100F634D3 /* heart toglle.swift */,
 				08767CB82A5576FB00F634D3 /* Cart .swift */,
@@ -169,6 +172,7 @@
 				08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */,
 				08767CB92A5576FB00F634D3 /* Cart .swift in Sources */,
 				08767CB72A55758100F634D3 /* heart toglle.swift in Sources */,
+				08767CC12A55962600F634D3 /* Product View Tab Bar.swift in Sources */,
 				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,
 				08767CBB2A557A3E00F634D3 /* SearchBar.swift in Sources */,
 			);

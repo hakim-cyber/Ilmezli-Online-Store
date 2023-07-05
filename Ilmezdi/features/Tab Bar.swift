@@ -28,7 +28,7 @@ struct Tab_Bar: View {
         Label("Ayarlar", systemImage: "gear")
               }
         }
-       
+   
     }
 }
 
