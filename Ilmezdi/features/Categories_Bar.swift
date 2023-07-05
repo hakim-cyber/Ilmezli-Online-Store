@@ -29,6 +29,7 @@ struct Categories_Bar: View {
                                 .font(.title3)
                                 .padding(10)
                                 .background(RoundedRectangle(cornerRadius: 8).fill(.ultraThinMaterial))
+                                .opacity(0.7)
                             Text("\(category.title)")
                                 .foregroundColor(.gray.opacity(0.7))
                         }
