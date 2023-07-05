@@ -16,6 +16,7 @@
 		08767CB92A5576FB00F634D3 /* Cart .swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CB82A5576FB00F634D3 /* Cart .swift */; };
 		08767CBB2A557A3E00F634D3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBA2A557A3E00F634D3 /* SearchBar.swift */; };
 		08767CBD2A557BF300F634D3 /* Tab Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBC2A557BF300F634D3 /* Tab Bar.swift */; };
+		08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CBE2A5590E800F634D3 /* Categories_Bar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		08767CB82A5576FB00F634D3 /* Cart .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cart .swift"; sourceTree = "<group>"; };
 		08767CBA2A557A3E00F634D3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		08767CBC2A557BF300F634D3 /* Tab Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Bar.swift"; sourceTree = "<group>"; };
+		08767CBE2A5590E800F634D3 /* Categories_Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories_Bar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				08767CB82A5576FB00F634D3 /* Cart .swift */,
 				08767CBA2A557A3E00F634D3 /* SearchBar.swift */,
 				08767CBC2A557BF300F634D3 /* Tab Bar.swift */,
+				08767CBE2A5590E800F634D3 /* Categories_Bar.swift */,
 			);
 			path = features;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
+				08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */,
 				08767CBD2A557BF300F634D3 /* Tab Bar.swift in Sources */,
 				08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */,
 				08767CB92A5576FB00F634D3 /* Cart .swift in Sources */,
