@@ -10,7 +10,7 @@ import SwiftUI
 struct Tab_Bar: View {
     var body: some View {
         TabView{
-            Text("AnaSayfa")
+           Home_View()
                 .tabItem {
                     Label("Ana Sayfa", systemImage: "house")
                        
@@ -28,6 +28,7 @@ struct Tab_Bar: View {
         Label("Ayarlar", systemImage: "gear")
               }
         }
+        
    
     }
 }

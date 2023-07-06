@@ -13,7 +13,7 @@ struct Home_View: View {
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
-            Color.gray.opacity(0.3).ignoresSafeArea()
+            Color.gray.opacity(0.1).ignoresSafeArea()
             VStack(spacing:20){
                
                     HStack(spacing:20){
@@ -26,7 +26,7 @@ struct Home_View: View {
                     }
                     
                     Categories_Bar(selectedCategory: $vm.selectedCategory)
-                    .background( Color.gray.opacity(0.1))
+                   
                 
                     VStack{
                         ProductsGrid()

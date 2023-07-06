@@ -15,23 +15,31 @@ struct ProductPosts_View: View {
             ZStack{
                
                 VStack{
-                    if vm.images == []{
-                        Color.gray.opacity(0.3)
-                                                    .frame(width: 150, height:  (180) * 0.65 )
-                                                    .overlay{
-                                                        Text("No Image")
-                                                    }
-                                                    .cornerRadius(10)
+                    VStack{
+                        if vm.images == []{
+                                Color.gray.opacity(0.3)
+                                .frame(width: 150, height:  (180) * 0.65 )
+                                .overlay{
+                                    Text("No Image")
+                                    }
+                                .cornerRadius(10)
+                                                                            
                                                     
-                            
-                    }else{
-                        vm.images.first!
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height:  (180) * 0.65 )
-                            .background( Color.gray.opacity(0.3))
-                            .cornerRadius(10)
+                            }else{
+                            vm.images.first!
+                               .resizable()
+                               .scaledToFit()
+                               .frame(width: 150, height:  (180) * 0.65 )
+                               .background( Color.gray.opacity(0.3))
+                               .cornerRadius(10)
+                        }
                     }
+                    .overlay(alignment:.topTrailing){
+                        Toggle("", isOn: $vm.product.IsWished)
+                            .toggleStyle(HeartToggleStyle(font: 20))
+                            .padding(5)
+                    }
+                    
                     VStack{
                         HStack{
                             Text("\(vm.product.price.formatted()) ₼")
@@ -50,10 +58,13 @@ struct ProductPosts_View: View {
                     .padding(.horizontal,7)
                     .frame(width: 150, height:  (180) * 0.35 )
                 }
+            
                 
                 
             }
+            
             .frame(width: 150, height:  180)
+            
        
         
         
