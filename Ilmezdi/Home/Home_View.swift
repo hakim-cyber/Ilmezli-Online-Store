@@ -15,18 +15,19 @@ struct Home_View: View {
         ZStack{
             Color.gray.opacity(0.3).ignoresSafeArea()
             VStack(spacing:20){
-                
-                        HStack(spacing:20){
-                            SearchBar(text: $vm.searchText)
-                            
-                           Cart_(font: 22, itemCount: 4)
-                           
-                            Image(systemName: "square.and.arrow.up")
-                                .font(.system(size: 22))
-                        }
-                      
-                Categories_Bar(selectedCategory: $vm.selectedCategory)
+               
+                    HStack(spacing:20){
+                        SearchBar(text: $vm.searchText)
+                        
+                        Cart_(font: 22, itemCount: 4)
+                        
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 22))
+                    }
                     
+                    Categories_Bar(selectedCategory: $vm.selectedCategory)
+                    .background( Color.gray.opacity(0.1))
+                
                     VStack{
                         ProductsGrid()
                            
