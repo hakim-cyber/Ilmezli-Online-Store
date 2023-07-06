@@ -13,12 +13,13 @@ struct SearchBar: View {
     
     @State private var screen = UIScreen.main.bounds
     var body: some View {
-        TextField(" 🔍 Search...", text: $text)
+        TextField("  Search...", text: $text)
             .padding(10)
+            .padding(2)
             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.2),lineWidth: 1))
             .textFieldStyle(.plain)
             .focused($focused)
-            .frame(width: screen.width / 1.8)
+            .frame(width: screen.width / 1.5)
     }
 }
 
