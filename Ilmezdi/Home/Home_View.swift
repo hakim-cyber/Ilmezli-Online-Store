@@ -13,7 +13,7 @@ struct Home_View: View {
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
-          
+            Color.gray.opacity(0.1).ignoresSafeArea()
             VStack(spacing:0){
                 
                         HStack(spacing:20){
@@ -35,9 +35,10 @@ struct Home_View: View {
             
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+            .padding(.top)
         }
-        .padding(.top)
-        .background(.ultraThinMaterial)
+       
+        
     }
 }
 

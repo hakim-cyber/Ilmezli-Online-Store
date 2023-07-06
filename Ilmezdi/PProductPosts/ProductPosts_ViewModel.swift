@@ -6,14 +6,32 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
 class ProductPosts_ViewModel:ObservableObject{
    
+   @Binding var product:Product
     
-    @Published var exampleProduct = Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"")
+    init(product: Binding<Product>) {
+        self._product = product
+    }
     
+    var images:[Image]{
+        let strings = product.images
+        
+        var images:[Image] = []
+        
+        if strings == []{
+            return images
+        }else{
+            for string in strings {
+                images.append(useImage(text: string))
+            }
+            return images
+        }
+    }
     func dateToString(date:Date)->String{
         let dateFormatter = DateFormatter()
 
@@ -22,6 +40,14 @@ class ProductPosts_ViewModel:ObservableObject{
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
+    
+    func useImage(text:String)->Image{
+           let data = Data(base64Encoded: text) ?? Data()
+           
+           let uiImage = UIImage(data: data) ?? UIImage()
+           
+           return Image(uiImage: uiImage)
+       }
     func stringToDate(string:String)->Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
