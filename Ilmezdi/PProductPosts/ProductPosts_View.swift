@@ -11,14 +11,13 @@ struct ProductPosts_View: View {
     @ObservedObject var vm:ProductPosts_ViewModel
     @State private var screen = UIScreen.main.bounds.size
     var body: some View {
-        ZStack{
-            Color.gray.opacity(0.1).ignoresSafeArea()
+        
             ZStack{
                
                 VStack{
                     if vm.images == []{
                         Color.gray.opacity(0.3)
-                                                    .frame(width: 150, height:  (230) * 0.6 )
+                                                    .frame(width: 150, height:  (180) * 0.65 )
                                                     .overlay{
                                                         Text("No Image")
                                                     }
@@ -29,7 +28,7 @@ struct ProductPosts_View: View {
                         vm.images.first!
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150, height:  (230) * 0.6 )
+                            .frame(width: 150, height:  (180) * 0.65 )
                             .background( Color.gray.opacity(0.3))
                             .cornerRadius(10)
                     }
@@ -49,13 +48,13 @@ struct ProductPosts_View: View {
                     }
                     .padding(.top,5)
                     .padding(.horizontal,7)
-                    .frame(width: 150, height:  (230) * 0.4 )
+                    .frame(width: 150, height:  (180) * 0.35 )
                 }
                 
                 
             }
-            .frame(width: 150, height:  230 / 4.2)
-        }
+            .frame(width: 150, height:  180)
+       
         
         
         
