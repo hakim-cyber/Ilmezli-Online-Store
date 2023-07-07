@@ -17,7 +17,7 @@ struct HeartToggleStyle: ToggleStyle {
            
         }) {
             Image(systemName: configuration.isOn ? "heart.fill" : "heart")
-                .foregroundColor(configuration.isOn ? Color("customRed") : .gray)
+                .foregroundColor(configuration.isOn ? Color("customRed") : .black)
                 .font(.system(size: font))
         }
         .buttonStyle(PlainButtonStyle())

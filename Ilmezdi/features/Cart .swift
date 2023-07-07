@@ -31,6 +31,7 @@ struct Cart_: View {
                     }
                     .padding(-3)
                     .frame(width:Double(font / 1.5),height: Double(font / 2))
+                   
                 }
             }
             .animation(.easeInOut, value: font)
@@ -39,6 +40,6 @@ struct Cart_: View {
 
 struct Cart__Previews: PreviewProvider {
     static var previews: some View {
-        Cart_(font: 36, itemCount:1)
+        Cart_(font: 36, itemCount:2)
     }
 }
