@@ -9,5 +9,5 @@ import Foundation
 
 class Home_ViewModel:ObservableObject{
     @Published var searchText = ""
-    @Published var selectedCategory:Category?
+    @Published var selectedCategory:Category? = Category(title: "Hamısı", image: "square.stack.3d.up.fill")
 }
