@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Start_Screen: View {
     @State private var goToMain = false
+    
     var body: some View {
         if goToMain{
             ContentView()
