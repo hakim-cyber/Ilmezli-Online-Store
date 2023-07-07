@@ -5,4 +5,12 @@
 //  Created by aplle on 7/7/23.
 //
 
-import Foundation
+import SwiftUI
+
+class ProductFull_ViewModel:ObservableObject{
+    @Binding var product:Product
+     
+     init(product: Binding<Product>) {
+         self._product = product
+     }
+}

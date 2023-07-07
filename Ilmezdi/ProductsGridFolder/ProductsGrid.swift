@@ -61,8 +61,18 @@ struct ProductsGrid: View {
                     .padding(.top)
                 }
             }
-            .fullScreenCover(item: $selectedProduct, content: {_ in
-                ProductFull_Ui()
+            .fullScreenCover(item: $selectedProduct, content: {product in
+                if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
+                    var vm = ProductFull_ViewModel(product: $productsData.exampleProducts[id])
+                    ProductFull_Ui(vm: vm)
+                }else{
+                    VStack{
+                    Text("No Product")
+                    Button("Back"){
+                        selectedProduct = nil
+                    }
+                }
+                }
                 
                 
             })
