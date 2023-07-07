@@ -20,6 +20,16 @@ struct SearchBar: View {
             .textFieldStyle(.plain)
             .focused($focused)
             .frame(width: screen.width / 1.5)
+            .overlay(alignment: .trailing, content: {
+                Button{
+                    withAnimation(.easeInOut){
+                        text = ""
+                    }
+                }label: {
+                    Image(systemName: "xmark")
+                }
+                .padding(.trailing,8)
+            })
     }
 }
 

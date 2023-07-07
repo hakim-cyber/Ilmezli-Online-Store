@@ -40,7 +40,9 @@ struct Categories_Bar: View {
                         }
                         .onTapGesture {
                             withAnimation(.easeInOut){
-                                self.selectedCategory = category
+                              
+                                    self.selectedCategory = category
+                                
                             }
                         }
                        

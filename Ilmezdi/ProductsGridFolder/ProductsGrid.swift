@@ -15,7 +15,7 @@ struct ProductsGrid: View {
             GridItem(.adaptive(minimum: 190))
         ]
     var filteredProducts:[Product]{
-        if selectedCategory == nil{
+        if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
           return  productsData.exampleProducts
         }else{
          return   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
