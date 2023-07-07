@@ -16,9 +16,9 @@ struct SearchBar: View {
         TextField("  Search...", text: $text)
             .padding(10)
             .padding(2)
+            .keyboardType(.default)
             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.2),lineWidth: 1))
             .textFieldStyle(.plain)
-            .focused($focused)
             .frame(width: screen.width / 1.5)
             .overlay(alignment: .trailing, content: {
                 Button{
@@ -30,6 +30,7 @@ struct SearchBar: View {
                 }
                 .padding(.trailing,8)
             })
+            
     }
 }
 

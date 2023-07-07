@@ -38,6 +38,7 @@ struct Home_View: View {
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
             .padding(.top)
+            
         }
        
         

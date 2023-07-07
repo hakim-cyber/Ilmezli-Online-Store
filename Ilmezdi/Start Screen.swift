@@ -15,7 +15,7 @@ struct Start_Screen: View {
             ContentView()
         }else{
             ZStack{
-                Color("background").ignoresSafeArea()
+                Color.gray.opacity(0.1).ignoresSafeArea()
                 Ilmezli_logo(font: 40)
             }
             .onAppear{
