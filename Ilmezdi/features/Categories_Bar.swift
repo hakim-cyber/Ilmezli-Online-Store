@@ -27,7 +27,7 @@ struct Categories_Bar: View {
                                 Image(systemName: "\(category.image)")
                                     .font(.title3)
                                     .padding(10)
-                                    .background(RoundedRectangle(cornerRadius: 8).fill(.ultraThinMaterial).shadow(radius: selectedCategory?.title == category.title ? 5:0  ) )
+                                    .background(RoundedRectangle(cornerRadius: 8).fill(.ultraThinMaterial).shadow(radius: selectedCategory?.title == category.title ? 3:0  ) )
                                     .opacity(0.7)
                             
                             if selectedCategory?.title == category.title {

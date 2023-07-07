@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ProductsGrid: View {
     var selectedCategory:Category?
+    var searchText:String? = ""
      @StateObject var vm = ProductsGrid_ViewModel()
     @EnvironmentObject var productsData:ProductsData
     let columns = [
             GridItem(.adaptive(minimum: 190))
         ]
     var filteredProducts:[Product]{
+        var products = [Product]()
         if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
-          return  productsData.exampleProducts
+           
+                products =  productsData.exampleProducts
+          
         }else{
-         return   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
+            products =   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
             
+        }
+        if searchText == ""{
+            return products
+        }else{
+            return products.filter({$0.description.localizedCaseInsensitiveContains(searchText!)})
         }
     }
 
@@ -42,6 +51,7 @@ struct ProductsGrid: View {
                                 
                             }
                         }
+                       
                     }
                     .padding(.top)
                 }
