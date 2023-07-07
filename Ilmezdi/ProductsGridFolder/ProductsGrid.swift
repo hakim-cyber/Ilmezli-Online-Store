@@ -24,14 +24,28 @@ struct ProductsGrid: View {
     }
 
     var body: some View {
-        ScrollView(.vertical,showsIndicators: false){
-            LazyVGrid(columns: columns){
-                ForEach(productsData.exampleProducts.indices,id:\.self){id in
-                    
-                    ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
+        if filteredProducts.isEmpty{
+            VStack{
+                Text("☹️")
+                    .font(.system(size: 50))
+                Text("Simdilik esya bulunamadi")
+            }
+        }else{
+            VStack{
+               
+                ScrollView(.vertical,showsIndicators: false){
+                    LazyVGrid(columns: columns){
+                        ForEach(filteredProducts){product in
+                            if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
+                                ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
+                            }else{
+                                
+                            }
+                        }
+                    }
+                    .padding(.top)
                 }
             }
-            .padding(.top)
         }
     }
 }

@@ -24,12 +24,12 @@ struct Home_View: View {
                         Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 22))
                     }
-                if vm.selectedCategory == nil{
+                
                     Categories_Bar(selectedCategory: $vm.selectedCategory)
-                }
+                
                     
                     VStack{
-                        ProductsGrid()
+                        ProductsGrid(selectedCategory: vm.selectedCategory)
                         
                     }
                     .frame(maxWidth: .infinity,maxHeight:.infinity)

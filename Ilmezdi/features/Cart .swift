@@ -18,7 +18,7 @@ struct Cart_: View {
                 if itemCount > 0{
                     ZStack{
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(Color("red"))
+                            .fill(Color("customRed"))
                         if itemCount <= 9{
                             Text("\(itemCount)")
                                 .foregroundColor(.white)
