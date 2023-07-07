@@ -12,6 +12,7 @@ struct ProductsGrid: View {
     var searchText:String? = ""
      @StateObject var vm = ProductsGrid_ViewModel()
     @EnvironmentObject var productsData:ProductsData
+    
     let columns = [
             GridItem(.adaptive(minimum: 190))
         ]
@@ -31,6 +32,7 @@ struct ProductsGrid: View {
             return products.filter({$0.description.localizedCaseInsensitiveContains(searchText!)})
         }
     }
+    @State private var selectedProduct:Product?
 
     var body: some View {
         if filteredProducts.isEmpty{
@@ -47,6 +49,9 @@ struct ProductsGrid: View {
                         ForEach(filteredProducts){product in
                             if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
                                 ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
+                                    .onTapGesture {
+                                        selectedProduct = product
+                                    }
                             }else{
                                 
                             }
@@ -56,6 +61,12 @@ struct ProductsGrid: View {
                     .padding(.top)
                 }
             }
+            .fullScreenCover(item: $selectedProduct, content: {_ in
+                ProductFull_Ui()
+                
+                
+            })
+          
         }
     }
 }

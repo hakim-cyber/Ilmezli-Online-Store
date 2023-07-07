@@ -26,6 +26,8 @@
 		08767CD62A57411D00F634D3 /* ProductsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD52A57411D00F634D3 /* ProductsGrid.swift */; };
 		08767CD82A57412D00F634D3 /* ProductsGrid_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */; };
 		08D3CD062A58128900497C16 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD052A58128900497C16 /* ProductData.swift */; };
+		08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */; };
+		08D3CD0E2A586E9500497C16 /* ProductFull_Ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		08767CD52A57411D00F634D3 /* ProductsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid.swift; sourceTree = "<group>"; };
 		08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid_ViewModel.swift; sourceTree = "<group>"; };
 		08D3CD052A58128900497C16 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductData.swift; path = Ilmezdi/Data/ProductData.swift; sourceTree = SOURCE_ROOT; };
+		08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFull_ViewModel.swift; sourceTree = "<group>"; };
+		08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFull_Ui.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 				08767CA52A5572C500F634D3 /* IlmezdiApp.swift */,
 				08767CA72A5572C500F634D3 /* ContentView.swift */,
 				08767CC22A55A9D300F634D3 /* Start Screen.swift */,
+				08D3CD0C2A586E3F00497C16 /* ProductFull */,
 				08D3CD072A58129300497C16 /* Data */,
 				08767CD42A5740D800F634D3 /* ProductsGridFolder */,
 				08767CCD2A56BEE200F634D3 /* PProductPosts */,
@@ -150,6 +155,15 @@
 				08767CCE2A56C0F000F634D3 /* structs.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		08D3CD0C2A586E3F00497C16 /* ProductFull */ = {
+			isa = PBXGroup;
+			children = (
+				08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */,
+				08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */,
+			);
+			path = ProductFull;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */,
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
 				08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */,
 				08767CC72A56B0CF00F634D3 /* Home_ViewModel.swift in Sources */,
@@ -230,6 +245,7 @@
 				08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */,
 				08767CD62A57411D00F634D3 /* ProductsGrid.swift in Sources */,
 				08767CB92A5576FB00F634D3 /* Cart .swift in Sources */,
+				08D3CD0E2A586E9500497C16 /* ProductFull_Ui.swift in Sources */,
 				08767CC32A55A9D300F634D3 /* Start Screen.swift in Sources */,
 				08767CB72A55758100F634D3 /* heart toglle.swift in Sources */,
 				08D3CD062A58128900497C16 /* ProductData.swift in Sources */,
