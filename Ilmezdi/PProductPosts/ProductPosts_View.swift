@@ -18,20 +18,19 @@ struct ProductPosts_View: View {
                     VStack{
                         if vm.images == []{
                                 Color.gray.opacity(0.3)
-                                .frame(width: 150, height:  (180) * 0.65 )
+                                .frame(width: 150, height:  (210) * 0.55 )
                                 .overlay{
                                     Text("No Image")
                                     }
-                                .cornerRadius(10)
-                                                                            
+                                .cornerRadius(7)
                                                     
                             }else{
                             vm.images.first!
                                .resizable()
                                .scaledToFit()
-                               .frame(width: 150, height:  (180) * 0.65 )
+                               .frame(width: 150, height:  (210) * 0.55 )
                                .background( Color.gray.opacity(0.3))
-                               .cornerRadius(10)
+                               .cornerRadius(7)
                         }
                     }
                     .overlay(alignment:.topTrailing){
@@ -40,30 +39,45 @@ struct ProductPosts_View: View {
                             .padding(5)
                     }
                     
-                    VStack{
+                    VStack(spacing:5){
                         HStack{
-                            Text("\(vm.product.price.formatted()) ₼")
+                            Text(vm.product.category)
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
+                                .fontWeight(.light)
+                                .multilineTextAlignment(.leading)
                             Spacer()
                         }
                         HStack{
                             Text(vm.product.name)
                                 .font(.system(size: 15))
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.black)
+                                .fontWeight(.medium)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
+                        HStack{
+                           
+                            Text("\(vm.product.price.formatted()) ₼")
+                                .fontWeight(.bold)
+                                .foregroundColor(.accentColor)
+                            Spacer()
+                        }
+                      
                         Spacer()
                     }
                     .padding(.top,5)
                     .padding(.horizontal,7)
-                    .frame(width: 150, height:  (180) * 0.35 )
+                    .frame(width: 150, height:  (210) * 0.45 )
+                   
                 }
+                .cornerRadius(7)
             
                 
                 
             }
             
-            .frame(width: 150, height:  180)
+            .frame(width: 150, height:  210)
             
        
         
