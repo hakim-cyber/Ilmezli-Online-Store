@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductPosts_View: View {
     @ObservedObject var vm:ProductPosts_ViewModel
     @State private var screen = UIScreen.main.bounds.size
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         
             ZStack{
@@ -51,7 +52,7 @@ struct ProductPosts_View: View {
                         HStack{
                             Text(vm.product.name)
                                 .font(.system(size: 15))
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .dark ? .white :.black)
                                 .fontWeight(.medium)
                                 .multilineTextAlignment(.leading)
                             Spacer()
