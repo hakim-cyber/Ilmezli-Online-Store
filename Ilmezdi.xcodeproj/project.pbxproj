@@ -88,8 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				08767CA52A5572C500F634D3 /* IlmezdiApp.swift */,
-				08767CA72A5572C500F634D3 /* ContentView.swift */,
-				08767CC22A55A9D300F634D3 /* Start Screen.swift */,
+				08D3CD112A5B4C2200497C16 /* Main Views */,
 				08D3CD072A58129300497C16 /* Data */,
 				08767CD42A5740D800F634D3 /* ProductsGridFolder */,
 				08D3CD0C2A586E3F00497C16 /* ProductFull */,
@@ -167,6 +166,15 @@
 				08D3CD0F2A5B0EF400497C16 /* Product_ImageSlider.swift */,
 			);
 			path = ProductFull;
+			sourceTree = "<group>";
+		};
+		08D3CD112A5B4C2200497C16 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				08767CA72A5572C500F634D3 /* ContentView.swift */,
+				08767CC22A55A9D300F634D3 /* Start Screen.swift */,
+			);
+			path = "Main Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
