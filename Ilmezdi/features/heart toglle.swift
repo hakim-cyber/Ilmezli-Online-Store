@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeartToggleStyle: ToggleStyle {
     let font:Double
+    @Environment(\.colorScheme) var colorScheme
     func makeBody(configuration: Configuration) -> some View {
         Button(action: {
             withAnimation(.easeInOut) {
@@ -17,7 +18,7 @@ struct HeartToggleStyle: ToggleStyle {
            
         }) {
             Image(systemName: configuration.isOn ? "heart.fill" : "heart")
-                .foregroundColor(configuration.isOn ? Color("customRed") : .black)
+                .foregroundColor(configuration.isOn ? Color("customRed") : colorScheme == .dark ? .white :.black)
                 .font(.system(size: font))
         }
         .buttonStyle(PlainButtonStyle())

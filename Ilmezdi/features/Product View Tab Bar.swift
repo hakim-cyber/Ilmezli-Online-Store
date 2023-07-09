@@ -37,7 +37,8 @@ struct CategoryButton:View{
             VStack{
                 Text(item.id)
                     .font(.title3)
-                    .foregroundColor(Color.accentColor)
+                    .fontWeight(.medium)
+                    .foregroundColor(selection == item ? .accentColor : .secondary)
             }.onTapGesture {
                 withAnimation{
                     selection = item
