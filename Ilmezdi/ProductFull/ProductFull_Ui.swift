@@ -48,12 +48,7 @@ struct ProductFull_Ui: View {
                                                 .cornerRadius(7)
                                                                     
                                             }else{
-                                            vm.images.first!
-                                               .resizable()
-                                               .scaledToFit()
-                                              
-                                               .background( Color.gray.opacity(0.3))
-                                               .cornerRadius(7)
+                                                Product_ImageSlider(images: vm.images)
                                         }
                 VStack(spacing:10){
                     HStack{

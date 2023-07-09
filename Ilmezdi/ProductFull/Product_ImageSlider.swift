@@ -30,7 +30,7 @@ struct Product_ImageSlider: View {
                     
                     images[indexOfImage]
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .transition(.slide)
                     VStack{
                         Spacer()
@@ -47,8 +47,34 @@ struct Product_ImageSlider: View {
                     .padding(.bottom)
                     
                 }
+               
                 .cornerRadius(7)
-                .frame(width: screen.width * 0.85,height: screen.height * 0.38)
+                .frame(width: screen.width * 0.8,height: screen.height * 0.38)
+                .gesture(
+                
+                DragGesture()
+                    .onChanged{info in
+                        
+                    }
+                    .onEnded{info in
+                        if info.translation.width > 0{
+                            if indexOfImage != images.count - 1 {
+                                withAnimation(.easeInOut){
+                                    indexOfImage +=  1
+                                }
+                            }
+                        }else if info.translation.width < 0  {
+                            if indexOfImage != 0 {
+                                withAnimation(.easeInOut){
+                                    indexOfImage -=  1
+                                }
+                            }
+                        }
+                       
+                    }
+                
+                )
+               
                 
                 
                 Image(systemName: "chevron.right")
