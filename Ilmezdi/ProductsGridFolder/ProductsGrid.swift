@@ -50,7 +50,9 @@ struct ProductsGrid: View {
                             if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
                                 ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
                                     .onTapGesture {
-                                        selectedProduct = product
+                                        withAnimation(.easeInOut){
+                                            selectedProduct = product
+                                        }
                                     }
                             }else{
                                 
