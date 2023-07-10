@@ -12,6 +12,7 @@ struct Cart_: View {
     let itemCount:Int
     
     @EnvironmentObject var productsData:ProductsData
+    
     var body: some View {
         
       Image(systemName: "handbag")

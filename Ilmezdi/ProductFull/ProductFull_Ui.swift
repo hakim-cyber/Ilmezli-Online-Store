@@ -108,6 +108,7 @@ struct ProductFull_Ui: View {
                         Button{
                             // add to cart
                             cart.addProduct(product: vm.product)
+                            dismiss()
                         }label: {
                             Text("Elave Et")
                                 .font(.system(size: 18))

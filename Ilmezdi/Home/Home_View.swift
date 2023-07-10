@@ -10,6 +10,7 @@ import SwiftUI
 struct Home_View: View {
     @StateObject var vm = Home_ViewModel()
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var cart:Cart_ViewModel
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
@@ -19,7 +20,7 @@ struct Home_View: View {
                     HStack(spacing:20){
                         SearchBar(text: $vm.searchText)
                         
-                        Cart_(font: 22, itemCount: 4)
+                        Cart_(font: 22, itemCount: cart.cartProducts.count)
                         
                         Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 22))
@@ -48,5 +49,6 @@ struct Home_View: View {
 struct Home_View_Previews: PreviewProvider {
     static var previews: some View {
         Home_View()
+            .environmentObject(Cart_ViewModel())
     }
 }
