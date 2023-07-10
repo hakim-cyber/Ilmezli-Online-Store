@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var h = false
     @EnvironmentObject var productsData:ProductsData
+    @EnvironmentObject var cart:Cart_ViewModel
     var body: some View {
         VStack {
             TabView{
@@ -44,5 +45,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(ProductsData())
+            .environmentObject(Cart_ViewModel())
     }
 }

@@ -11,6 +11,7 @@ struct ProductFull_Ui: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var productData:ProductsData
+    @EnvironmentObject var cart:Cart_ViewModel
     @ObservedObject var vm:ProductFull_ViewModel
     @State private var screen = UIScreen.main.bounds
     var body: some View {
@@ -106,6 +107,7 @@ struct ProductFull_Ui: View {
                         Spacer()
                         Button{
                             // add to cart
+                            cart.addProduct(product: vm.product)
                         }label: {
                             Text("Elave Et")
                                 .font(.system(size: 18))
@@ -131,5 +133,6 @@ struct ProductFull_Ui_Previews: PreviewProvider {
     static var previews: some View {
         ProductFull_Ui(vm: ProductFull_ViewModel(product: $example))
             .environmentObject(ProductsData())
+            .environmentObject(Cart_ViewModel())
     }
 }

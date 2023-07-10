@@ -20,6 +20,8 @@ struct Product:Identifiable{
     
     var postDate:String
     var IsWished = false
+    
+    var count = 1
 }
 
 struct Category{
