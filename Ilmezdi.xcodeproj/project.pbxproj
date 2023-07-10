@@ -29,6 +29,8 @@
 		08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */; };
 		08D3CD0E2A586E9500497C16 /* ProductFull_Ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */; };
 		08D3CD102A5B0EF400497C16 /* Product_ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0F2A5B0EF400497C16 /* Product_ImageSlider.swift */; };
+		08D3CD142A5BFCED00497C16 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD132A5BFCED00497C16 /* CartView.swift */; };
+		08D3CD162A5BFD1200497C16 /* Cart_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFull_ViewModel.swift; sourceTree = "<group>"; };
 		08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFull_Ui.swift; sourceTree = "<group>"; };
 		08D3CD0F2A5B0EF400497C16 /* Product_ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product_ImageSlider.swift; sourceTree = "<group>"; };
+		08D3CD132A5BFCED00497C16 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart_ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				08D3CD112A5B4C2200497C16 /* Main Views */,
 				08D3CD072A58129300497C16 /* Data */,
 				08767CD42A5740D800F634D3 /* ProductsGridFolder */,
+				08D3CD122A5BFCAF00497C16 /* Cart View */,
 				08D3CD0C2A586E3F00497C16 /* ProductFull */,
 				08767CCD2A56BEE200F634D3 /* PProductPosts */,
 				08767CC82A56B0D700F634D3 /* Home */,
@@ -177,6 +182,15 @@
 			path = "Main Views";
 			sourceTree = "<group>";
 		};
+		08D3CD122A5BFCAF00497C16 /* Cart View */ = {
+			isa = PBXGroup;
+			children = (
+				08D3CD132A5BFCED00497C16 /* CartView.swift */,
+				08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */,
+			);
+			path = "Cart View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,7 +275,9 @@
 				08767CC32A55A9D300F634D3 /* Start Screen.swift in Sources */,
 				08767CB72A55758100F634D3 /* heart toglle.swift in Sources */,
 				08D3CD062A58128900497C16 /* ProductData.swift in Sources */,
+				08D3CD162A5BFD1200497C16 /* Cart_ViewModel.swift in Sources */,
 				08767CC12A55962600F634D3 /* Product View Tab Bar.swift in Sources */,
+				08D3CD142A5BFCED00497C16 /* CartView.swift in Sources */,
 				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,
 				08767CCC2A56BEDD00F634D3 /* ProductPosts_ViewModel.swift in Sources */,
 				08767CBB2A557A3E00F634D3 /* SearchBar.swift in Sources */,

@@ -16,4 +16,8 @@ class ProductsData:ObservableObject{
     ]
     
     
+    // boolean to show cartView
+    @Published var showCartView = false
+    
+    
 }

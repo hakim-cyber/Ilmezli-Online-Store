@@ -10,6 +10,8 @@ import SwiftUI
 struct Cart_: View {
     let font:Double
     let itemCount:Int
+    
+    @EnvironmentObject var productsData:ProductsData
     var body: some View {
         
       Image(systemName: "handbag")
@@ -35,11 +37,17 @@ struct Cart_: View {
                 }
             }
             .animation(.easeInOut, value: font)
+            .onTapGesture {
+                withAnimation(.easeInOut){
+                    productsData.showCartView = true
+                }
+            }
     }
 }
 
 struct Cart__Previews: PreviewProvider {
     static var previews: some View {
         Cart_(font: 36, itemCount:2)
+            .environmentObject(ProductsData())
     }
 }

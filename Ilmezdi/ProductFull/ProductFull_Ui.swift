@@ -36,7 +36,7 @@ struct ProductFull_Ui: View {
                             .foregroundColor(colorScheme == .dark ? .white :.black)
                             .font(.system(size: 22))
                     }
-                    Cart_(font: 22, itemCount: 4)
+                   
                 }
             
                 if vm.images == []{

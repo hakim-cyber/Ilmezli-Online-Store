@@ -32,6 +32,10 @@ struct ContentView: View {
                   }
             }
         }
+        .fullScreenCover(isPresented: $productsData.showCartView, content: {
+            
+            CartView()
+        })
        
     }
 }
