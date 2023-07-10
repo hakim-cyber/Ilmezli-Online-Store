@@ -45,14 +45,16 @@ struct CartView: View {
                                                            .padding(.trailing,10)
                                     }
                                     HStack(alignment: .center,spacing:10){
-                                      
-                                        Image(product.images.first ?? "")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 80)
-                                            .background( Color.gray.opacity(0.3))
-                                            .cornerRadius(7)
-                                        
+                                        if product.images == []{
+                                            
+                                        }else{
+                                            cart.useImage(text: product.images.first ?? "")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 80)
+                                                .background( Color.gray.opacity(0.3))
+                                                .cornerRadius(7)
+                                        }
                                         VStack(spacing:6){
                                             HStack{
                                                 Text(product.name)
@@ -153,7 +155,7 @@ struct CartView: View {
                                 .font(.system(size:14))
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("780.00 ₼")
+                            Text("\(cart.totalPrice.formatted()) ₼")
                                 .bold()
                                 .foregroundColor(.accentColor)
                         }

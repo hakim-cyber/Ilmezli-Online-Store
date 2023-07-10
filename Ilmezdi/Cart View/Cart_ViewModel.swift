@@ -8,8 +8,7 @@
 import SwiftUI
 
 class Cart_ViewModel:ObservableObject{
-    @Published var cartProducts:[Product] = [Product(id: UUID().uuidString, name: "Ventilyator", description: "", images: ["image"], category: "Ev", price: 15.5, postDate: ""),Product(id: UUID().uuidString, name: "Ventilyator 2", description: "", images: ["image2"], category: "Ev", price: 15.5, postDate: ""),Product(id: UUID().uuidString, name: "Ventilyator 3 ", description: "", images: ["image3"], category: "Ev", price: 15.5, postDate: ""),
-                                             Product(id: UUID().uuidString, name: "Ventilyator 4", description: "", images: ["image4"], category: "Ev", price: 15.5, postDate: "")]
+    @Published var cartProducts:[Product] = []
     
     func addProduct(product:Product){
         if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
@@ -38,4 +37,15 @@ class Cart_ViewModel:ObservableObject{
            
            return Image(uiImage: uiImage)
        }
+    var totalPrice:Double{
+        var totalPrice = 0.0
+        
+        for product in cartProducts {
+            let totalofProduct = Double(product.count) * product.price
+            
+            totalPrice += totalofProduct
+        }
+        return totalPrice
+        
+    }
 }
