@@ -5,7 +5,7 @@
 //  Created by aplle on 7/10/23.
 //
 
-import Foundation
+import SwiftUI
 
 class Cart_ViewModel:ObservableObject{
     @Published var cartProducts:[Product] = []
@@ -26,4 +26,11 @@ class Cart_ViewModel:ObservableObject{
             }
         }
     }
+    func useImage(text:String)->Image{
+           let data = Data(base64Encoded: text) ?? Data()
+           
+           let uiImage = UIImage(data: data) ?? UIImage()
+           
+           return Image(uiImage: uiImage)
+       }
 }
