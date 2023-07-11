@@ -27,7 +27,7 @@ struct ContentView: View {
                     .tabItem {
                     Label("Əlaqə", systemImage: "phone")
                     }
-                Text("Ayarlar")
+                SettingsView()
                     .tabItem {
             Label("Ayarlar", systemImage: "gear")
                   }
