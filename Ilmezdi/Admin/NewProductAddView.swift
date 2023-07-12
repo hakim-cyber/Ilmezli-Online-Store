@@ -15,7 +15,10 @@ struct NewProductAddView: View {
     @State private var screen = UIScreen.main.bounds
     
     @State private var categoryOfProduct = ""
+    @State private var titleOfProduct = ""
+    @State private var descriptinOfProduct = ""
     @State private var priceOfProduct:Double?
+    
     
     @EnvironmentObject var productData:ProductsData
     
@@ -34,30 +37,51 @@ struct NewProductAddView: View {
                     
                     
                     HStack{
-                        Color.clear
-                            .frame(width: screen.width * 0.88,height: screen.height * 0.1)
-                            .overlay{
+                        Button{
+                            showImagePicker = true
+                        }label: {
+                            HStack{
+                                Spacer()
                                 VStack(spacing: 8){
                                     Image(systemName: "camera.fill")
                                         .font(.title2)
                                     Text("Foto elave et")
                                 }
                                 .foregroundColor(.blue)
-                                
+                                Spacer()
                             }
-                            .cornerRadius(7)
-                        
+                            .padding(.vertical,10)
+                        }
                     }
                     .listRowBackground(Color.gray.opacity(0.3))
-                    .onTapGesture {
-                        showImagePicker = true
-                    }
+                  
                 }
                 Section{
                     TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
                         .keyboardType(.decimalPad)
+                    
+                }
+                Section{
+                    TextField("Mehsulun Basligi", text: $titleOfProduct)
+                   
+                }
+                Section("Haqqinda"){
+                    TextEditor(text: $descriptinOfProduct)
                 }
            
+                Section{
+                    HStack{
+                        Spacer()
+                        Button("Mehsulu elave et"){
+                            // add product
+                        }
+                        .foregroundColor(.white)
+                        .bold()
+                        Spacer()
+                    }
+                    .listRowBackground(Color.accentColor)
+                   
+                }
                 
                 
                 
