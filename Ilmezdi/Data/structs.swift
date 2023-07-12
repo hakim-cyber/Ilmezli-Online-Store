@@ -24,7 +24,7 @@ struct Product:Identifiable{
     var count = 1
 }
 
-struct Category{
+struct Category:Hashable{
     let title:String
     let image:String
 }
