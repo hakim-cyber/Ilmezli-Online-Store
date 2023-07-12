@@ -5,7 +5,7 @@
 //  Created by aplle on 7/7/23.
 //
 
-import Foundation
+import SwiftUI
 
 
 class ProductsData:ObservableObject{
@@ -19,5 +19,22 @@ class ProductsData:ObservableObject{
     // boolean to show cartView
     @Published var showCartView = false
     
-    
+    func useImage(text:String)->Image{
+           let data = Data(base64Encoded: text) ?? Data()
+           
+           let uiImage = UIImage(data: data) ?? UIImage()
+           
+           return Image(uiImage: uiImage)
+       }
+    func deleteProduct(product:Product){
+        if let id = exampleProducts.firstIndex(where: {$0.id == product.id}){
+           
+            exampleProducts.remove(at: id)
+        }
+    }
+    func addProduct(product:Product){
+       
+            exampleProducts.append(product)
+        
+    }
 }
