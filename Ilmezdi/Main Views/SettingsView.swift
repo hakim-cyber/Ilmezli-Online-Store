@@ -70,7 +70,7 @@ struct SettingsView: View {
                 }
             }
             .fullScreenCover(isPresented: $showProductManageView){
-                Text("Product Manage View")
+               ProductManageView()
             }
            
             

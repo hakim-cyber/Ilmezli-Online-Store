@@ -17,7 +17,7 @@ struct SearchBar: View {
             .padding(10)
             .padding(2)
             .keyboardType(.default)
-            .background(RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.2),lineWidth: 1))
+            .background(RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.3),lineWidth: 1.5))
             .textFieldStyle(.plain)
             .frame(width: screen.width / 1.5)
             .overlay(alignment: .trailing, content: {
