@@ -118,14 +118,16 @@ struct CartView: View {
                                                             }
                                                         }label:{
                                                             ZStack{
-                                                                Circle().stroke(colorScheme == .light ? .black : .white)
+                                                                
                                                                 
                                                                 Image(systemName: "minus")
                                                                     .foregroundColor(colorScheme == .light ? .black : .white)
                                                                     .font(.system(size: 15))
+                                                                    .padding(11)
+                                                                    .background(Circle().stroke(colorScheme == .light ? .black : .white))
                                                                 
                                                             }
-                                                            .frame(width: 23)
+                                                            
                                                         }
                                                         .disabled(!(product.count > 1))
                                                         Text("\(product.count)")
@@ -135,14 +137,16 @@ struct CartView: View {
                                                             }
                                                         }label:{
                                                             ZStack{
-                                                                Circle().fill(colorScheme == .light ? .black : .white)
+                                                              
                                                                 
                                                                 Image(systemName: "plus")
                                                                     .foregroundColor(colorScheme == .light ? .white : .black)
                                                                     .font(.system(size: 15))
-                                                                
+                                                                    .padding(8)
+                                                                    .background(Circle().fill(colorScheme == .light ? .black : .white))
+                                                                    .padding(3)
                                                             }
-                                                            .frame(width: 23)
+                                                           
                                                         }
                                                     }
                                                     .padding(5)
