@@ -33,6 +33,8 @@
 		08D3CD162A5BFD1200497C16 /* Cart_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */; };
 		08F88E3C2A5D70D200BA4C03 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E3B2A5D70D100BA4C03 /* SettingsView.swift */; };
 		08F88E3F2A5EA18500BA4C03 /* ProductManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E3E2A5EA18500BA4C03 /* ProductManageView.swift */; };
+		08F88E412A5EAA2900BA4C03 /* NewProductAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E402A5EAA2900BA4C03 /* NewProductAddView.swift */; };
+		08F88E432A5EAA3500BA4C03 /* ProductEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E422A5EAA3500BA4C03 /* ProductEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart_ViewModel.swift; sourceTree = "<group>"; };
 		08F88E3B2A5D70D100BA4C03 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		08F88E3E2A5EA18500BA4C03 /* ProductManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManageView.swift; sourceTree = "<group>"; };
+		08F88E402A5EAA2900BA4C03 /* NewProductAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductAddView.swift; sourceTree = "<group>"; };
+		08F88E422A5EAA3500BA4C03 /* ProductEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				08F88E3E2A5EA18500BA4C03 /* ProductManageView.swift */,
+				08F88E402A5EAA2900BA4C03 /* NewProductAddView.swift */,
+				08F88E422A5EAA3500BA4C03 /* ProductEditView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -291,7 +297,9 @@
 				08767CB72A55758100F634D3 /* heart toglle.swift in Sources */,
 				08D3CD062A58128900497C16 /* ProductData.swift in Sources */,
 				08F88E3F2A5EA18500BA4C03 /* ProductManageView.swift in Sources */,
+				08F88E412A5EAA2900BA4C03 /* NewProductAddView.swift in Sources */,
 				08D3CD162A5BFD1200497C16 /* Cart_ViewModel.swift in Sources */,
+				08F88E432A5EAA3500BA4C03 /* ProductEditView.swift in Sources */,
 				08767CC12A55962600F634D3 /* Product View Tab Bar.swift in Sources */,
 				08D3CD142A5BFCED00497C16 /* CartView.swift in Sources */,
 				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,

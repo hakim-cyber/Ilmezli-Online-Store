@@ -185,9 +185,11 @@ struct ProductManageView: View {
             }
             .sheet(item: $selectedProductForEdit){product in
                 // edit view
+                ProductEditView()
             }
             .sheet(isPresented: $showNewProductAddView){
                 //show add view
+                NewProductAddView()
             }
         }
         
