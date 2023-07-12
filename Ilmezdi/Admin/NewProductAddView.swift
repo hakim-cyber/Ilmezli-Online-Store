@@ -37,9 +37,9 @@ struct NewProductAddView: View {
                         }
                     }
                     
-                    
-                    HStack{
-                       
+                    if imagesArray.count < 3{
+                        HStack{
+                            
                             Button{
                                 showImagePicker = true
                             }label: {
@@ -55,13 +55,15 @@ struct NewProductAddView: View {
                                 }
                                 .padding(.vertical,10)
                             }
-                         
-                        
-                           
-                               
-                        
+                            
+                            
+                            
+                            
+                            
+                            
+                        }
+                        .listRowBackground(Color.gray.opacity(0.3) )
                     }
-                    .listRowBackground(Color.gray.opacity(0.3) )
                    
                    
                   
@@ -105,11 +107,13 @@ struct NewProductAddView: View {
                         }
                         .foregroundColor(.white)
                         .bold()
+                        .disabled(categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "")
                         Spacer()
                     }
-                    .listRowBackground(Color.accentColor)
+                    .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
                    
                 }
+             
                 
              
                 
@@ -122,6 +126,9 @@ struct NewProductAddView: View {
             .scrollContentBackground(.hidden)
             .sheet(isPresented: $showImagePicker){
                 ImagePicker(imagesArray: $imagesArray)
+            }
+            .onAppear{
+                categoryOfProduct = productData.categories.first?.title ?? ""
             }
             
         }
