@@ -14,6 +14,7 @@ struct SettingsView: View {
     
     @State private var writtenPassword = ""
    @State private var showPasswordControl = false
+    @State private var showProductManageView = false
     var body: some View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
@@ -34,7 +35,17 @@ struct SettingsView: View {
                             }
                         }
                     }else{
-                        
+                        Button{
+                            if isAdmin{
+                                self.showProductManageView = true
+                            }
+                        }label: {
+                            HStack{
+                                Text("Mehsullar")
+                                Spacer()
+                                Text("📲")
+                            }
+                        }
                     }
                 }header: {
                     HStack{
@@ -57,6 +68,9 @@ struct SettingsView: View {
                         isAdmin = true
                     }
                 }
+            }
+            .fullScreenCover(isPresented: $showProductManageView){
+                Text("Product Manage View")
             }
            
             
