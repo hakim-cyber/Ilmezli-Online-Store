@@ -14,6 +14,8 @@ struct NewProductAddView: View {
     @State private var showImagePicker = false
     @State private var screen = UIScreen.main.bounds
     
+    @State private var imagesArray:[UIImage?] = []
+    
     @State private var categoryOfProduct = ""
     @State private var titleOfProduct = ""
     @State private var descriptinOfProduct = ""
@@ -37,24 +39,50 @@ struct NewProductAddView: View {
                     
                     
                     HStack{
-                        Button{
-                            showImagePicker = true
-                        }label: {
-                            HStack{
-                                Spacer()
-                                VStack(spacing: 8){
-                                    Image(systemName: "camera.fill")
-                                        .font(.title2)
-                                    Text("Foto elave et")
+                       
+                            Button{
+                                showImagePicker = true
+                            }label: {
+                                HStack{
+                                    Spacer()
+                                    VStack(spacing: 8){
+                                        Image(systemName: "camera.fill")
+                                            .font(.title2)
+                                        Text("Foto elave et")
+                                    }
+                                    .foregroundColor(.blue)
+                                    Spacer()
                                 }
-                                .foregroundColor(.blue)
-                                Spacer()
+                                .padding(.vertical,10)
                             }
-                            .padding(.vertical,10)
-                        }
+                         
+                        
+                           
+                               
+                        
                     }
-                    .listRowBackground(Color.gray.opacity(0.3))
+                    .listRowBackground(Color.gray.opacity(0.3) )
+                   
+                   
                   
+                  
+                }
+                Section{
+                    if imagesArray != []{
+                        ScrollView(.horizontal,showsIndicators: false){
+                            HStack(spacing:5){
+                                ForEach(imagesArray.indices,id: \.self){id in
+                                    Image(uiImage: imagesArray[id] ?? UIImage())
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(maxWidth: (screen.width * 0.88) / 2,maxHeight: (screen.height * 0.38) / 2 )
+                                        
+                                }
+                            }
+                        }
+                        
+                    }
+                    
                 }
                 Section{
                     TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
@@ -83,6 +111,7 @@ struct NewProductAddView: View {
                    
                 }
                 
+             
                 
                 
                                                                     
@@ -91,29 +120,29 @@ struct NewProductAddView: View {
                 
             }
             .scrollContentBackground(.hidden)
-            
-            
-        }
-        .safeAreaInset(edge: .top) {
-            HStack{
-                Button{
-                    dismiss()
-                }label: {
-                    Image(systemName: "chevron.left")
-                        .font(.title3)
-                        .foregroundColor(colorScheme == .dark ? .white :.black)
-                }
-                Spacer()
-              
+            .sheet(isPresented: $showImagePicker){
+                ImagePicker(imagesArray: $imagesArray)
             }
-            .padding(.horizontal)
+            
         }
+       
+       
+        
+    }
+    func uiimageToImage(uimages:[UIImage?])->[Image]{
+        var images:[Image] = []
+        for uimage in uimages {
+            images.append(Image(uiImage: uimage ?? UIImage()))
+        }
+        return images
     }
 }
 
 struct NewProductAddView_Previews: PreviewProvider {
     static var previews: some View {
-        NewProductAddView()
-            .environmentObject(ProductsData())
+        NavigationStack{
+            NewProductAddView()
+                .environmentObject(ProductsData())
+        }
     }
 }
