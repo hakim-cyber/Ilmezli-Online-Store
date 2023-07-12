@@ -29,7 +29,7 @@ struct NewProductAddView: View {
             Form{
                 Section{
                     Picker("Kategoriya", selection: $categoryOfProduct){
-                        ForEach(productData.categories,id:\.title){category in
+                        ForEach(productData.categories.filter{$0.title != "Hamısı"},id:\.title){category in
                             Text("\(category.title)")
                                 .tag(category.title)
                         }
