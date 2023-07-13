@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import CloudKit
 
 
 class ProductsData:ObservableObject{
-    @Published var exampleProducts:[Product] = [Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 "),Product(id: UUID().uuidString, name: "Ventilyator", description: "Cox guclu ventilyator. Ev Ucun Eladi. Isti Havalarda Lazim Olur", images: [], category:"Ev", price: 15.5, postDate:"2023-07-07 10:10:10 ")]
+    @Published var exampleProducts:[Product] = []
     
     @Published var categories = [ Category(title: "Hamısı", image: "square.stack.3d.up.fill"),
         Category(title: "Ev", image: "house.lodge.circle"),Category(title: "Mətbəx", image: "fork.knife"),Category(title: "Texnika", image: "desktopcomputer"),Category(title: "Tikinti", image: "building.2.crop.circle"),Category(title: "Xirdavat", image: "light.ribbon"),
     ]
     
-    
+    private var db = CKContainer(identifier:"iCloud.com.hakimAliyev.ilmezdiCloud").privateCloudDatabase
     // boolean to show cartView
     @Published var showCartView = false
     
@@ -36,5 +37,76 @@ class ProductsData:ObservableObject{
        
             exampleProducts.append(product)
         
+    }
+    
+    
+    
+    
+    func addNewProduct(product:Product,completion:@escaping ()->Void)async throws{
+        let record = try await db.save(product.record)
+        guard let task = Product(record: record) else {return}
+        DispatchQueue.main.async {
+            self.exampleProducts.append(task)
+        }
+        completion()
+    }
+    func readProducts()async throws{
+        let query = CKQuery(recordType: ProductRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
+        
+        
+        let result = try await db.records(matching: query)
+        
+      let records =  result.matchResults.compactMap{try? $0.1.get()}
+        DispatchQueue.main.async {
+        self.exampleProducts = []
+    
+            records.forEach{record in
+                let product = Product(record: record)
+                if product != nil{
+                    self.exampleProducts.append(product!)
+                }
+            }
+        }
+       
+    }
+    
+    
+    
+    
+    
+    func dateToString(date:Date)->String{
+        let dateFormatter = DateFormatter()
+
+        // Convert Date to String
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    func imageToString(image:UIImage?)->String{
+        guard let image = image, let imageData = image.jpegData(compressionQuality: 0.75) else {
+            print("Error: Unable to get image or convert to data")
+            return ""
+        }
+        
+        let resizedImage = image.resize(to: CGSize(width: 500, height: 500)) // Adjust the desired size
+        
+        guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.75) else {
+            print("Error: Unable to resize image or convert to data")
+            return ""
+        }
+        
+        let imageString = resizedImageData.base64EncodedString()
+        return imageString
+    }
+}
+
+import UIKit
+
+extension UIImage {
+    func resize(to newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

@@ -16,14 +16,19 @@ struct Product_ImageSlider: View {
         
         VStack(spacing: 0){
             HStack{
-                Image(systemName: "chevron.left")
-                    .onTapGesture {
+                if images.count > 1{
+                    Button{
                         if indexOfImage != 0 {
                             withAnimation(.easeInOut){
                                 indexOfImage -=  1
                             }
                         }
+                    }label: {
+                        Image(systemName: "chevron.left")
                     }
+                   
+                        
+                }
                 
                 ZStack{
                     Color.gray.opacity(0.3)
@@ -57,13 +62,13 @@ struct Product_ImageSlider: View {
                         
                     }
                     .onEnded{info in
-                        if info.translation.width > 0{
+                        if info.translation.width < 0{
                             if indexOfImage != images.count - 1 {
                                 withAnimation(.easeInOut){
                                     indexOfImage +=  1
                                 }
                             }
-                        }else if info.translation.width < 0  {
+                        }else if info.translation.width > 0  {
                             if indexOfImage != 0 {
                                 withAnimation(.easeInOut){
                                     indexOfImage -=  1
@@ -76,15 +81,19 @@ struct Product_ImageSlider: View {
                 )
                
                 
-                
-                Image(systemName: "chevron.right")
-                    .onTapGesture {
+                if images.count > 1{
+                    Button{
                         if indexOfImage != images.count - 1 {
                             withAnimation(.easeInOut){
                                 indexOfImage +=  1
                             }
                         }
+                    }label: {
+                        Image(systemName: "chevron.right")
                     }
+                   
+                        
+                }
                 
             }
             

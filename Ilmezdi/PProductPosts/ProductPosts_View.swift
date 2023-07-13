@@ -35,7 +35,7 @@ struct ProductPosts_View: View {
                         }
                     }
                     .overlay(alignment:.topTrailing){
-                        Toggle("", isOn: $vm.product.IsWished)
+                        Toggle("", isOn: .constant(false))
                             .toggleStyle(HeartToggleStyle(font: 20))
                             .padding(5)
                     }

@@ -21,6 +21,7 @@ struct NewProductAddView: View {
     @State private var descriptinOfProduct = ""
     @State private var priceOfProduct:Double?
     
+    @State private var adding = false
     
     @EnvironmentObject var productData:ProductsData
     
@@ -104,6 +105,10 @@ struct NewProductAddView: View {
                         Spacer()
                         Button("Mehsulu elave et"){
                             // add product
+                            
+                            addProduct{
+                                dismiss()
+                            }
                         }
                         .foregroundColor(.white)
                         .bold()
@@ -128,12 +133,39 @@ struct NewProductAddView: View {
                 ImagePicker(imagesArray: $imagesArray)
             }
             .onAppear{
-                categoryOfProduct = productData.categories.first?.title ?? ""
+                categoryOfProduct = productData.categories[1].title ?? ""
             }
             
+            if adding{
+                ProgressView()
+            }
         }
        
        
+        
+    }
+    func addProduct(completion:@escaping ()->Void){
+        self.adding = true
+        var images:[String] = []
+        for image in imagesArray{
+            images.append( productData.imageToString(image: image))
+        }
+       
+            let product = Product(id: UUID().uuidString, name: titleOfProduct, description: descriptinOfProduct, images: images, category: categoryOfProduct, price: priceOfProduct ?? 0.0, postDate: productData.dateToString(date: Date.now))
+        Task{
+            do{
+                try await  productData.addNewProduct(product: product){
+                    self.adding = false
+                    completion()
+                }
+            }catch{
+                print(error)
+            }
+        }
+        
+        
+        
+           
         
     }
     func uiimageToImage(uimages:[UIImage?])->[Image]{
@@ -143,6 +175,7 @@ struct NewProductAddView: View {
         }
         return images
     }
+    
 }
 
 struct NewProductAddView_Previews: PreviewProvider {

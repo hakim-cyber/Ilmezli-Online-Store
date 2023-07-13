@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Start_Screen: View {
     @State private var goToMain = false
-    
+    @EnvironmentObject var productsData:ProductsData
+  
     var body: some View {
         if goToMain{
             ContentView()
@@ -25,6 +26,14 @@ struct Start_Screen: View {
                     }
                 }
             }
+            .task {
+                do{
+                    try await productsData.readProducts()
+                }catch{
+                    print(error)
+                }
+            }
+          
         }
     }
 }
@@ -32,5 +41,7 @@ struct Start_Screen: View {
 struct Start_Screen_Previews: PreviewProvider {
     static var previews: some View {
         Start_Screen()
+            .environmentObject(ProductsData())
+            
     }
 }

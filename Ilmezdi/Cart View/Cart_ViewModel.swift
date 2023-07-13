@@ -12,16 +12,13 @@ class Cart_ViewModel:ObservableObject{
     
     func addProduct(product:Product){
         if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
-            cartProducts[id].count += 1
         }else{
             cartProducts.append(product)
         }
     }
     func decreaseProduct(product:Product){
         if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
-            if cartProducts[id].count > 1{
-                cartProducts[id].count -= 1
-            }
+            
         }
     }
     func deleteProduct(product:Product){
@@ -41,7 +38,7 @@ class Cart_ViewModel:ObservableObject{
         var totalPrice = 0.0
         
         for product in cartProducts {
-            let totalofProduct = Double(product.count) * product.price
+            let totalofProduct = 0.0
             
             totalPrice += totalofProduct
         }

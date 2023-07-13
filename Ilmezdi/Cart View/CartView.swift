@@ -129,8 +129,8 @@ struct CartView: View {
                                                             }
                                                             
                                                         }
-                                                        .disabled(!(product.count > 1))
-                                                        Text("\(product.count)")
+                                                        
+                                                        Text("1")
                                                         Button{
                                                             withAnimation{
                                                                 cart.addProduct(product: product)

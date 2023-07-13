@@ -26,7 +26,7 @@ struct ProductFull_Ui: View {
                             .foregroundColor(colorScheme == .dark ? .white :.black)
                     }
                     Spacer()
-                    Toggle("", isOn: $vm.product.IsWished)
+                    Toggle("", isOn: .constant(false))
                         .labelsHidden()
                         .toggleStyle(HeartToggleStyle(font: 22))
                     Button{
