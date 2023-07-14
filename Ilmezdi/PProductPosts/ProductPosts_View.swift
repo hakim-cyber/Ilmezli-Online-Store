@@ -34,11 +34,7 @@ struct ProductPosts_View: View {
                                .cornerRadius(10)
                         }
                     }
-                    .overlay(alignment:.topTrailing){
-                        Toggle("", isOn: .constant(false))
-                            .toggleStyle(HeartToggleStyle(font: 20))
-                            .padding(5)
-                    }
+                    
                     
                     VStack(spacing:5){
                         HStack{
