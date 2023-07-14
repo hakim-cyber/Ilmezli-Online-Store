@@ -21,7 +21,7 @@ struct NewProductAddView: View {
     @State private var descriptinOfProduct = ""
     @State private var priceOfProduct:Double?
     
-    @State private var adding = false
+    @State private var adding = true
     
     @EnvironmentObject var productData:ProductsData
     
@@ -136,9 +136,11 @@ struct NewProductAddView: View {
                 categoryOfProduct = productData.categories[1].title ?? ""
             }
             .disabled(adding)
-            
+            .blur(radius: adding ? 5 : 0)
             if adding{
                 ProgressView()
+                    .scaleEffect(3)
+                    .tint(Color.accentColor)
                     
             }
         }
@@ -160,8 +162,10 @@ struct NewProductAddView: View {
                     self.adding = false
                     completion()
                 }
+                
             }catch{
                 print(error)
+                self.adding = false
             }
         }
         
