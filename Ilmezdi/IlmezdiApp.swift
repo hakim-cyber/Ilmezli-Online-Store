@@ -11,11 +11,13 @@ import SwiftUI
 struct IlmezdiApp: App {
     @StateObject var productsData = ProductsData()
     @StateObject var cart = Cart_ViewModel()
+    @StateObject var wished = WishedProducts()
     var body: some Scene {
         WindowGroup {
            Start_Screen()
                 .environmentObject(productsData)
                 .environmentObject(cart)
+                .environmentObject(wished)
         }
     }
 }

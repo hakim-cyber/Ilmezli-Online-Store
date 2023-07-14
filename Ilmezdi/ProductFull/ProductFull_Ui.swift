@@ -11,6 +11,7 @@ struct ProductFull_Ui: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var productData:ProductsData
+    @EnvironmentObject var wished:WishedProducts
     @EnvironmentObject var cart:Cart_ViewModel
     @ObservedObject var vm:ProductFull_ViewModel
     @State private var screen = UIScreen.main.bounds
@@ -26,9 +27,19 @@ struct ProductFull_Ui: View {
                             .foregroundColor(colorScheme == .dark ? .white :.black)
                     }
                     Spacer()
-                    Toggle("", isOn: .constant(false))
-                        .labelsHidden()
-                        .toggleStyle(HeartToggleStyle(font: 22))
+                    Button{
+                        if wished.checkWish(product: vm.product){
+                            if let id = wished.wishedProducts.firstIndex(where: {$0.id == vm.product.id}){
+                                wished.wishedProducts.remove(at: id)
+                            }
+                        }else{
+                            wished.wishedProducts.append(vm.product)
+                        }
+                    }label: {
+                        Image(systemName: wished.checkWish(product: vm.product) ? "heart.fill" : "heart")
+                            .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : colorScheme == .dark ? .white :.black)
+                            .font(.system(size: 22))
+                    }
                     Button{
                         // Share
                         
@@ -135,5 +146,6 @@ struct ProductFull_Ui_Previews: PreviewProvider {
         ProductFull_Ui(vm: ProductFull_ViewModel(product: $example))
             .environmentObject(ProductsData())
             .environmentObject(Cart_ViewModel())
+            .environmentObject(WishedProducts())
     }
 }
