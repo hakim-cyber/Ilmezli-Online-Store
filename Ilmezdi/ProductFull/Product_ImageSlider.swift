@@ -31,7 +31,7 @@ struct Product_ImageSlider: View {
                             ForEach(0..<images.count , id: \.self){num in
                                 Circle()
                                     .fill(num == indexOfImage ? Color.primary : Color.secondary)
-                                    .frame(width: 13)
+                                    .frame(width: 10)
                                     .transition(.slide)
                                     
                             }
