@@ -25,6 +25,8 @@ struct Cart_: View {
                         if itemCount <= 9{
                             Text("\(itemCount)")
                                 .foregroundColor(.white)
+                                .font(.system(size: font / 2.4))
+                                
                         }else{
                             Text("9+")
                                 .foregroundColor(.white)
@@ -33,7 +35,7 @@ struct Cart_: View {
                         
                     }
                     .padding(-3)
-                    .frame(width:Double(font / 1.5),height: Double(font / 2))
+                    .frame(width:Double(font / 1.6),height: Double(font / 2))
                    
                 }
             }
@@ -48,7 +50,7 @@ struct Cart_: View {
 
 struct Cart__Previews: PreviewProvider {
     static var previews: some View {
-        Cart_(font: 36, itemCount:2)
+        Cart_(font: 22, itemCount:1)
             .environmentObject(ProductsData())
     }
 }

@@ -73,3 +73,9 @@ struct Category:Hashable{
     let title:String
     let image:String
 }
+
+struct CartItem:Identifiable{
+    let id: UUID
+    var product:Product
+    var count = 1
+}

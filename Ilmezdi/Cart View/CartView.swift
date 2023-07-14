@@ -58,7 +58,7 @@ struct CartView: View {
                                             Button{
                                                 // deleting
                                                 withAnimation(.easeInOut){
-                                                    cart.deleteProduct(product: product)
+                                                    cart.deleteProduct(product: product.product)
                                                 }
                                             }label: {
                                                 ZStack{
@@ -74,19 +74,20 @@ struct CartView: View {
                                             .padding(.trailing,10)
                                         }
                                         HStack(alignment: .center,spacing:10){
-                                            if product.images == []{
+                                            if product.product.images == []{
                                                 
                                             }else{
-                                                cart.useImage(text: product.images.first ?? "")
+                                                cart.useImage(text: product.product.images.first ?? "")
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(width: 80)
+                                                    .frame(width:80)
                                                     .background( Color.gray.opacity(0.3))
+                                                    
                                                     .cornerRadius(7)
                                             }
                                             VStack(spacing:6){
                                                 HStack{
-                                                    Text(product.name)
+                                                    Text(product.product.name)
                                                         .font(.system(size: 16))
                                                         .foregroundColor(colorScheme == .dark ? .white :.black)
                                                         .fontWeight(.medium)
@@ -95,7 +96,7 @@ struct CartView: View {
                                                     
                                                 }
                                                 HStack{
-                                                    Text(product.category)
+                                                    Text(product.product.category)
                                                         .font(.system(size: 12))
                                                         .foregroundColor(.secondary)
                                                         .fontWeight(.light)
@@ -105,7 +106,7 @@ struct CartView: View {
                                                 
                                                 HStack{
                                                     
-                                                    Text("\(product.price.formatted()) ₼")
+                                                    Text("\(product.product.price.formatted()) ₼")
                                                         .font(.system(size: 15))
                                                         .fontWeight(.bold)
                                                         .foregroundColor(.accentColor)
@@ -114,7 +115,7 @@ struct CartView: View {
                                                     HStack{
                                                         Button{
                                                             withAnimation{
-                                                                cart.decreaseProduct(product: product)
+                                                                cart.decreaseProduct(product: product.product)
                                                             }
                                                         }label:{
                                                             ZStack{
@@ -129,11 +130,12 @@ struct CartView: View {
                                                             }
                                                             
                                                         }
+                                                        .disabled(product.count == 1)
                                                         
-                                                        Text("1")
+                                                        Text("\(product.count)")
                                                         Button{
                                                             withAnimation{
-                                                                cart.addProduct(product: product)
+                                                                cart.addProduct(product: product.product)
                                                             }
                                                         }label:{
                                                             ZStack{

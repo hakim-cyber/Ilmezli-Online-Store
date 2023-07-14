@@ -7,22 +7,25 @@
 
 import SwiftUI
 
+@MainActor
 class Cart_ViewModel:ObservableObject{
-    @Published var cartProducts:[Product] = []
+    @Published var cartProducts:[CartItem] = []
     
     func addProduct(product:Product){
-        if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
+        if let id = cartProducts.firstIndex(where: {$0.product.id == product.id}){
+            cartProducts[id].count += 1
         }else{
-            cartProducts.append(product)
+            let cartItem = CartItem(id: UUID(), product: product)
+            cartProducts.append(cartItem)
         }
     }
     func decreaseProduct(product:Product){
-        if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
-            
+        if let id = cartProducts.firstIndex(where: {$0.product.id == product.id}){
+            cartProducts[id].count -= 1
         }
     }
     func deleteProduct(product:Product){
-        if let id = cartProducts.firstIndex(where: {$0.id == product.id}){
+        if let id = cartProducts.firstIndex(where: {$0.product.id == product.id}){
            
             cartProducts.remove(at: id)
         }
@@ -38,7 +41,7 @@ class Cart_ViewModel:ObservableObject{
         var totalPrice = 0.0
         
         for product in cartProducts {
-            let totalofProduct = 0.0
+            let totalofProduct = product.product.price * Double(product.count)
             
             totalPrice += totalofProduct
         }
