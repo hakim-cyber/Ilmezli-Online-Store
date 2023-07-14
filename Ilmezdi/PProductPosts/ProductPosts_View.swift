@@ -18,20 +18,20 @@ struct ProductPosts_View: View {
                 VStack{
                     VStack{
                         if vm.images == []{
-                                Color.gray.opacity(0.1)
+                                Color.gray.opacity(0.05)
                                 .frame(width: 150, height:  (210) * 0.55 )
                                 .overlay{
                                     Text("No Image")
                                     }
-                                .cornerRadius(7)
+                                .cornerRadius(10)
                                                     
                             }else{
                             vm.images.first!
                                .resizable()
                                .scaledToFit()
-                               .frame(maxWidth: 150, maxHeight:  (210) * 0.55 )
-                               .background( Color.gray.opacity(0.3))
-                               .cornerRadius(7)
+                               .frame(width: 150, height:  (210) * 0.55 )
+                               .background( Color.gray.opacity(0.05))
+                               .cornerRadius(10)
                         }
                     }
                     .overlay(alignment:.topTrailing){
