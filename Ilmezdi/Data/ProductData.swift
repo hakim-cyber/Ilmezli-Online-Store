@@ -59,14 +59,19 @@ class ProductsData:ObservableObject{
         let result = try await db.records(matching: query)
         
       let records =  result.matchResults.compactMap{try? $0.1.get()}
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
         self.exampleProducts = []
+            
+            var allProductsSorted:[Product] = []
     
             records.forEach{record in
                 let product = Product(record: record)
                 if product != nil{
-                    self.exampleProducts.append(product!)
+                    allProductsSorted.append(product!)
                 }
+            }
+            self.exampleProducts = allProductsSorted.sorted{
+                stringToDate(string: $0.postDate) > stringToDate(string: $1.postDate)
             }
         }
        
@@ -75,7 +80,13 @@ class ProductsData:ObservableObject{
     
     
     
-    
+    func stringToDate(string:String)->Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let reverseDate = dateFormatter.date(from: string)
+        return reverseDate ?? Date.now
+       
+    }
     func dateToString(date:Date)->String{
         let dateFormatter = DateFormatter()
 
