@@ -12,6 +12,8 @@ import CloudKit
 class ProductsData:ObservableObject{
     @Published var exampleProducts:[Product] = []
     
+    
+    
     @Published var categories = [ Category(title: "Hamısı", image: "square.stack.3d.up.fill"),
         Category(title: "Ev", image: "house.lodge.circle"),Category(title: "Mətbəx", image: "fork.knife"),Category(title: "Texnika", image: "desktopcomputer"),Category(title: "Tikinti", image: "building.2.crop.circle"),Category(title: "Xirdavat", image: "light.ribbon"),
     ]

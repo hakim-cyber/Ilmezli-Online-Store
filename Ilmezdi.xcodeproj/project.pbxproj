@@ -36,6 +36,7 @@
 		08F88E412A5EAA2900BA4C03 /* NewProductAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E402A5EAA2900BA4C03 /* NewProductAddView.swift */; };
 		08F88E432A5EAA3500BA4C03 /* ProductEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E422A5EAA3500BA4C03 /* ProductEditView.swift */; };
 		08F88E452A5ECDF900BA4C03 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F88E442A5ECDF900BA4C03 /* ImagePicker.swift */; };
+		08F94CDD2A615ABB00B36A1C /* WishedProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F94CDC2A615ABB00B36A1C /* WishedProducts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		08F88E402A5EAA2900BA4C03 /* NewProductAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductAddView.swift; sourceTree = "<group>"; };
 		08F88E422A5EAA3500BA4C03 /* ProductEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEditView.swift; sourceTree = "<group>"; };
 		08F88E442A5ECDF900BA4C03 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		08F94CDC2A615ABB00B36A1C /* WishedProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishedProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				08D3CD052A58128900497C16 /* ProductData.swift */,
 				08767CCE2A56C0F000F634D3 /* structs.swift */,
+				08F94CDC2A615ABB00B36A1C /* WishedProducts.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */,
 				08F88E3C2A5D70D200BA4C03 /* SettingsView.swift in Sources */,
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
+				08F94CDD2A615ABB00B36A1C /* WishedProducts.swift in Sources */,
 				08F88E452A5ECDF900BA4C03 /* ImagePicker.swift in Sources */,
 				08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */,
 				08767CC72A56B0CF00F634D3 /* Home_ViewModel.swift in Sources */,
