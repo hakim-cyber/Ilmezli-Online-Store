@@ -18,7 +18,7 @@ struct ProductPosts_View: View {
                 VStack{
                     VStack{
                         if vm.images == []{
-                                Color.gray.opacity(0.3)
+                                Color.gray.opacity(0.1)
                                 .frame(width: 150, height:  (210) * 0.55 )
                                 .overlay{
                                     Text("No Image")
@@ -29,7 +29,7 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                .resizable()
                                .scaledToFit()
-                               .frame(width: 150, height:  (210) * 0.55 )
+                               .frame(maxWidth: 150, maxHeight:  (210) * 0.55 )
                                .background( Color.gray.opacity(0.3))
                                .cornerRadius(7)
                         }

@@ -19,11 +19,11 @@ struct Product_ImageSlider: View {
                
                 
                 ZStack{
-                    Color.gray.opacity(0.3)
+                    Color.gray.opacity(0.05)
                     
                     images[indexOfImage]
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                         .transition(.slide)
                     VStack{
                         Spacer()
@@ -41,7 +41,7 @@ struct Product_ImageSlider: View {
                     
                 }
                
-                .cornerRadius(7)
+                .cornerRadius(10)
                 .frame(width: screen.width * 0.8,height: screen.height * 0.38)
                 .gesture(
                 
