@@ -25,17 +25,19 @@ struct Categories_Bar: View {
                         VStack(alignment: .center,spacing: 15){
                            
                                 Image(systemName: "\(category.image)")
-                                    .font(.title3)
+                                .font(.system(size: 15))
                                     .padding(10)
                                     .background(RoundedRectangle(cornerRadius: 8).fill(.ultraThinMaterial).shadow(radius: selectedCategory?.title == category.title ? 3:0  ) )
-                                    .opacity(0.7)
+                                    .opacity(0.9)
                             
                             if selectedCategory?.title == category.title {
                                 Text("\(category.title)")
-                                    .foregroundColor(.accentColor.opacity(0.7))
+                                    .font(.system(size: 17))
+                                    .foregroundColor(.accentColor.opacity(0.9))
                             }else{
                                 Text("\(category.title)")
-                                    .foregroundColor(.gray.opacity(0.7))
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.gray.opacity(0.9))
                             }
                         }
                         .onTapGesture {
