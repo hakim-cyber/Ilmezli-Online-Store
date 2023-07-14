@@ -16,19 +16,7 @@ struct Product_ImageSlider: View {
         
         VStack(spacing: 0){
             HStack{
-                if images.count > 1{
-                    Button{
-                        if indexOfImage != 0 {
-                            withAnimation(.easeInOut){
-                                indexOfImage -=  1
-                            }
-                        }
-                    }label: {
-                        Image(systemName: "chevron.left")
-                    }
-                   
-                        
-                }
+               
                 
                 ZStack{
                     Color.gray.opacity(0.3)
@@ -42,14 +30,14 @@ struct Product_ImageSlider: View {
                         HStack{
                             ForEach(0..<images.count , id: \.self){num in
                                 Circle()
-                                    .fill(num == indexOfImage ? .white : .secondary)
-                                    .frame(width: 8)
+                                    .fill(num == indexOfImage ? Color.primary : Color.secondary)
+                                    .frame(width: 13)
                                     .transition(.slide)
                                     
                             }
                         }
                     }
-                    .padding(.bottom)
+                    .padding(.bottom,10)
                     
                 }
                
@@ -81,20 +69,7 @@ struct Product_ImageSlider: View {
                 )
                
                 
-                if images.count > 1{
-                    Button{
-                        if indexOfImage != images.count - 1 {
-                            withAnimation(.easeInOut){
-                                indexOfImage +=  1
-                            }
-                        }
-                    }label: {
-                        Image(systemName: "chevron.right")
-                    }
-                   
-                        
-                }
-                
+              
             }
             
         }
