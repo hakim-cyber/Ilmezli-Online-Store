@@ -20,15 +20,16 @@ struct Start_Screen: View {
                 Ilmezli_logo(font: 40)
             }
             .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5){
-                    withAnimation(.easeInOut){
-                        goToMain = true
-                    }
-                }
+                
             }
             .task {
                 do{
                     try await productsData.readProducts()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()){
+                        withAnimation(.easeInOut){
+                            goToMain = true
+                        }
+                    }
                 }catch{
                     print(error)
                 }

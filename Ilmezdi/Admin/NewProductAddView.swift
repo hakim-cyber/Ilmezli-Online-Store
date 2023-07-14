@@ -112,7 +112,7 @@ struct NewProductAddView: View {
                         }
                         .foregroundColor(.white)
                         .bold()
-                        .disabled(categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "")
+                        .disabled(categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" || adding)
                         Spacer()
                     }
                     .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
@@ -135,9 +135,11 @@ struct NewProductAddView: View {
             .onAppear{
                 categoryOfProduct = productData.categories[1].title ?? ""
             }
+            .disabled(adding)
             
             if adding{
                 ProgressView()
+                    
             }
         }
        
