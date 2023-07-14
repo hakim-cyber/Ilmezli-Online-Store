@@ -80,7 +80,24 @@ struct NewProductAddView: View {
                                     Image(uiImage: imagesArray[id] ?? UIImage())
                                         .resizable()
                                         .scaledToFit()
+                                        .overlay(alignment:.topTrailing){
+                                            Button{
+                                                withAnimation {
+                                                    imagesArray.removeAll(where: {$0 == imagesArray[id]})
+                                                }
+                                            }label:{
+                                                Image(systemName: "xmark")
+                                                    .font(.caption)
+                                                    .foregroundColor(.red)
+                                                    .bold()
+                                                    .padding(8)
+                                                    .background(Circle().fill(Color.gray.opacity(0.4)))
+                                            }
+                                            .padding(.vertical,5)
+                                            
+                                        }
                                         .frame(maxWidth: (screen.width * 0.88) / 2,maxHeight: (screen.height * 0.38) / 2 )
+                                       
                                         
                                 }
                             }
