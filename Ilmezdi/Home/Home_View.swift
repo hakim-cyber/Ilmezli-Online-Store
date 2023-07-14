@@ -20,7 +20,7 @@ struct Home_View: View {
                     HStack(spacing:20){
                         SearchBar(text: $vm.searchText)
                       
-                        Cart_(font: 22, itemCount: cart.cartProducts.count)
+                        Cart_(font: 30, itemCount: cart.cartProducts.count)
                         
                        
                     }
