@@ -21,9 +21,11 @@ struct NewProductAddView: View {
     @State private var descriptinOfProduct = ""
     @State private var priceOfProduct:Double?
     
-    @State private var adding = true
+    @State private var adding = false
     
     @EnvironmentObject var productData:ProductsData
+    
+   
     
     var body: some View {
         ZStack{
@@ -90,14 +92,17 @@ struct NewProductAddView: View {
                 Section{
                     TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
                         .keyboardType(.decimalPad)
+                        
                     
                 }
                 Section{
                     TextField("Mehsulun Basligi", text: $titleOfProduct)
+                       
                    
                 }
                 Section("Haqqinda"){
                     TextEditor(text: $descriptinOfProduct)
+                       
                 }
            
                 Section{
@@ -128,6 +133,7 @@ struct NewProductAddView: View {
                                         
                 
             }
+            .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
             .sheet(isPresented: $showImagePicker){
                 ImagePicker(imagesArray: $imagesArray)
@@ -137,12 +143,15 @@ struct NewProductAddView: View {
             }
             .disabled(adding)
             .blur(radius: adding ? 5 : 0)
+            
+            
             if adding{
                 ProgressView()
                     .scaleEffect(3)
                     .tint(Color.accentColor)
                     
             }
+            
         }
        
        

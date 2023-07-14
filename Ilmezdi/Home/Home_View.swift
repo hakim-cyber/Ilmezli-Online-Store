@@ -12,6 +12,8 @@ struct Home_View: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var cart:Cart_ViewModel
     @State private var screen = UIScreen.main.bounds
+    
+    
     var body: some View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
@@ -42,6 +44,7 @@ struct Home_View: View {
             .padding(.top)
             
         }
+        
        
         
     }
