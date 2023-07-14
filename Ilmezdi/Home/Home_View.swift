@@ -19,12 +19,13 @@ struct Home_View: View {
                
                     HStack(spacing:20){
                         SearchBar(text: $vm.searchText)
-                        
+                      
                         Cart_(font: 22, itemCount: cart.cartProducts.count)
                         
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 22))
+                       
                     }
+                    .padding(.horizontal)
+                   
                 
                     Categories_Bar(selectedCategory: $vm.selectedCategory)
                 

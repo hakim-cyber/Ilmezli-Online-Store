@@ -19,7 +19,7 @@ struct SearchBar: View {
             .keyboardType(.default)
             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.3),lineWidth: 1.5))
             .textFieldStyle(.plain)
-            .frame(width: screen.width / 1.5)
+           
             .overlay(alignment: .trailing, content: {
                 Button{
                     withAnimation(.easeInOut){
