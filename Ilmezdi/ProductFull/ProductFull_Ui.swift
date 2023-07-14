@@ -99,7 +99,7 @@ struct ProductFull_Ui: View {
                         VStack(alignment: .leading,spacing: 5){
                             Text("Qiymet")
                                 .foregroundColor(.secondary)
-                            Text("₼\(vm.product.price.formatted())0")
+                            Text("\(vm.product.price.formatted()) ₼")
                                 .font(.system(size: 30))
                                 .fontWeight(.bold)
                                 .foregroundColor(.accentColor)
