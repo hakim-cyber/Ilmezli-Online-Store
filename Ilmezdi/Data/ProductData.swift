@@ -31,8 +31,21 @@ class ProductsData:ObservableObject{
        }
     func deleteProduct(product:Product){
         if let id = exampleProducts.firstIndex(where: {$0.id == product.id}){
-           
-            exampleProducts.remove(at: id)
+            
+            if let recordId = exampleProducts[id].recordId{
+                
+                
+                db.delete(withRecordID: recordId) { recordId, error in
+                    guard error == nil else{
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.exampleProducts.remove(at: id)
+                    }
+                   
+                }
+                
+            }
         }
     }
     func addProduct(product:Product){
@@ -94,7 +107,7 @@ class ProductsData:ObservableObject{
         }
        
     }
-    
+   
     
     
     
