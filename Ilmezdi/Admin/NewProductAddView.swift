@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewProductAddView: View {
+    var editingProduct:Product?
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     
@@ -34,7 +35,7 @@ struct NewProductAddView: View {
             Form{
                 Section{
                     Picker("Kategoriya", selection: $categoryOfProduct){
-                        ForEach(productData.categories.filter{$0.title != "Hamısı"},id:\.title){category in
+                        ForEach(productData.categories,id:\.title){category in
                             Text("\(category.title)")
                                 .tag(category.title)
                         }
@@ -127,9 +128,12 @@ struct NewProductAddView: View {
                         Spacer()
                         Button("Mehsulu elave et"){
                             // add product
-                            
-                            addProduct{
-                                dismiss()
+                            if editingProduct == nil{
+                                addProduct{
+                                    dismiss()
+                                }
+                            }else{
+                                saveEdit()
                             }
                         }
                         .foregroundColor(.white)
@@ -156,7 +160,16 @@ struct NewProductAddView: View {
                 ImagePicker(imagesArray: $imagesArray)
             }
             .onAppear{
-                categoryOfProduct = productData.categories[1].title ?? ""
+                if editingProduct == nil{
+                    categoryOfProduct = productData.categories[1].title ?? ""
+                }else{
+                 
+                    self.categoryOfProduct = editingProduct!.category
+                    self.descriptinOfProduct = editingProduct!.description
+                    self.imagesArray = StringsArrayToImage(strings: editingProduct?.images ?? [])
+                    self.priceOfProduct = editingProduct?.price
+                    self.titleOfProduct = editingProduct?.name ?? ""
+                }
             }
             .disabled(adding)
             .blur(radius: adding ? 5 : 0)
@@ -174,8 +187,12 @@ struct NewProductAddView: View {
        
         
     }
+    func saveEdit(){
+        
+    }
     func addProduct(completion:@escaping ()->Void){
         self.adding = true
+        
         var images:[String] = []
         for image in imagesArray{
             images.append( productData.imageToString(image: image))
@@ -199,6 +216,16 @@ struct NewProductAddView: View {
         
            
         
+    }
+    func StringsArrayToImage(strings:[String])->[UIImage?]{
+        var images:[UIImage?] = []
+        for string in strings{
+            let data = Data(base64Encoded: string) ?? Data()
+                       
+                       let uiImage = UIImage(data: data) ?? UIImage()
+            images.append(uiImage)
+        }
+        return images
     }
     func uiimageToImage(uimages:[UIImage?])->[Image]{
         var images:[Image] = []
