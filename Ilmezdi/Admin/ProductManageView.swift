@@ -23,7 +23,9 @@ struct ProductManageView: View {
                 VStack{
                     Divider()
                         .tint(.secondary)
-                    ForEach(productData.exampleProducts){product in
+                    ForEach(productData.exampleProducts.sorted{
+                        productData.stringToDate(string: $0.postDate) > productData.stringToDate(string: $1.postDate)
+                    }){product in
                         VStack{
                             HStack(spacing:15){
                                 if showDelete{

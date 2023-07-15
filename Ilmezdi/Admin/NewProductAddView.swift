@@ -177,13 +177,16 @@ struct NewProductAddView: View {
             .blur(radius: adding ? 5 : 0)
             
             
+            
+            
+        }
+        .overlay(alignment:.center){
             if adding{
                 ProgressView()
                     .scaleEffect(2)
                     .tint(Color.accentColor)
                     
             }
-            
         }
        
        
