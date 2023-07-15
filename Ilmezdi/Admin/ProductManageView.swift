@@ -68,7 +68,7 @@ struct ProductManageView: View {
                                         
                                         HStack{
                                             
-                                            Text("\(product.price.formatted())0 ₼")
+                                            Text("\(product.price.formatted()) ₼")
                                                 .font(.system(size: 15))
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.accentColor)

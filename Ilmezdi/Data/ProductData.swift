@@ -8,7 +8,7 @@
 import SwiftUI
 import CloudKit
 
-
+@MainActor
 class ProductsData:ObservableObject{
     @Published var exampleProducts:[Product] = []
     
@@ -39,6 +39,24 @@ class ProductsData:ObservableObject{
        
             exampleProducts.append(product)
         
+    }
+    
+    func updateProduct(editedProduct:Product,completion:@escaping ()->Void) async throws{
+        let record = try await  db.record(for: editedProduct.recordId!)
+        
+        record[ProductRecordKeys.category.rawValue] = editedProduct.category
+        record[ProductRecordKeys.description.rawValue] = editedProduct.description
+        record[ProductRecordKeys.id.rawValue] = editedProduct.id
+        record[ProductRecordKeys.images.rawValue] = editedProduct.images
+        record[ProductRecordKeys.name.rawValue] = editedProduct.name
+        record[ProductRecordKeys.postDate.rawValue] = editedProduct.postDate
+        record[ProductRecordKeys.price.rawValue] = editedProduct.price
+       
+        try await db.save(record)
+        if let index = exampleProducts.firstIndex(where: {$0.id == editedProduct.id}){
+            exampleProducts[index] = editedProduct
+            completion()
+        }
     }
     
     

@@ -133,7 +133,9 @@ struct NewProductAddView: View {
                                     dismiss()
                                 }
                             }else{
-                                saveEdit()
+                                saveEdit{
+                                    dismiss()
+                                }
                             }
                         }
                         .foregroundColor(.white)
@@ -177,7 +179,7 @@ struct NewProductAddView: View {
             
             if adding{
                 ProgressView()
-                    .scaleEffect(3)
+                    .scaleEffect(2)
                     .tint(Color.accentColor)
                     
             }
@@ -187,7 +189,28 @@ struct NewProductAddView: View {
        
         
     }
-    func saveEdit(){
+    func saveEdit(completion:@escaping ()->Void){
+        self.adding = true
+        
+        
+        var images:[String] = []
+        for image in imagesArray{
+            images.append( productData.imageToString(image: image))
+        }
+       
+        let product = Product(id: editingProduct!.id,recordId:editingProduct?.recordId , name: titleOfProduct, description: descriptinOfProduct, images: images, category: categoryOfProduct, price: priceOfProduct ?? 0.0, postDate: productData.dateToString(date: Date.now))
+        Task{
+            do{
+                try await  productData.updateProduct(editedProduct: product){
+                    self.adding = false
+                    completion()
+                }
+                
+            }catch{
+                print(error)
+                self.adding = false
+            }
+        }
         
     }
     func addProduct(completion:@escaping ()->Void){
