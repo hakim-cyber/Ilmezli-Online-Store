@@ -19,7 +19,7 @@ struct ContentView: View {
                         Label("Ana Sayfa", systemImage: "house")
                            
                     }
-                Text("Favorilerim")
+               WishView()
                     .tabItem {
                        Label("Favorilerim", systemImage: "heart")
                     }

@@ -25,6 +25,7 @@
 		08767CCF2A56C0F000F634D3 /* structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CCE2A56C0F000F634D3 /* structs.swift */; };
 		08767CD62A57411D00F634D3 /* ProductsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD52A57411D00F634D3 /* ProductsGrid.swift */; };
 		08767CD82A57412D00F634D3 /* ProductsGrid_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */; };
+		0885D8D42A63E50F0029A0FD /* WishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D8D32A63E50F0029A0FD /* WishView.swift */; };
 		08D3CD062A58128900497C16 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD052A58128900497C16 /* ProductData.swift */; };
 		08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */; };
 		08D3CD0E2A586E9500497C16 /* ProductFull_Ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0D2A586E9500497C16 /* ProductFull_Ui.swift */; };
@@ -59,6 +60,7 @@
 		08767CCE2A56C0F000F634D3 /* structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structs.swift; sourceTree = "<group>"; };
 		08767CD52A57411D00F634D3 /* ProductsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid.swift; sourceTree = "<group>"; };
 		08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid_ViewModel.swift; sourceTree = "<group>"; };
+		0885D8D32A63E50F0029A0FD /* WishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishView.swift; sourceTree = "<group>"; };
 		08895F412A603C67004CC462 /* Ilmezdi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ilmezdi.entitlements; sourceTree = "<group>"; };
 		08D3CD052A58128900497C16 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductData.swift; path = Ilmezdi/Data/ProductData.swift; sourceTree = SOURCE_ROOT; };
 		08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFull_ViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				08767CA72A5572C500F634D3 /* ContentView.swift */,
 				08F88E3B2A5D70D100BA4C03 /* SettingsView.swift */,
 				08767CC22A55A9D300F634D3 /* Start Screen.swift */,
+				0885D8D32A63E50F0029A0FD /* WishView.swift */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			files = (
 				08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */,
 				08F88E3C2A5D70D200BA4C03 /* SettingsView.swift in Sources */,
+				0885D8D42A63E50F0029A0FD /* WishView.swift in Sources */,
 				08767CA82A5572C500F634D3 /* ContentView.swift in Sources */,
 				08F94CDD2A615ABB00B36A1C /* WishedProducts.swift in Sources */,
 				08F88E452A5ECDF900BA4C03 /* ImagePicker.swift in Sources */,
