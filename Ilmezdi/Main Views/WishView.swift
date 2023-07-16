@@ -10,7 +10,7 @@ import SwiftUI
 struct WishView: View {
     @EnvironmentObject var vm:WishedProducts
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ProductsGrid(showWished: true)
     }
 }
 
