@@ -29,7 +29,7 @@ struct ProductsGrid: View {
         if searchText == ""{
             return products
         }else{
-            return products.filter({$0.description.localizedCaseInsensitiveContains(searchText!)})
+            return products.filter({$0.name.localizedCaseInsensitiveContains(searchText!.trimmingCharacters(in: .whitespacesAndNewlines))})
         }
     }
     @State private var selectedProduct:Product?
