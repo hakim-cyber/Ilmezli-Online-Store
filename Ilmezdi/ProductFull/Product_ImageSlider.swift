@@ -23,7 +23,7 @@ struct Product_ImageSlider: View {
                     
                     images[indexOfImage]
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .transition(.slide)
                     VStack{
                         Spacer()
