@@ -20,9 +20,8 @@ struct ProductManageView: View {
     var body: some View {
         NavigationStack{
             ScrollView{
-                VStack{
-                    Divider()
-                        .tint(.secondary)
+                VStack(spacing: 20){
+                   
                     ForEach(productData.exampleProducts){product in
                         VStack{
                             HStack(spacing:15){
@@ -105,8 +104,7 @@ struct ProductManageView: View {
                                 self.selectedProductForEdit = product
                             }
                             
-                            Divider()
-                                .tint(.secondary)
+                           
                         }
                         .frame( height: screen.height / 10)
                         

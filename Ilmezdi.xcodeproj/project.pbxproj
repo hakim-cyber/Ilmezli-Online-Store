@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082C515D2A655ADA00B9E7E5 /* ShoppingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */; };
 		08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CA52A5572C500F634D3 /* IlmezdiApp.swift */; };
 		08767CA82A5572C500F634D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CA72A5572C500F634D3 /* ContentView.swift */; };
 		08767CAA2A5572C700F634D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CA92A5572C700F634D3 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingForm.swift; sourceTree = "<group>"; };
 		08767CA22A5572C500F634D3 /* Ilmezdi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ilmezdi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08767CA52A5572C500F634D3 /* IlmezdiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IlmezdiApp.swift; sourceTree = "<group>"; };
 		08767CA72A5572C500F634D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				08D3CD132A5BFCED00497C16 /* CartView.swift */,
 				08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */,
+				082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */,
 			);
 			path = "Cart View";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				08F94CDD2A615ABB00B36A1C /* WishedProducts.swift in Sources */,
 				08F88E452A5ECDF900BA4C03 /* ImagePicker.swift in Sources */,
 				08767CBF2A5590E800F634D3 /* Categories_Bar.swift in Sources */,
+				082C515D2A655ADA00B9E7E5 /* ShoppingForm.swift in Sources */,
 				08767CC72A56B0CF00F634D3 /* Home_ViewModel.swift in Sources */,
 				08767CC52A56B0B000F634D3 /* Home_View.swift in Sources */,
 				08767CCA2A56BEC700F634D3 /* ProductPosts_View.swift in Sources */,

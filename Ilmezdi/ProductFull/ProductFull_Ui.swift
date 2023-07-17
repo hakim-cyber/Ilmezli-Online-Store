@@ -44,6 +44,7 @@ struct ProductFull_Ui: View {
                 
                 
             }
+            .padding(.top,10)
             ScrollView{
                 VStack(spacing: 30){
                     if vm.images == []{
@@ -113,10 +114,10 @@ struct ProductFull_Ui: View {
                 VStack{
                     HStack{
                         VStack(alignment: .leading,spacing: 5){
-                            Text("Qiymet")
+                            Text("Qiymet:")
                                 .foregroundColor(.secondary)
                             Text("\(vm.product.price.formatted()) ₼")
-                                .font(.system(size: 30))
+                                .font(.system(size: 22))
                                 .fontWeight(.bold)
                                 .foregroundColor(.accentColor)
                         }
@@ -130,7 +131,7 @@ struct ProductFull_Ui: View {
                                 .font(.system(size: 18))
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
-                                .padding()
+                                .padding(8)
                                 .padding(.horizontal,12)
                                 .background(RoundedRectangle(cornerRadius: 8))
                                 
@@ -138,7 +139,7 @@ struct ProductFull_Ui: View {
                     }
                     .padding(.horizontal,20)
                 }
-                .frame(maxWidth: .infinity,maxHeight:screen.height / 10)
+                .frame(maxWidth: .infinity,maxHeight:screen.height / 9)
                 .background()
                 .ignoresSafeArea()
             }

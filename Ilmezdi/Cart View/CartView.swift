@@ -12,6 +12,7 @@ struct CartView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     @State private var screen = UIScreen.main.bounds
+    @State private var showShoppingForm = false
     
    @State private var showDelete = false
     var body: some View {
@@ -48,132 +49,138 @@ struct CartView: View {
                     
                 }else{
                     ScrollView(.vertical){
-                        VStack(spacing: 10){
+                        VStack(spacing: 20){
                             Divider()
                                 .tint(.secondary)
                             ForEach(cart.cartProducts){product in
-                                VStack{
-                                    HStack(spacing:15){
-                                        if showDelete{
-                                            Button{
-                                                // deleting
-                                                withAnimation(.easeInOut){
-                                                    cart.deleteProduct(product: product.product)
-                                                }
-                                            }label: {
-                                                ZStack{
-                                                    RoundedRectangle(cornerRadius: 9)
-                                                        .fill(Color.red.opacity(0.1))
-                                                    Image(systemName: "trash.fill")
-                                                        .font(.system(size:18))
-                                                        .foregroundColor(.red)
-                                                }
-                                                .frame(width: 40, height: 40)
-                                                
+                                HStack(spacing: 10){
+                                    if showDelete{
+                                        Button{
+                                            // deleting
+                                            withAnimation(.easeInOut){
+                                                cart.deleteProduct(product: product.product)
                                             }
-                                            .padding(.trailing,10)
+                                        }label: {
+                                            ZStack{
+                                                RoundedRectangle(cornerRadius: 9)
+                                                    .fill(Color.red.opacity(0.1))
+                                                Image(systemName: "trash.fill")
+                                                    .font(.system(size:18))
+                                                    .foregroundColor(.red)
+                                            }
+                                            .frame(width: 40, height: 40)
+                                            
                                         }
-                                        HStack(alignment: .center,spacing:10){
-                                            if product.product.images == []{
-                                                
-                                            }else{
-                                                cart.useImage(text: product.product.images.first ?? "")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width:80)
-                                                    .background( Color.gray.opacity(0.3))
+                                        .padding(.trailing,10)
+                                    }
+                                    VStack{
+                                        HStack(spacing:8){
+                                            
+                                            HStack(alignment: .center,spacing:10){
+                                                if product.product.images == []{
                                                     
-                                                    .cornerRadius(7)
-                                            }
-                                            VStack(spacing:6){
-                                                HStack{
-                                                    Text(product.product.name)
-                                                        .font(.system(size: 16))
-                                                        .foregroundColor(colorScheme == .dark ? .white :.black)
-                                                        .fontWeight(.medium)
-                                                        .multilineTextAlignment(.leading)
-                                                    Spacer()
-                                                    
+                                                }else{
+                                                    cart.useImage(text: product.product.images.first ?? "")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .cornerRadius(7)
+                                                      
+                                                        
+                                                       
                                                 }
-                                                HStack{
-                                                    Text(product.product.category)
-                                                        .font(.system(size: 12))
-                                                        .foregroundColor(.secondary)
-                                                        .fontWeight(.light)
-                                                        .multilineTextAlignment(.leading)
-                                                    Spacer()
-                                                }
-                                                
-                                                HStack{
-                                                    
-                                                    Text("\(product.product.price.formatted()) ₼")
-                                                        .font(.system(size: 15))
-                                                        .fontWeight(.bold)
-                                                        .foregroundColor(.accentColor)
-                                                    Spacer()
+                                                VStack(spacing:6){
+                                                    HStack{
+                                                        Text(product.product.name)
+                                                            .font(.system(size: 16))
+                                                            .foregroundColor(colorScheme == .dark ? .white :.black)
+                                                            .fontWeight(.medium)
+                                                            .multilineTextAlignment(.leading)
+                                                        Spacer()
+                                                        
+                                                    }
+                                                    HStack{
+                                                        Text(product.product.category)
+                                                            .font(.system(size: 12))
+                                                            .foregroundColor(.secondary)
+                                                            .fontWeight(.light)
+                                                            .multilineTextAlignment(.leading)
+                                                        Spacer()
+                                                    }
                                                     
                                                     HStack{
-                                                        Button{
-                                                            withAnimation{
-                                                                cart.decreaseProduct(product: product.product)
-                                                            }
-                                                        }label:{
-                                                            ZStack{
-                                                                
-                                                                
-                                                                Image(systemName: "minus")
-                                                                    .foregroundColor(colorScheme == .light ? .black : .white)
-                                                                    .font(.system(size: 15))
-                                                                    .padding(11)
-                                                                    .background(Circle().stroke(colorScheme == .light ? .black : .white))
-                                                                
-                                                            }
-                                                            
-                                                        }
-                                                        .disabled(product.count == 1)
                                                         
-                                                        Text("\(product.count)")
-                                                        Button{
-                                                            withAnimation{
-                                                                cart.addProduct(product: product.product)
-                                                            }
-                                                        }label:{
-                                                            ZStack{
-                                                              
+                                                        Text("\(product.product.price.formatted()) ₼")
+                                                            .font(.system(size: 15))
+                                                            .fontWeight(.bold)
+                                                            .foregroundColor(.accentColor)
+                                                        Spacer()
+                                                        if !showDelete{
+                                                            HStack{
+                                                                Button{
+                                                                    withAnimation{
+                                                                        cart.decreaseProduct(product: product.product)
+                                                                    }
+                                                                }label:{
+                                                                    ZStack{
+                                                                        
+                                                                        
+                                                                        Image(systemName: "minus")
+                                                                            .foregroundColor(colorScheme == .light ? .black : .white)
+                                                                            .font(.system(size: 15))
+                                                                            .padding(7)
+                                                                            .background(Circle().stroke(colorScheme == .light ? .black : .white))
+                                                                        
+                                                                    }
+                                                                    
+                                                                }
+                                                                .disabled(product.count == 1)
                                                                 
-                                                                Image(systemName: "plus")
-                                                                    .foregroundColor(colorScheme == .light ? .white : .black)
-                                                                    .font(.system(size: 15))
-                                                                    .padding(8)
-                                                                    .background(Circle().fill(colorScheme == .light ? .black : .white))
-                                                                    .padding(3)
+                                                                Text("\(product.count)")
+                                                                
+                                                                Button{
+                                                                    withAnimation{
+                                                                        cart.addProduct(product: product.product)
+                                                                    }
+                                                                }label:{
+                                                                    ZStack{
+                                                                        
+                                                                        
+                                                                        Image(systemName: "plus")
+                                                                            .foregroundColor(colorScheme == .light ? .white : .black)
+                                                                            .font(.system(size: 15))
+                                                                            .padding(4)
+                                                                            .background(Circle().fill(colorScheme == .light ? .black : .white))
+                                                                            .padding(3)
+                                                                    }
+                                                                    
+                                                                }
                                                             }
-                                                           
+                                                            .padding(5)
+                                                            .background(Color.gray.opacity(0.12))
+                                                            .cornerRadius(15)
                                                         }
                                                     }
-                                                    .padding(5)
-                                                    .background(Color.gray.opacity(0.12))
-                                                    .cornerRadius(15)
+                                                    .padding(.top,4)
+                                                    
                                                 }
-                                                .padding(.top,4)
+                                                
+                                                
+                                                
+                                                Spacer()
                                                 
                                             }
+                                            .padding(.vertical,5)
                                             
                                             
-                                            
-                                            Spacer()
                                             
                                         }
-                                        .padding(.vertical,5)
                                         
-                                        
-                                        
+                                        Divider()
+                                            .tint(.secondary)
                                     }
-                                    
-                                    Divider()
-                                        .tint(.secondary)
+                                    .frame( height: screen.height / 7.7)
+                                   
                                 }
-                                .frame( height: screen.height / 7)
                             }
                         }
                         .frame(maxWidth: .infinity,maxHeight: .infinity , alignment: .top)
@@ -198,11 +205,11 @@ struct CartView: View {
                         .padding(.horizontal)
                         Spacer()
                         Button{
-                            
+                            self.showShoppingForm = true
                         }label:{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 20)
-                                   Text("Zakaz Ele")
+                                   Text("Sifaris Ele")
                                     .foregroundColor(.white)
                                     .bold()
                             }
@@ -269,6 +276,11 @@ struct CartView: View {
                     }
                 })
             }
+            .sheet(isPresented: $showShoppingForm, content: {
+                ShoppingForm()
+                    .presentationDetents([.fraction(0.4)])
+                
+            })
         }
     }
 }

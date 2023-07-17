@@ -16,7 +16,7 @@ struct ProductsGrid: View {
     @EnvironmentObject var wished:WishedProducts
     
     let columns = [
-            GridItem(.adaptive(minimum: 190))
+            GridItem(.adaptive(minimum: 160))
         ]
     var filteredProducts:[Product]{
         if showWished{

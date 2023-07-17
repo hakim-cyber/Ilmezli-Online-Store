@@ -53,7 +53,7 @@ struct Categories_Bar: View {
                 }
                 .padding(.horizontal)
             }
-            .frame(maxHeight: 100)
+            .frame(maxHeight: 80)
            
         
         
