@@ -82,6 +82,16 @@ struct ProductFull_Ui: View {
                             }
                             .padding(.trailing,5)
                             
+                          
+                            
+                            HStack{
+                                Text("\(vm.product.description)")
+                                Spacer()
+                            }
+                            .padding(.top,7)
+                            Divider()
+                                .opacity(0.7)
+                                .padding(.top,5)
                             HStack{
                                 Text("\(vm.stringToDate(string: vm.product.postDate).formatted(date: .numeric, time: .shortened))")
                                     .font(.system(size: 15))
@@ -91,13 +101,6 @@ struct ProductFull_Ui: View {
                                 Spacer()
                             }
                             .padding(.top,5)
-                            Divider()
-                                .opacity(0.7)
-                                .padding(.top,5)
-                            HStack{
-                                Text("\(vm.product.description)")
-                                Spacer()
-                            }
                         }
                         
                         Spacer()
