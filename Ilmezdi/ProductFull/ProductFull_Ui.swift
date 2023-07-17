@@ -134,14 +134,16 @@ struct ProductFull_Ui: View {
                             cart.addProduct(product: vm.product)
                             dismiss()
                         }label: {
-                            Text("Sebete Elave Et")
-                                .font(.system(size: 18))
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .padding(8)
-                                .padding(.vertical,4)
-                                .padding(.horizontal,12)
-                                .background(RoundedRectangle(cornerRadius: 8))
+                            HStack{
+                                
+                                Text("Elave Et")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .padding(8)
+                                    .padding(.horizontal,9)
+                                    .background(RoundedRectangle(cornerRadius: 8))
+                            }
                                 
                         }
                     }
