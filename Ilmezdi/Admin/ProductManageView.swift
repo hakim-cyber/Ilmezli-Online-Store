@@ -107,6 +107,8 @@ struct ProductManageView: View {
                            
                         }
                         .frame( height: screen.height / 10)
+                        Divider()
+                            .tint(Color.secondary)
                         
                         
                     }

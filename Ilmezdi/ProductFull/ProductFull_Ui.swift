@@ -19,88 +19,95 @@ struct ProductFull_Ui: View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
            
-        VStack(spacing:30){
-            HStack(spacing:20){
-                Button{
-                    dismiss()
-                }label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(colorScheme == .dark ? .white :.black)
-                }
-                Spacer()
-                Button{
-                    if wished.checkWish(product: vm.product){
-                        if let id = wished.wishedProducts.firstIndex(where: {$0.id == vm.product.id}){
-                            wished.wishedProducts.remove(at: id)
-                        }
-                    }else{
-                        wished.wishedProducts.append(vm.product)
+            VStack(spacing:10){
+                
+                HStack(spacing:20){
+                    Button{
+                        dismiss()
+                    }label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(colorScheme == .dark ? .white :.black)
                     }
-                }label: {
-                    Image(systemName: wished.checkWish(product: vm.product) ? "heart.fill" : "heart")
-                        .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : colorScheme == .dark ? .white :.black)
-                        .font(.system(size: 22))
-                }
-                
-                
-            }
-            .padding(.top,10)
-            ScrollView{
-                VStack(spacing: 30){
-                    if vm.images == []{
-                        Color.gray.opacity(0.3)
-                            .frame(width: screen.width * 0.88,height: screen.height * 0.38)
-                            .overlay{
-                                Text("No Image")
+                    Spacer()
+                    Button{
+                        if wished.checkWish(product: vm.product){
+                            if let id = wished.wishedProducts.firstIndex(where: {$0.id == vm.product.id}){
+                                wished.wishedProducts.remove(at: id)
                             }
-                            .cornerRadius(7)
-                        
-                    }else{
-                        Product_ImageSlider(images: vm.images)
-                    }
-                    VStack(spacing:10){
-                        HStack{
-                            Image(systemName: "square.stack.3d.up.fill")
-                                .foregroundColor(.secondary)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.leading)
-                            Text(vm.product.category)
-                                .font(.system(size: 15))
-                                .foregroundColor(.secondary)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.leading)
-                            Spacer()
+                        }else{
+                            wished.wishedProducts.append(vm.product)
                         }
-                        HStack{
-                            Text(vm.product.name)
-                                .font(.system(size: 22))
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                            Spacer()
-                        }
-                        .padding(.trailing,5)
-                        
-                        HStack{
-                            Text("\(vm.stringToDate(string: vm.product.postDate).formatted(date: .numeric, time: .shortened))")
-                                .font(.system(size: 15))
-                                .foregroundColor(.secondary)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.leading)
-                            Spacer()
-                        }
-                        .padding(.top,5)
-                        Divider()
-                            .opacity(0.7)
-                            .padding(.top,5)
-                        HStack{
-                            Text("\(vm.product.description)")
-                            Spacer()
-                        }
+                    }label: {
+                        Image(systemName: wished.checkWish(product: vm.product) ? "heart.fill" : "heart")
+                            .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : colorScheme == .dark ? .white :.black)
+                            .font(.system(size: 22))
                     }
                     
-                    Spacer()
+                    
                 }
+                .padding(.top,10)
+                VStack{
+                ScrollView{
+                    VStack(spacing: 30){
+                        if vm.images == []{
+                            Color.gray.opacity(0.3)
+                                .frame(width: screen.width * 0.88,height: screen.height * 0.38)
+                                .overlay{
+                                    Text("No Image")
+                                }
+                                .cornerRadius(7)
+                            
+                        }else{
+                            Product_ImageSlider(images: vm.images)
+                        }
+                        VStack(spacing:10){
+                            HStack{
+                                Image(systemName: "square.stack.3d.up.fill")
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.light)
+                                    .multilineTextAlignment(.leading)
+                                Text(vm.product.category)
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.light)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                Text(vm.product.name)
+                                    .font(.system(size: 22))
+                                    .fontWeight(.bold)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                            .padding(.trailing,5)
+                            
+                            HStack{
+                                Text("\(vm.stringToDate(string: vm.product.postDate).formatted(date: .numeric, time: .shortened))")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.light)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                            .padding(.top,5)
+                            Divider()
+                                .opacity(0.7)
+                                .padding(.top,5)
+                            HStack{
+                                Text("\(vm.product.description)")
+                                Spacer()
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+                    
+                }
+                
             }
+               
+            
             
         }
         

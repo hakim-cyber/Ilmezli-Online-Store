@@ -110,6 +110,7 @@ struct NewProductAddView: View {
                 Section{
                     TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
                         .keyboardType(.decimalPad)
+                        .foregroundColor(.accentColor)
                         
                     
                 }

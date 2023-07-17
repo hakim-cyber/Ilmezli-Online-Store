@@ -50,8 +50,7 @@ struct CartView: View {
                 }else{
                     ScrollView(.vertical){
                         VStack(spacing: 20){
-                            Divider()
-                                .tint(.secondary)
+                           
                             ForEach(cart.cartProducts){product in
                                 HStack(spacing: 10){
                                     if showDelete{
