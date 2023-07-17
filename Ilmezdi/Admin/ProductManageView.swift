@@ -87,10 +87,12 @@ struct ProductManageView: View {
                                     }else{
                                         productData.useImage(text: product.images.first ?? "")
                                             .resizable()
-                                            .scaledToFit()
+                                            .scaledToFill()
                                             .frame(width: 80)
-                                            .background( Color.gray.opacity(0.3))
+                                            .clipped()
+                                           
                                             .cornerRadius(7)
+                                           
                                     }
                                     
                                 }

@@ -134,11 +134,12 @@ struct ProductFull_Ui: View {
                             cart.addProduct(product: vm.product)
                             dismiss()
                         }label: {
-                            Text("Elave Et")
+                            Text("Sebete Elave Et")
                                 .font(.system(size: 18))
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                                 .padding(8)
+                                .padding(.vertical,4)
                                 .padding(.horizontal,12)
                                 .background(RoundedRectangle(cornerRadius: 8))
                                 

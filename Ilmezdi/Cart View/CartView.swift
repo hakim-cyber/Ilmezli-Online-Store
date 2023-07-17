@@ -207,7 +207,7 @@ struct CartView: View {
                             self.showShoppingForm = true
                         }label:{
                             ZStack{
-                                RoundedRectangle(cornerRadius: 20)
+                                RoundedRectangle(cornerRadius: 7)
                                    Text("Sifaris Ele")
                                     .foregroundColor(.white)
                                     .bold()
