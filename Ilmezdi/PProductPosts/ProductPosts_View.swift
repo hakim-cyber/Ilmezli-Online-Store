@@ -12,37 +12,39 @@ struct ProductPosts_View: View {
     @State private var screen = UIScreen.main.bounds.size
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        
+        ZStack{
+           
             ZStack{
-               
+                Color.gray.opacity(0.05)
                 VStack{
                     VStack{
                         if vm.images == []{
-                                Color.gray.opacity(0.05)
+                            Color.gray.opacity(0.05)
                                 .frame(width: 150, height:  (210) * 0.55 )
                                 .overlay{
                                     Text("No Image")
-                                    }
-                                .cornerRadius(10)
-                                                    
-                            }else{
+                                }
+                              
+                            
+                        }else{
                             vm.images.first!
-                               .resizable()
-                               .scaledToFit()
-                               .frame(width: 150, height:  (210) * 0.55 )
-                               .background( Color.gray.opacity(0.05))
-                               .cornerRadius(10)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 150, height:  (210) * 0.55 )
+                                .clipped()
+                            
+                                
                         }
                     }
                     
                     
                     VStack(spacing:5){
                         HStack{
-                            Text(vm.product.category)
-                                .font(.system(size: 12))
-                                .foregroundColor(.secondary)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.leading)
+                            
+                            Text("\(vm.product.price.formatted()) ₼")
+                                .fontWeight(.bold)
+                                .foregroundColor(.accentColor)
+                                .font(.system(size: 19))
                             Spacer()
                         }
                         HStack{
@@ -53,28 +55,33 @@ struct ProductPosts_View: View {
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
+                       
+                        
                         HStack{
-                           
-                            Text("\(vm.product.price.formatted()) ₼")
-                                .fontWeight(.bold)
-                                .foregroundColor(.accentColor)
+                            Text(vm.product.category)
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
+                                .fontWeight(.light)
+                                .multilineTextAlignment(.leading)
                             Spacer()
                         }
-                      
+                       
                         Spacer()
                     }
                     .padding(.top,5)
                     .padding(.horizontal,7)
                     .frame(width: 150, height:  (210) * 0.45 )
-                   
+                    
                 }
                 .cornerRadius(7)
-            
+                
                 
                 
             }
             
             .frame(width: 150, height:  210)
+            .cornerRadius(9)
+        }
             
        
         
