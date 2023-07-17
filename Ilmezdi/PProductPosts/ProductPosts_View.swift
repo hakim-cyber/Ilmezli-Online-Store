@@ -42,16 +42,16 @@ struct ProductPosts_View: View {
                         HStack{
                             
                             Text("\(vm.product.price.formatted()) ₼")
-                                .fontWeight(.bold)
-                                .foregroundColor(.accentColor)
-                                .font(.system(size: 19))
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.accentColor)
+                                .font(.system(size: 16))
                             Spacer()
                         }
                         HStack{
                             Text(vm.product.name)
                                 .font(.system(size: 15))
                                 .foregroundColor(colorScheme == .dark ? .white :.black)
-                                .fontWeight(.medium)
+                                .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
@@ -73,14 +73,14 @@ struct ProductPosts_View: View {
                     .frame(width: screen.width / 2.2, height:  (210) * 0.45 )
                     
                 }
-                .cornerRadius(7)
+              
                 
                 
                 
             }
             
             .frame(width: screen.width / 2.25, height:  210)
-            .cornerRadius(9)
+            .cornerRadius(8)
         }
             
        
