@@ -41,14 +41,7 @@ struct ProductFull_Ui: View {
                         .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : colorScheme == .dark ? .white :.black)
                         .font(.system(size: 22))
                 }
-                Button{
-                    // Share
-                    
-                }label: {
-                    Image(systemName: "paperplane.circle")
-                        .foregroundColor(colorScheme == .dark ? .white :.black)
-                        .font(.system(size: 22))
-                }
+                
                 
             }
             ScrollView{
