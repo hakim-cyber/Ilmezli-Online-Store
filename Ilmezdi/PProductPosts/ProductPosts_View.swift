@@ -20,7 +20,7 @@ struct ProductPosts_View: View {
                     VStack{
                         if vm.images == []{
                             Color.gray.opacity(0.05)
-                                .frame(width: 150, height:  (210) * 0.55 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.55 )
                                 .overlay{
                                     Text("No Image")
                                 }
@@ -30,7 +30,7 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 150, height:  (210) * 0.55 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.55 )
                                 .clipped()
                             
                                 
@@ -70,7 +70,7 @@ struct ProductPosts_View: View {
                     }
                     .padding(.top,5)
                     .padding(.horizontal,7)
-                    .frame(width: 150, height:  (210) * 0.45 )
+                    .frame(width: screen.width / 2.2, height:  (210) * 0.45 )
                     
                 }
                 .cornerRadius(7)
@@ -79,7 +79,7 @@ struct ProductPosts_View: View {
                 
             }
             
-            .frame(width: 150, height:  210)
+            .frame(width: screen.width / 2.25, height:  210)
             .cornerRadius(9)
         }
             
