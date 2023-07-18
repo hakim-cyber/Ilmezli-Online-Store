@@ -66,7 +66,24 @@ struct ShoppingForm: View {
         }
     }
     func placeOrder(){
+        var countryCode = "+994"
+        var mobileNumber = "708315103"
         
+        var text = "Test"
+        let url = "https://wa.me/\(countryCode)\(mobileNumber)/?text=\(text)"
+        
+        let  urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let Url = NSURL(string: urlEncoded)
+        
+        if UIApplication.shared.canOpenURL(Url! as URL){
+            print("Opening watsapp")
+            
+            UIApplication.shared.open(Url as! URL,options: [:]){status in
+                print("opened watsapp chat")
+            }
+        }else{
+            print("Cant open ")
+        }
     }
 }
 
