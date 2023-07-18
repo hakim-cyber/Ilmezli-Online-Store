@@ -10,9 +10,11 @@ import SwiftUI
 struct ShoppingForm: View {
     @EnvironmentObject var cart:Cart_ViewModel
     
-    @State private var name = ""
-    @State private var phoneNumber = ""
-    @State private var adress = ""
+    @Environment(\.dismiss) var dismiss
+    
+    @AppStorage("name")  var name = ""
+    @AppStorage("phoneNumber")  var phoneNumber = ""
+    @AppStorage("adress") var adress = ""
     
     @State private var screen = UIScreen.main.bounds
     var body: some View {
@@ -26,14 +28,14 @@ struct ShoppingForm: View {
                     TextField("Adiniz",text: $name)
                         .padding(8)
                         .padding(.horizontal,8)
-                        .background(RoundedRectangle(cornerRadius: 7).stroke())
+                        .background(RoundedRectangle(cornerRadius: 7).stroke(name == "" ? Color.red : Color.primary))
                         .frame(width: screen.width / 2.3)
                         .keyboardType(.namePhonePad)
                     Spacer()
                     TextField("Nomreniz",text: $phoneNumber)
                         .padding(8)
                         .padding(.horizontal,8)
-                        .background(RoundedRectangle(cornerRadius: 7).stroke())
+                        .background(RoundedRectangle(cornerRadius: 7).stroke(phoneNumber == "" ? Color.red : Color.primary))
                         .frame(width: screen.width / 2.3)
                         .keyboardType(.phonePad)
                 }
@@ -41,7 +43,7 @@ struct ShoppingForm: View {
                 TextField("Adresiniz",text: $adress)
                     .padding(8)
                     .padding(.horizontal,8)
-                    .background(RoundedRectangle(cornerRadius: 7).stroke())
+                    .background(RoundedRectangle(cornerRadius: 7).stroke(adress == "" ? Color.red : Color.primary))
                     .keyboardType(.namePhonePad)
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
@@ -56,6 +58,7 @@ struct ShoppingForm: View {
                         .background(Color.accentColor)
                         .cornerRadius(7)
                 }
+                .disabled(name == "" || phoneNumber == "" || adress == "")
                 Spacer()
                 Spacer()
                 Spacer()
@@ -69,7 +72,7 @@ struct ShoppingForm: View {
         var countryCode = "+994"
         var mobileNumber = "708315103"
         
-        var text = "Test"
+        var text = generateString()
         let url = "https://wa.me/\(countryCode)\(mobileNumber)/?text=\(text)"
         
         let  urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -80,10 +83,30 @@ struct ShoppingForm: View {
             
             UIApplication.shared.open(Url as! URL,options: [:]){status in
                 print("opened watsapp chat")
+                dismiss()
             }
         }else{
             print("Cant open ")
         }
+    }
+    func generateString()->String{
+        var productstext = ""
+        for product in cart.cartProducts{
+            let productText = " \(product.product.name)    \(product.count) x \(product.product.price.formatted()) ₼ \n"
+            productstext += productText
+        }
+        let text =
+    """
+    Ad:\(name)
+    Nomre:\(phoneNumber)
+    Adress:\(adress)
+    
+    Zakaz:
+    
+    \(productstext)
+    Umumi: \(cart.totalPrice.formatted()) ₼
+    """
+        return text
     }
 }
 
