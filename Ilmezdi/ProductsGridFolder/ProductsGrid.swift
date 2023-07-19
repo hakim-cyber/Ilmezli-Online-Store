@@ -87,11 +87,11 @@ struct ProductsGrid: View {
                         }
                        
                     }
-                    .padding(.top)
+                    .padding(.top,showWished ? 15:6)
                     .padding(.horizontal,8)
                 }
             }
-            .padding(.top)
+            
             .fullScreenCover(item: $selectedProduct, content: {product in
                 if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
                     var vm = ProductFull_ViewModel(product: $productsData.exampleProducts[id])

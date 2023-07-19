@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var h = false
+
     @EnvironmentObject var productsData:ProductsData
     @EnvironmentObject var cart:Cart_ViewModel
     var body: some View {
