@@ -31,7 +31,7 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.65 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.65,alignment: .center )
                                 .clipped()
                             
                                 
@@ -95,6 +95,7 @@ struct ProductPosts_View: View {
                 
             }
             .frame(width: screen.width / 2.25, height:  210)
+            .clipped()
             .cornerRadius(10)
            
            
