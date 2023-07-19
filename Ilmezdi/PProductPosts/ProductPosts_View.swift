@@ -16,7 +16,11 @@ struct ProductPosts_View: View {
         ZStack{
            
             ZStack{
-                Color.gray.opacity(0.05)
+                if colorScheme == .light{
+                    Color.white.ignoresSafeArea()
+                }else{
+                    Color.black.ignoresSafeArea()
+                }
                 VStack{
                     VStack{
                         if vm.images == []{
@@ -59,12 +63,12 @@ struct ProductPosts_View: View {
                             Text("\(vm.product.price.formatted()) ₼")
                                 .fontWeight(.medium)
                                 .foregroundColor(Color.accentColor)
-                                .font(.system(size: 16))
+                                .font(.system(size: 14))
                             Spacer()
                         }
                         HStack{
                             Text(vm.product.name)
-                                .font(.system(size: 15))
+                                .font(.system(size: 14))
                                 .foregroundColor(colorScheme == .dark ? .white :.black)
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
