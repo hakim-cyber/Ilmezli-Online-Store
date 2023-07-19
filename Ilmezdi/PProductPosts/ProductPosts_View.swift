@@ -43,7 +43,7 @@ struct ProductPosts_View: View {
                         }label: {
                             Image(systemName: "heart.fill" )
                                 .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : Color.secondary )
-                                .font(.system(size: 22))
+                                .font(.system(size: 21))
                                 .shadow(color:.white,radius: 1)
                                
                         }

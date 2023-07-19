@@ -10,7 +10,10 @@ import SwiftUI
 struct WishView: View {
     @EnvironmentObject var vm:WishedProducts
     var body: some View {
-        ProductsGrid(showWished: true)
+        ZStack{
+            Color.gray.opacity(0.1).ignoresSafeArea()
+            ProductsGrid(showWished: true)
+        }
     }
 }
 
