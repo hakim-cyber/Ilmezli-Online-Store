@@ -132,9 +132,9 @@ class ProductsData:ObservableObject{
             return ""
         }
         
-        let resizedImage = image.resize(to: CGSize(width: 500, height: 500)) // Adjust the desired size
+        let resizedImage = image.aspectFittedToHeight(200) // Adjust the desired size
         
-        guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.75) else {
+        guard let resizedImageData = image.jpegData(compressionQuality: 0.35) else {
             print("Error: Unable to resize image or convert to data")
             return ""
         }
@@ -147,10 +147,14 @@ class ProductsData:ObservableObject{
 import UIKit
 
 extension UIImage {
-    func resize(to newSize: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
-        defer { UIGraphicsEndImageContext() }
-        self.draw(in: CGRect(origin: .zero, size: newSize))
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
+    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
+           let scale = newHeight / self.size.height
+           let newWidth = self.size.width * scale
+           let newSize = CGSize(width: newWidth, height: newHeight)
+           let renderer = UIGraphicsImageRenderer(size: newSize)
+
+           return renderer.image { _ in
+               self.draw(in: CGRect(origin: .zero, size: newSize))
+           }
+       }
 }
