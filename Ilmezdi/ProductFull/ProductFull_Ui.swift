@@ -19,7 +19,7 @@ struct ProductFull_Ui: View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
            
-            VStack(spacing:10){
+            VStack(spacing:20){
                 
                 HStack(spacing:20){
                     Button{
@@ -27,20 +27,16 @@ struct ProductFull_Ui: View {
                     }label: {
                         Image(systemName: "chevron.left")
                             .foregroundColor(colorScheme == .dark ? .white :.black)
+                            .font(.system(size: 22))
                     }
                     Spacer()
                     Button{
-                        if wished.checkWish(product: vm.product){
-                            if let id = wished.wishedProducts.firstIndex(where: {$0.id == vm.product.id}){
-                                wished.wishedProducts.remove(at: id)
-                            }
-                        }else{
-                            wished.wishedProducts.append(vm.product)
-                        }
+                        wished.tapedToHeart(product: vm.product)
                     }label: {
-                        Image(systemName: wished.checkWish(product: vm.product) ? "heart.fill" : "heart")
-                            .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : colorScheme == .dark ? .white :.black)
-                            .font(.system(size: 22))
+                        Image(systemName: "heart.fill" )
+                            .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : Color.secondary )
+                            .font(.system(size: 27))
+                            .shadow(color:.white,radius: 2)
                     }
                     
                     
@@ -55,7 +51,7 @@ struct ProductFull_Ui: View {
                                 .overlay{
                                     Text("No Image")
                                 }
-                                .cornerRadius(7)
+                                .cornerRadius(10)
                             
                         }else{
                             Product_ImageSlider(images: vm.images)
@@ -145,7 +141,7 @@ struct ProductFull_Ui: View {
                                     .fontWeight(.bold)
                                     .padding(8)
                                     .padding(.horizontal,9)
-                                    .background(RoundedRectangle(cornerRadius: 8))
+                                    .background(RoundedRectangle(cornerRadius: 10))
                             }
                                 
                         }

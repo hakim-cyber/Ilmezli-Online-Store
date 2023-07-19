@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductPosts_View: View {
     @ObservedObject var vm:ProductPosts_ViewModel
+    @EnvironmentObject var wished:WishedProducts
     @State private var screen = UIScreen.main.bounds.size
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -20,7 +21,7 @@ struct ProductPosts_View: View {
                     VStack{
                         if vm.images == []{
                             Color.gray.opacity(0.05)
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.55 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.65 )
                                 .overlay{
                                     Text("No Image")
                                 }
@@ -30,11 +31,25 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.55 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.65 )
                                 .clipped()
                             
                                 
                         }
+                    }
+                    .overlay(alignment:.topTrailing){
+                        Button{
+                            wished.tapedToHeart(product: vm.product)
+                        }label: {
+                            Image(systemName: "heart.fill" )
+                                .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : Color.secondary )
+                                .font(.system(size: 22))
+                                .shadow(color:.white,radius: 1)
+                               
+                        }
+                        .padding(7)
+                        .padding(.top,2)
+                        
                     }
                     
                     
@@ -63,6 +78,7 @@ struct ProductPosts_View: View {
                                 .foregroundColor(.secondary)
                                 .fontWeight(.light)
                                 .multilineTextAlignment(.leading)
+                                .padding(.leading,1)
                             Spacer()
                         }
                        
@@ -70,7 +86,7 @@ struct ProductPosts_View: View {
                     }
                     .padding(.top,5)
                     .padding(.horizontal,7)
-                    .frame(width: screen.width / 2.2, height:  (210) * 0.45 )
+                    .frame(width: screen.width / 2.2, height:  (210) * 0.35 )
                     
                 }
               
@@ -80,7 +96,7 @@ struct ProductPosts_View: View {
             }
             
             .frame(width: screen.width / 2.25, height:  210)
-            .cornerRadius(8)
+            .cornerRadius(10)
         }
             
        
@@ -98,5 +114,6 @@ struct ProductPosts_View_Previews: PreviewProvider {
     static var previews: some View {
        var vm = ProductPosts_ViewModel(product: $example)
         ProductPosts_View(vm:  vm)
+            .environmentObject(WishedProducts())
     }
 }

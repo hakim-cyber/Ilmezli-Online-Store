@@ -20,7 +20,18 @@ struct ProductsGrid: View {
         ]
     var filteredProducts:[Product]{
         if showWished{
-            return wished.wishedProducts
+            var wishedItems = [Product]()
+            
+            for id in wished.wishedProducts{
+                if let product = productsData.exampleProducts.first(where: {$0.id == id}) {
+                    wishedItems.append(product)
+                }
+            }
+            
+            
+            
+            return wishedItems
+            
         }else{
             var products = [Product]()
             if selectedCategory == nil || selectedCategory?.title == "Hamısı"{

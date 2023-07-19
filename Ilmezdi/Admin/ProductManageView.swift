@@ -35,7 +35,7 @@ struct ProductManageView: View {
                                             }
                                         }label: {
                                             ZStack{
-                                                RoundedRectangle(cornerRadius: 9)
+                                                RoundedRectangle(cornerRadius: 10)
                                                     .fill(Color.red.opacity(0.1))
                                                 Image(systemName: "trash.fill")
                                                     .font(.system(size:18))
@@ -93,7 +93,7 @@ struct ProductManageView: View {
                                                 .frame(width: 80)
                                                 .clipped()
                                             
-                                                .cornerRadius(7)
+                                                .cornerRadius(10)
                                             
                                         }
                                         

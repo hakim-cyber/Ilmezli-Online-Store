@@ -20,7 +20,7 @@ struct Cart_: View {
             .overlay(alignment: .topTrailing){
                 if itemCount > 0{
                     ZStack{
-                        RoundedRectangle(cornerRadius: 5)
+                        RoundedRectangle(cornerRadius: 10)
                             .fill(Color("customRed"))
                         if itemCount <= 9{
                             Text("\(itemCount)")

@@ -35,7 +35,7 @@ struct CartView: View {
                                 ZStack{
                                     Rectangle()
                                         .frame(width: screen.width / 1.6,height: screen.height / 17)
-                                        .cornerRadius(9)
+                                        .cornerRadius(10)
                                     Text("Alış-verişə Başlayın")
                                         .foregroundColor(.white)
                                         .bold()
@@ -61,7 +61,7 @@ struct CartView: View {
                                             }
                                         }label: {
                                             ZStack{
-                                                RoundedRectangle(cornerRadius: 9)
+                                                RoundedRectangle(cornerRadius: 10)
                                                     .fill(Color.red.opacity(0.1))
                                                 Image(systemName: "trash.fill")
                                                     .font(.system(size:18))
@@ -82,7 +82,7 @@ struct CartView: View {
                                                     cart.useImage(text: product.product.images.first ?? "")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .cornerRadius(7)
+                                                        .cornerRadius(10)
                                                       
                                                         
                                                        
@@ -207,7 +207,7 @@ struct CartView: View {
                             self.showShoppingForm = true
                         }label:{
                             ZStack{
-                                RoundedRectangle(cornerRadius: 7)
+                                RoundedRectangle(cornerRadius: 10)
                                    Text("Sifaris Ele")
                                     .foregroundColor(.white)
                                     .bold()
