@@ -101,6 +101,7 @@ struct ProductPosts_View: View {
             
             .frame(width: screen.width / 2.25, height:  210)
             .cornerRadius(10)
+            .shadow(color: Color.secondary,radius: 0.75)
         }
             
        
