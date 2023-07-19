@@ -96,7 +96,7 @@ struct ProductPosts_View: View {
             }
             .frame(width: screen.width / 2.25, height:  210)
             .cornerRadius(10)
-            .background(RoundedRectangle(cornerRadius: 10).stroke( colorScheme == .light ? .black.opacity(0.25):.white.opacity(0.25),lineWidth: 0.3).shadow(color: Color.secondary.opacity(0.6),radius: 1))
+           
            
             
             

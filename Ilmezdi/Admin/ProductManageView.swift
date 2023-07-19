@@ -91,8 +91,8 @@ struct ProductManageView: View {
                                                 .resizable()
                                                 .scaledToFill()
                                                 .frame(width: 80)
+                                                .frame(maxHeight:screen.height / 11)
                                                 .clipped()
-                                            
                                                 .cornerRadius(10)
                                             
                                         }
