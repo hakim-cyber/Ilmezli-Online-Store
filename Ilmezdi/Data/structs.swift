@@ -79,3 +79,32 @@ struct CartItem:Identifiable{
     var product:Product
     var count = 1
 }
+
+
+@propertyWrapper
+struct CustomStorage<T:Codable>{
+   
+    private let key:String
+    private let defaultValue:T
+    init(key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+    var wrappedValue: T{
+        get{
+            guard let data = UserDefaults.standard.object(forKey: key) as? Data else{
+                return defaultValue
+            }
+            if let decoded = try? JSONDecoder().decode(T.self, from: data){
+                return decoded
+            }else{
+                return defaultValue
+            }
+        }
+        set{
+            if let encoded = try? JSONEncoder().encode(newValue){
+                UserDefaults.standard.set(encoded, forKey: key)
+            }
+        }
+    }
+}
