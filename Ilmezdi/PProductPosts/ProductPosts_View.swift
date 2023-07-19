@@ -16,11 +16,7 @@ struct ProductPosts_View: View {
         ZStack{
            
             ZStack{
-                if colorScheme == .light{
-                    Color.white.ignoresSafeArea()
-                }else{
-                    Color.black.ignoresSafeArea()
-                }
+                Color.gray.opacity(0.06)
                 VStack{
                     VStack{
                         if vm.images == []{
@@ -98,10 +94,12 @@ struct ProductPosts_View: View {
                 
                 
             }
-            
             .frame(width: screen.width / 2.25, height:  210)
             .cornerRadius(10)
-            .shadow(color: Color.secondary.opacity(colorScheme == .light ? 0.5 : 1),radius: 1)
+            .background(RoundedRectangle(cornerRadius: 10).stroke( colorScheme == .light ? .black.opacity(0.25):.white.opacity(0.25),lineWidth: 0.3).shadow(color: Color.secondary.opacity(0.6),radius: 1))
+           
+            
+            
         }
             
        
