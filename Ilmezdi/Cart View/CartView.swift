@@ -87,7 +87,7 @@ struct CartView: View {
                                                         
                                                        
                                                 }
-                                                VStack(spacing:6){
+                                                VStack(spacing:3){
                                                     HStack{
                                                         Text(product.product.name)
                                                             .font(.system(size: 16))
