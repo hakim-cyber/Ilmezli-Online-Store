@@ -36,7 +36,9 @@ struct NewProductAddView: View {
             ZStack{
                 
                 Color.gray.opacity(0.1).ignoresSafeArea()
-                
+               
+                    
+                    
                     Form{
                         Section{
                             Picker("Kategoriya", selection: $categoryOfProduct){
@@ -86,6 +88,7 @@ struct NewProductAddView: View {
                                             Image(uiImage: imagesArray[id] ?? UIImage())
                                                 .resizable()
                                                 .scaledToFit()
+                                                .frame(maxHeight: 80 )
                                                 .overlay(alignment:.topTrailing){
                                                     Button{
                                                         withAnimation {
@@ -132,7 +135,9 @@ struct NewProductAddView: View {
                                 .focused($focused)
                                 .onTapGesture {
                                     self.writingDescription = true
+                                   
                                 }
+                                
                             
                             
                         }
@@ -160,6 +165,7 @@ struct NewProductAddView: View {
                             .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
                             
                         }
+                        
                         
                         
                         
@@ -217,9 +223,10 @@ struct NewProductAddView: View {
                         
                         
                         
-                    
+                        
+                    }
                 }
-            }
+            
         }
        
         
