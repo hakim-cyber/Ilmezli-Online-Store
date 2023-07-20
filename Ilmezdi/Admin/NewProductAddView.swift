@@ -26,170 +26,201 @@ struct NewProductAddView: View {
     
     @EnvironmentObject var productData:ProductsData
     
+    @FocusState private var focused:Bool
+    
+    @State private var writingDescription = false
    
     
     var body: some View {
-        ZStack{
-            
-            Color.gray.opacity(0.1).ignoresSafeArea()
-            Form{
-                Section{
-                    Picker("Kategoriya", selection: $categoryOfProduct){
-                        ForEach(productData.categories,id:\.title){category in
-                            Text("\(category.title)")
-                                .tag(category.title)
-                        }
-                    }
-                    
-                    if imagesArray.count < 3{
-                        HStack{
-                            
-                            Button{
-                                showImagePicker = true
-                            }label: {
-                                HStack{
-                                    Spacer()
-                                    VStack(spacing: 8){
-                                        Image(systemName: "camera.fill")
-                                            .font(.title2)
-                                        Text("Foto elave et")
-                                    }
-                                    .foregroundColor(.blue)
-                                    Spacer()
+        NavigationStack{
+            ZStack{
+                
+                Color.gray.opacity(0.1).ignoresSafeArea()
+                
+                    Form{
+                        Section{
+                            Picker("Kategoriya", selection: $categoryOfProduct){
+                                ForEach(productData.categories,id:\.title){category in
+                                    Text("\(category.title)")
+                                        .tag(category.title)
                                 }
-                                .padding(.vertical,10)
+                            }
+                            
+                            if imagesArray.count < 3{
+                                HStack{
+                                    
+                                    Button{
+                                        showImagePicker = true
+                                    }label: {
+                                        HStack{
+                                            Spacer()
+                                            VStack(spacing: 8){
+                                                Image(systemName: "camera.fill")
+                                                    .font(.title2)
+                                                Text("Foto elave et")
+                                            }
+                                            .foregroundColor(.blue)
+                                            Spacer()
+                                        }
+                                        .padding(.vertical,10)
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                .listRowBackground(Color.gray.opacity(0.3) )
                             }
                             
                             
                             
                             
-                            
-                            
                         }
-                        .listRowBackground(Color.gray.opacity(0.3) )
-                    }
-                   
-                   
-                  
-                  
-                }
-                Section{
-                    if imagesArray != []{
-                        ScrollView(.horizontal,showsIndicators: false){
-                            HStack(spacing:5){
-                                ForEach(imagesArray.indices,id: \.self){id in
-                                    Image(uiImage: imagesArray[id] ?? UIImage())
-                                        .resizable()
-                                        .scaledToFit()
-                                        .overlay(alignment:.topTrailing){
-                                            Button{
-                                                withAnimation {
-                                                    imagesArray.removeAll(where: {$0 == imagesArray[id]})
+                        Section{
+                            if imagesArray != []{
+                                ScrollView(.horizontal,showsIndicators: false){
+                                    HStack(spacing:5){
+                                        ForEach(imagesArray.indices,id: \.self){id in
+                                            Image(uiImage: imagesArray[id] ?? UIImage())
+                                                .resizable()
+                                                .scaledToFit()
+                                                .overlay(alignment:.topTrailing){
+                                                    Button{
+                                                        withAnimation {
+                                                            imagesArray.removeAll(where: {$0 == imagesArray[id]})
+                                                        }
+                                                    }label:{
+                                                        Image(systemName: "xmark")
+                                                            .font(.caption)
+                                                            .foregroundColor(.red)
+                                                            .bold()
+                                                            .padding(8)
+                                                            .background(Circle().fill(Color.gray.opacity(0.4)))
+                                                    }
+                                                    .padding(.vertical,5)
+                                                    
                                                 }
-                                            }label:{
-                                                Image(systemName: "xmark")
-                                                    .font(.caption)
-                                                    .foregroundColor(.red)
-                                                    .bold()
-                                                    .padding(8)
-                                                    .background(Circle().fill(Color.gray.opacity(0.4)))
-                                            }
-                                            .padding(.vertical,5)
+                                                .frame(maxWidth: (screen.width * 0.88) / 2,maxHeight: (screen.height * 0.38) / 2 )
+                                            
                                             
                                         }
-                                        .frame(maxWidth: (screen.width * 0.88) / 2,maxHeight: (screen.height * 0.38) / 2 )
-                                       
-                                        
+                                    }
                                 }
+                                
+                            }
+                            
+                        }
+                        Section{
+                            TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
+                                .keyboardType(.decimalPad)
+                                .focused($focused)
+                                .foregroundColor(.accentColor)
+                            
+                            
+                            
+                        }
+                        Section{
+                            TextField("Mehsulun Basligi", text: $titleOfProduct)
+                                .focused($focused)
+                            
+                            
+                        }
+                        Section("Haqqinda"){
+                            TextEditor(text: $descriptinOfProduct)
+                                .focused($focused)
+                                .onTapGesture {
+                                    self.writingDescription = true
+                                }
+                            
+                            
+                        }
+                        
+                        Section{
+                            HStack{
+                                Spacer()
+                                Button("Mehsulu elave et"){
+                                    // add product
+                                    if editingProduct == nil{
+                                        addProduct{
+                                            dismiss()
+                                        }
+                                    }else{
+                                        saveEdit{
+                                            dismiss()
+                                        }
+                                    }
+                                }
+                                .foregroundColor(.white)
+                                .bold()
+                                .disabled(categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" || adding)
+                                Spacer()
+                            }
+                            .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
+                            
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    .scrollDismissesKeyboard(.interactively)
+                    .scrollContentBackground(.hidden)
+                    .sheet(isPresented: $showImagePicker){
+                        ImagePicker(imagesArray: $imagesArray)
+                    }
+                    .onAppear{
+                        if editingProduct == nil{
+                            categoryOfProduct = productData.categories[1].title ?? ""
+                        }else{
+                            
+                            self.categoryOfProduct = editingProduct!.category
+                            self.descriptinOfProduct = editingProduct!.description
+                            self.imagesArray = StringsArrayToImage(strings: editingProduct?.images ?? [])
+                            self.priceOfProduct = editingProduct?.price
+                            self.titleOfProduct = editingProduct?.name ?? ""
+                        }
+                    }
+                    .disabled(adding)
+                    .blur(radius: adding ? 5 : 0)
+                    
+                    
+                    
+                    
+                }
+                .overlay(alignment:.center){
+                    if adding{
+                        ProgressView()
+                            .scaleEffect(2)
+                            .tint(Color.accentColor)
+                        
+                    }
+                }
+                .toolbar{
+                    ToolbarItemGroup(placement: .keyboard) {
+                        
+                        Spacer()
+                        
+                        Button("Done") {
+                            focused = false
+                            
+                            if self.writingDescription{
+                                self.writingDescription = false
                             }
                         }
                         
-                    }
-                    
-                }
-                Section{
-                    TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
-                        .keyboardType(.decimalPad)
-                        .foregroundColor(.accentColor)
+                        
                         
                     
                 }
-                Section{
-                    TextField("Mehsulun Basligi", text: $titleOfProduct)
-                       
-                   
-                }
-                Section("Haqqinda"){
-                    TextEditor(text: $descriptinOfProduct)
-                       
-                }
-           
-                Section{
-                    HStack{
-                        Spacer()
-                        Button("Mehsulu elave et"){
-                            // add product
-                            if editingProduct == nil{
-                                addProduct{
-                                    dismiss()
-                                }
-                            }else{
-                                saveEdit{
-                                    dismiss()
-                                }
-                            }
-                        }
-                        .foregroundColor(.white)
-                        .bold()
-                        .disabled(categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" || adding)
-                        Spacer()
-                    }
-                    .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
-                   
-                }
-             
-                
-             
-                
-                
-                                                                    
-                                           
-                                        
-                
-            }
-            .scrollDismissesKeyboard(.immediately)
-            .scrollContentBackground(.hidden)
-            .sheet(isPresented: $showImagePicker){
-                ImagePicker(imagesArray: $imagesArray)
-            }
-            .onAppear{
-                if editingProduct == nil{
-                    categoryOfProduct = productData.categories[1].title ?? ""
-                }else{
-                 
-                    self.categoryOfProduct = editingProduct!.category
-                    self.descriptinOfProduct = editingProduct!.description
-                    self.imagesArray = StringsArrayToImage(strings: editingProduct?.images ?? [])
-                    self.priceOfProduct = editingProduct?.price
-                    self.titleOfProduct = editingProduct?.name ?? ""
-                }
-            }
-            .disabled(adding)
-            .blur(radius: adding ? 5 : 0)
-            
-            
-            
-            
-        }
-        .overlay(alignment:.center){
-            if adding{
-                ProgressView()
-                    .scaleEffect(2)
-                    .tint(Color.accentColor)
-                    
             }
         }
-       
        
         
     }
@@ -272,3 +303,6 @@ struct NewProductAddView_Previews: PreviewProvider {
         }
     }
 }
+
+
+
