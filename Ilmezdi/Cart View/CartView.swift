@@ -231,8 +231,8 @@ struct CartView: View {
                                            ZStack{
                                                Circle().fill(Color.gray.opacity(0.09))
                                                
-                                               Image(systemName: "chevron.left")
-                                                   .font(.system(size: 16))
+                                               Image(systemName: "xmark")
+                                                   .font(.system(size: 11))
                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                            }
                                            .frame(width: 40)

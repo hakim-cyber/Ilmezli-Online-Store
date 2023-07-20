@@ -92,7 +92,7 @@ struct ProductsGrid: View {
                 }
             }
             
-            .fullScreenCover(item: $selectedProduct, content: {product in
+            .sheet(item: $selectedProduct, content: {product in
                 if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
                     var vm = ProductFull_ViewModel(product: $productsData.exampleProducts[id])
                     ProductFull_Ui(vm: vm)

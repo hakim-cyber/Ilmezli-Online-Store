@@ -25,18 +25,28 @@ struct ProductFull_Ui: View {
                     Button{
                         dismiss()
                     }label: {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(colorScheme == .dark ? .white :.black)
-                            .font(.system(size: 22))
+                        ZStack{
+                            Circle().fill(Color.gray.opacity(0.09))
+                            
+                            Image(systemName: "xmark")
+                                .font(.system(size: 13))
+                                .foregroundColor(colorScheme == .light ? .black : .white)
+                        }
+                        .frame(width: 40)
                     }
                     Spacer()
                     Button{
                         wished.tapedToHeart(product: vm.product)
                     }label: {
-                        Image(systemName: "heart.fill" )
-                            .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : Color.secondary )
-                            .font(.system(size: 27))
-                            .shadow(color:.white,radius: 2)
+                        ZStack{
+                            Circle().fill(Color.gray.opacity(0.09))
+                            
+                            Image(systemName: "heart.fill" )
+                                .foregroundColor(wished.checkWish(product: vm.product) ? Color("customRed") : Color.secondary )
+                                .font(.system(size: 22))
+                                .shadow(color:.white,radius: 2)
+                        }
+                        .frame(width: 40)
                     }
                     
                     
