@@ -23,10 +23,7 @@ struct ContentView: View {
                     .tabItem {
                        Label("Favorilerim", systemImage: "heart")
                     }
-                Text("Əlaqə")
-                    .tabItem {
-                    Label("Əlaqə", systemImage: "phone")
-                    }
+             
                 SettingsView()
                     .tabItem {
             Label("Ayarlar", systemImage: "gear")

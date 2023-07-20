@@ -87,7 +87,7 @@ struct ProductsGrid: View {
                         }
                        
                     }
-                    .padding(.top,showWished ? 15:6)
+                    .padding(.top,showWished ? 25:6)
                     .padding(.horizontal,8)
                 }
             }
