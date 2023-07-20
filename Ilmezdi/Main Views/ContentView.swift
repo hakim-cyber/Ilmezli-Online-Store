@@ -21,7 +21,7 @@ struct ContentView: View {
                     }
                WishView()
                     .tabItem {
-                       Label("Favorilerim", systemImage: "heart")
+                       Label("Favorilərim", systemImage: "heart")
                     }
              
                 SettingsView()

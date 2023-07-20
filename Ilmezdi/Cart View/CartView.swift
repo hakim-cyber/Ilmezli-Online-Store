@@ -25,7 +25,7 @@ struct CartView: View {
                         VStack(alignment: .center,spacing: 15){
                           
                             
-                            Text("SEBETINIZ BOSDU ☹️")
+                            Text("Səbətiniz Boşdu ☹️")
                                 .fontWeight(.medium)
                                 .font(.title2)
                             
@@ -193,7 +193,7 @@ struct CartView: View {
                     VStack(spacing:0){
                         Spacer()
                         HStack{
-                            Text("Umumi:")
+                            Text("Ümumi:")
                                 .font(.system(size:14))
                                 .foregroundColor(.secondary)
                             Spacer()
@@ -208,7 +208,7 @@ struct CartView: View {
                         }label:{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10)
-                                   Text("Sifaris Ele")
+                                   Text("Sifaris Elə")
                                     .foregroundColor(.white)
                                     .bold()
                             }
@@ -239,14 +239,14 @@ struct CartView: View {
                                        }
                 }
                 ToolbarItem(placement: .principal, content: {
-                    Text("Sebetim")
+                    Text("Səbətim")
                         .bold()
                         .font(.system(size: 22))
                 })
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     if !showDelete{
                         Menu{
-                            Button("Remove Products",role:.destructive){
+                            Button("Sil",role:.destructive){
                                 withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
                                     self.showDelete = true
                                 }
@@ -264,7 +264,7 @@ struct CartView: View {
                         }
                         .disabled(cart.cartProducts.count == 0)
                     }else{
-                        Button("Done"){
+                        Button("Tamam"){
                             withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
                                 showDelete = false
                             }

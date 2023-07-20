@@ -60,7 +60,7 @@ struct NewProductAddView: View {
                                             VStack(spacing: 8){
                                                 Image(systemName: "camera.fill")
                                                     .font(.title2)
-                                                Text("Foto elave et")
+                                                Text("Foto əlavə et")
                                             }
                                             .foregroundColor(.blue)
                                             Spacer()
@@ -117,7 +117,7 @@ struct NewProductAddView: View {
                             
                         }
                         Section{
-                            TextField("Qiymet, AZN", value: $priceOfProduct ,format: .number)
+                            TextField("Qiymət, AZN", value: $priceOfProduct ,format: .number)
                                 .keyboardType(.decimalPad)
                                 .focused($focused)
                                 .foregroundColor(.accentColor)
@@ -126,12 +126,12 @@ struct NewProductAddView: View {
                             
                         }
                         Section{
-                            TextField("Mehsulun Basligi", text: $titleOfProduct)
+                            TextField("Məhsulun Başlıgı", text: $titleOfProduct)
                                 .focused($focused)
                             
                             
                         }
-                        Section("Haqqinda"){
+                        Section("Haqqında"){
                             TextEditor(text: $descriptinOfProduct)
                                 .onTapGesture {
                                     self.writingDescription = true
@@ -146,7 +146,7 @@ struct NewProductAddView: View {
                         Section{
                             HStack{
                                 Spacer()
-                                Button("Mehsulu elave et"){
+                                Button("Məhsulu əlave et"){
                                     // add product
                                     if editingProduct == nil{
                                         addProduct{
@@ -241,7 +241,7 @@ struct NewProductAddView: View {
                                 }
                             }
                             Spacer()
-                            Text("Haqqinda")
+                            Text("Haqqında")
                                 .fontWeight(.medium)
                             Spacer()
                             

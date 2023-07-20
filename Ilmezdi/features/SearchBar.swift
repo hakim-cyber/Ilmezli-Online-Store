@@ -13,7 +13,7 @@ struct SearchBar: View {
     
     @State private var screen = UIScreen.main.bounds
     var body: some View {
-        TextField("  Search...", text: $text)
+        TextField("  Axtar...", text: $text)
             .padding(10)
             .padding(2)
             .keyboardType(.default)
@@ -24,12 +24,14 @@ struct SearchBar: View {
                 Button{
                     withAnimation(.easeInOut){
                         text = ""
+                        self.focused = false
                     }
                 }label: {
                     Image(systemName: "xmark")
                 }
                 .padding(.trailing,8)
             })
+            .focused($focused)
             
     }
 }

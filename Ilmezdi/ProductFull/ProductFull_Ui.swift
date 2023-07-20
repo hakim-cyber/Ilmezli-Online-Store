@@ -120,7 +120,7 @@ struct ProductFull_Ui: View {
                 VStack{
                     HStack{
                         VStack(alignment: .leading,spacing: 5){
-                            Text("Qiymet:")
+                            Text("Qiymət:")
                                 .foregroundColor(.secondary)
                             Text("\(vm.product.price.formatted()) ₼")
                                 .font(.system(size: 22))
@@ -135,7 +135,7 @@ struct ProductFull_Ui: View {
                         }label: {
                             HStack{
                                 
-                                Text("Elave Et")
+                                Text("Əlave Et")
                                     .font(.system(size: 18))
                                     .foregroundColor(.white)
                                     .fontWeight(.bold)

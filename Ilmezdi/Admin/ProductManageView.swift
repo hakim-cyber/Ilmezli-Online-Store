@@ -137,7 +137,7 @@ struct ProductManageView: View {
                         }
                     }
                     ToolbarItem(placement: .principal, content: {
-                        Text("Mehsullar")
+                        Text("Məhsullar")
                             .bold()
                             .font(.system(size: 22))
                     })
@@ -157,7 +157,7 @@ struct ProductManageView: View {
                     ToolbarItem(placement: .navigationBarTrailing, content: {
                         if !showDelete{
                             Menu{
-                                Button("Remove Products",role:.destructive){
+                                Button("Sil",role:.destructive){
                                     withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
                                         self.showDelete = true
                                     }
@@ -175,7 +175,7 @@ struct ProductManageView: View {
                             }
                             
                         }else{
-                            Button("Done"){
+                            Button("Tamam"){
                                 withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
                                     showDelete = false
                                 }

@@ -41,7 +41,7 @@ struct SettingsView: View {
                             }
                         }label: {
                             HStack{
-                                Text("Mehsullar")
+                                Text("Məhsullar")
                                 Spacer()
                                 Text("📲")
                             }
@@ -61,7 +61,7 @@ struct SettingsView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .alert("Admin Paneline Giris", isPresented: $showPasswordControl){
+            .alert("Admin Panelinə Giriş", isPresented: $showPasswordControl){
                 SecureField("Parol", text: $writtenPassword)
                 Button("Gir"){
                     if writtenPassword.trimmingCharacters(in: .whitespacesAndNewlines) == password{
