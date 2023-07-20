@@ -27,6 +27,7 @@ struct NewProductAddView: View {
     @EnvironmentObject var productData:ProductsData
     
     @FocusState private var focused:Bool
+    @FocusState private var focusedDescription:Bool
     
     @State private var writingDescription = false
    
@@ -36,9 +37,9 @@ struct NewProductAddView: View {
             ZStack{
                 
                 Color.gray.opacity(0.1).ignoresSafeArea()
-               
-                    
-                    
+                
+                
+                
                     Form{
                         Section{
                             Picker("Kategoriya", selection: $categoryOfProduct){
@@ -132,11 +133,11 @@ struct NewProductAddView: View {
                         }
                         Section("Haqqinda"){
                             TextEditor(text: $descriptinOfProduct)
-                                .focused($focused)
                                 .onTapGesture {
                                     self.writingDescription = true
-                                   
+                                    self.focusedDescription = true
                                 }
+                            
                                 
                             
                             
@@ -214,11 +215,13 @@ struct NewProductAddView: View {
                         Spacer()
                         
                         Button("Done") {
-                            focused = false
+                           
+                                focused = false
+                                
+                                if self.writingDescription{
+                                    self.writingDescription = false
+                                }
                             
-                            if self.writingDescription{
-                                self.writingDescription = false
-                            }
                         }
                         
                         
@@ -226,6 +229,38 @@ struct NewProductAddView: View {
                         
                     }
                 }
+            if writingDescription{
+                VStack{
+                    Spacer()
+                    VStack{
+                        HStack{
+                            Button("Imtina"){
+                                
+                                    self.writingDescription = false
+                                    self.focused = false
+                                
+                            }
+                            Spacer()
+                            Text("Haqqinda")
+                                .fontWeight(.medium)
+                            Spacer()
+                            Button("Sil 🗑️"){
+                                withAnimation(.easeInOut){
+                                    self.descriptinOfProduct = ""
+                                }
+                            }
+                        }
+                        .padding(.top,10)
+                        .padding(.horizontal,15)
+                        TextEditor(text: $descriptinOfProduct)
+                            .focused($focusedDescription)
+                        Spacer()
+                    }
+                   
+                }
+                .frame(height: screen.height / 2.5)
+                .transition(.move(edge: .bottom))
+            }
             
         }
        
