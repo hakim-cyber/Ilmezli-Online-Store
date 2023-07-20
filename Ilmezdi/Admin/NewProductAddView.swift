@@ -213,15 +213,16 @@ struct NewProductAddView: View {
                     ToolbarItemGroup(placement: .keyboard) {
                         
                         Spacer()
-                        
-                        Button("Done") {
-                           
+                        if !writingDescription{
+                            Button("Tamam") {
+                                
                                 focused = false
                                 
                                 if self.writingDescription{
                                     self.writingDescription = false
                                 }
-                            
+                                
+                            }
                         }
                         
                         
@@ -234,20 +235,21 @@ struct NewProductAddView: View {
                     Spacer()
                     VStack{
                         HStack{
-                            Button("Imtina"){
-                                
-                                    self.writingDescription = false
-                                    self.focused = false
-                                
+                            Button("Sil 🗑️"){
+                                withAnimation(.easeInOut){
+                                    self.descriptinOfProduct = ""
+                                }
                             }
                             Spacer()
                             Text("Haqqinda")
                                 .fontWeight(.medium)
                             Spacer()
-                            Button("Sil 🗑️"){
-                                withAnimation(.easeInOut){
-                                    self.descriptinOfProduct = ""
-                                }
+                            
+                            Button("Done"){
+                                
+                                    self.writingDescription = false
+                                    self.focused = false
+                                
                             }
                         }
                         .padding(.top,10)
