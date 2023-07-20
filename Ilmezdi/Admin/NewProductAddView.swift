@@ -245,7 +245,7 @@ struct NewProductAddView: View {
                                 .fontWeight(.medium)
                             Spacer()
                             
-                            Button("Done"){
+                            Button("Tamam"){
                                 
                                     self.writingDescription = false
                                     self.focused = false
