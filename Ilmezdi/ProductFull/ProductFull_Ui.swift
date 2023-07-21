@@ -53,7 +53,7 @@ struct ProductFull_Ui: View {
                 }
                 .padding(.top,10)
                 VStack{
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack(spacing: 30){
                         if vm.images == []{
                             Color.gray.opacity(0.3)
@@ -108,9 +108,14 @@ struct ProductFull_Ui: View {
                             }
                             .padding(.top,5)
                         }
-                        
+                        VStack{
+                            
+                        }
+                        .frame(height:screen.height / 9)
                         Spacer()
+                        
                     }
+                    
                     
                 }
                 

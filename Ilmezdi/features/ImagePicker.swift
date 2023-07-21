@@ -28,9 +28,16 @@ struct ImagePicker:UIViewControllerRepresentable{
                 let result = results[id]
                 let provider = result.itemProvider
                 
+                
+                
                 DispatchQueue.main.async {
                     if provider.canLoadObject(ofClass: UIImage.self){
-                        provider.loadObject(ofClass: UIImage.self){ image, _ in
+                        
+                        provider.loadObject(ofClass: UIImage.self){ image, error in
+                            if error != nil{
+                                print(error)
+                                return
+                            }
                             if let uimage = image as? UIImage{
                                 self.parent.imagesArray.append(uimage)
                             }else{
