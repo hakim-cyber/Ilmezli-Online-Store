@@ -28,29 +28,48 @@ struct ImagePicker:UIViewControllerRepresentable{
                 let result = results[id]
                 let provider = result.itemProvider
                 
-                
-                
-                DispatchQueue.main.async {
+               
+              
                     
                    
-                    do{
-                        
-                        provider.loadObject(ofClass: UIImage.self){ image, error in
-                            if error != nil{
-                                print(error)
-                                return
-                            }
-                            if let uimage = image as? UIImage{
-                                self.parent.imagesArray.append(uimage)
-                            }else{
-                                print("No uimage")
-                            }
-                        }
-                    }catch{
-                        print(error)
-                    }
+                if provider.hasItemConformingToTypeIdentifier(UTType.webP.identifier) {
+                                       provider.loadDataRepresentation(forTypeIdentifier: UTType.webP.identifier) {data, err in
+                                           if err != nil{
+                                               print(err as Any)
+                                               return
+                                           }
+                                           
+                                         if let data = data, let img = UIImage.init(data: data) {
+                                             if let uimage = img as? UIImage{
+                                                 DispatchQueue.main.async {
+                                                     self.parent.imagesArray.append(uimage)
+                                                 }
+                                             }else{
+                                                 print("No uimage")
+                                             }
+                                         }
+                                       }
+                                     } else {
+                                         do{
+                                                                
+                                            provider.loadObject(ofClass: UIImage.self){ image, error in
+                                                                    if error != nil{
+                                                                        print(error as Any)
+                                                                        return
+                                                                    }
+                                                                    if let uimage = image as? UIImage{
+                                                                        DispatchQueue.main.async {
+                                                                            self.parent.imagesArray.append(uimage)
+                                                                        }
+                                                                    }else{
+                                                                        print("No uimage")
+                                                                    }
+                                                                }
+                                                            }
+                                     }
+                               
                    
-                }
+                
             }
            
         }
