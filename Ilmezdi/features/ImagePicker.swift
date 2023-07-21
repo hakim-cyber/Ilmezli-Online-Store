@@ -31,7 +31,9 @@ struct ImagePicker:UIViewControllerRepresentable{
                 
                 
                 DispatchQueue.main.async {
-                    if provider.canLoadObject(ofClass: UIImage.self){
+                    
+                   
+                    do{
                         
                         provider.loadObject(ofClass: UIImage.self){ image, error in
                             if error != nil{
@@ -44,9 +46,10 @@ struct ImagePicker:UIViewControllerRepresentable{
                                 print("No uimage")
                             }
                         }
-                    }else{
-                        print("cant load object")
+                    }catch{
+                        print(error)
                     }
+                   
                 }
             }
            
