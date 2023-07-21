@@ -132,9 +132,9 @@ class ProductsData:ObservableObject{
             return ""
         }
         
-        let resizedImage = image.resize(to: CGSize(width: 300, height: 300)) // Adjust the desired size
+        let resizedImage = image.resize(to: CGSize(width: 250, height: 250)) // Adjust the desired size
         
-        guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.35) else {
+        guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.25) else {
             print("Error: Unable to resize image or convert to data")
             return ""
         }

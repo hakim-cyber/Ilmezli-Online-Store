@@ -23,15 +23,26 @@ struct ImagePicker:UIViewControllerRepresentable{
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
             
-            guard let provider = results.first?.itemProvider else{return}
-            
-            if provider.canLoadObject(ofClass: UIImage.self){
-                provider.loadObject(ofClass: UIImage.self){ image, _ in
-                    if let uimage = image as? UIImage{
-                        self.parent.imagesArray.append(uimage)
+            for id in results.indices {
+               
+                let result = results[id]
+                let provider = result.itemProvider
+                
+                DispatchQueue.main.async {
+                    if provider.canLoadObject(ofClass: UIImage.self){
+                        provider.loadObject(ofClass: UIImage.self){ image, _ in
+                            if let uimage = image as? UIImage{
+                                self.parent.imagesArray.append(uimage)
+                            }else{
+                                print("No uimage")
+                            }
+                        }
+                    }else{
+                        print("cant load object")
                     }
                 }
             }
+           
         }
         
     }
@@ -39,6 +50,7 @@ struct ImagePicker:UIViewControllerRepresentable{
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
+        config.selectionLimit = 3 - imagesArray.count
         
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
@@ -53,18 +65,4 @@ struct ImagePicker:UIViewControllerRepresentable{
     }
 }
 
-struct ImagePicker2:UIViewControllerRepresentable{
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        
-        let picker = PHPickerViewController(configuration: config)
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        
-    }
-    
-  
-}
+
