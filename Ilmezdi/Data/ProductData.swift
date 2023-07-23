@@ -55,6 +55,7 @@ class ProductsData:ObservableObject{
     }
     
     func updateProduct(editedProduct:Product,completion:@escaping ()->Void) async throws{
+        
         let record = try await  db.record(for: editedProduct.recordId!)
         
         record[ProductRecordKeys.category.rawValue] = editedProduct.category
