@@ -11,6 +11,7 @@ enum AdressType:String,CaseIterable{
 }
 
 struct AdressForm: View {
+    var dismiss:()->Void
     @State private var selectedAdresstype = AdressType.seherDaxili
     
     @State private var adress = ""
@@ -22,7 +23,7 @@ struct AdressForm: View {
     
     @EnvironmentObject var cart:Cart_ViewModel
         
-        @Environment(\.dismiss) var dismiss
+       
     
     var body: some View {
         VStack{
@@ -210,7 +211,9 @@ struct AdressForm: View {
 
 struct AdressForm_Previews: PreviewProvider {
     static var previews: some View {
-        AdressForm()
+        AdressForm(){
+            
+        }
             .environmentObject(Cart_ViewModel())
     }
 }

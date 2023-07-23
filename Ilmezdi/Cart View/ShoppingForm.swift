@@ -23,7 +23,9 @@ struct ShoppingForm: View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
             if shpwAdressForm{
-                AdressForm()
+                AdressForm(){
+                    dismiss()
+                }
                 
             }else{
                 VStack(spacing: 20){
