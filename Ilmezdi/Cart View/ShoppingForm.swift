@@ -16,56 +16,65 @@ struct ShoppingForm: View {
     @AppStorage("phoneNumber")  var phoneNumber = ""
     @AppStorage("adress") var adress = ""
     
+    @State private var shpwAdressForm = false
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
-            VStack(spacing: 20){
-                Spacer()
-                Spacer()
-                Spacer()
-                HStack{
-                    TextField("Adınız",text: $name)
-                        .padding(8)
-                        .padding(.horizontal,8)
-                        .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
-                        .frame(width: screen.width / 2.3)
-                        .keyboardType(.namePhonePad)
-                    Spacer()
-                    TextField("Nomrəniz",text: $phoneNumber)
-                        .padding(8)
-                        .padding(.horizontal,8)
-                        .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
-                        .frame(width: screen.width / 2.3)
-                        .keyboardType(.phonePad)
-                }
-                .listRowBackground(Color.clear)
-                TextField("Adresiniz",text: $adress)
-                    .padding(8)
-                    .padding(.horizontal,8)
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
-                    .keyboardType(.namePhonePad)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+            if shpwAdressForm{
+                AdressForm()
                 
-                Button{
-                    placeOrder()
-                }label: {
-                    Text("Tamamla")
-                        .foregroundColor(.white)
-                        .frame(width: screen.width / 1.2,height: 40)
+            }else{
+                VStack(spacing: 20){
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    HStack{
+                        TextField("Adınız",text: $name)
+                            .padding(8)
+                            .padding(.horizontal,8)
+                            .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
+                            .frame(width: screen.width / 2.3)
+                            .keyboardType(.namePhonePad)
+                        Spacer()
+                        TextField("Nomrəniz",text: $phoneNumber)
+                            .padding(8)
+                            .padding(.horizontal,8)
+                            .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
+                            .frame(width: screen.width / 2.3)
+                            .keyboardType(.phonePad)
+                    }
+                    .listRowBackground(Color.clear)
+                    TextField("Adresiniz",text: $adress)
+                        .padding(8)
+                        .padding(.horizontal,8)
+                        .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
+                        .keyboardType(.namePhonePad)
                         .listRowBackground(Color.clear)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
+                        .listRowSeparator(.hidden)
+                    
+                    Button{
+                        withAnimation(.easeInOut){
+                            self.shpwAdressForm = true
+                        }
+                    }label: {
+                        Text("Tamamla")
+                            .foregroundColor(.white)
+                            .frame(width: screen.width / 1.2,height: 40)
+                            .listRowBackground(Color.clear)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    }
+                    .disabled(name == "" || phoneNumber == "" || adress == "")
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
                 }
-                .disabled(name == "" || phoneNumber == "" || adress == "")
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
+                .padding(.horizontal,20)
+                .scrollDismissesKeyboard(.immediately)
+                .transition(.move(edge: .top))
             }
-            .padding(.horizontal,20)
-            .scrollDismissesKeyboard(.immediately)
         }
     }
     func placeOrder(){

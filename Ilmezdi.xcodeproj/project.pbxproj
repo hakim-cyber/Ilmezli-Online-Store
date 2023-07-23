@@ -26,6 +26,7 @@
 		08767CCF2A56C0F000F634D3 /* structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CCE2A56C0F000F634D3 /* structs.swift */; };
 		08767CD62A57411D00F634D3 /* ProductsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD52A57411D00F634D3 /* ProductsGrid.swift */; };
 		08767CD82A57412D00F634D3 /* ProductsGrid_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */; };
+		08775F6A2A6D0F0F005247C9 /* AdressForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08775F692A6D0F0F005247C9 /* AdressForm.swift */; };
 		0885D8D42A63E50F0029A0FD /* WishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D8D32A63E50F0029A0FD /* WishView.swift */; };
 		08D3CD062A58128900497C16 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD052A58128900497C16 /* ProductData.swift */; };
 		08D3CD0B2A586E3800497C16 /* ProductFull_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3CD0A2A586E3800497C16 /* ProductFull_ViewModel.swift */; };
@@ -62,6 +63,7 @@
 		08767CCE2A56C0F000F634D3 /* structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structs.swift; sourceTree = "<group>"; };
 		08767CD52A57411D00F634D3 /* ProductsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid.swift; sourceTree = "<group>"; };
 		08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGrid_ViewModel.swift; sourceTree = "<group>"; };
+		08775F692A6D0F0F005247C9 /* AdressForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressForm.swift; sourceTree = "<group>"; };
 		0885D8D32A63E50F0029A0FD /* WishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishView.swift; sourceTree = "<group>"; };
 		08895F412A603C67004CC462 /* Ilmezdi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ilmezdi.entitlements; sourceTree = "<group>"; };
 		08D3CD052A58128900497C16 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductData.swift; path = Ilmezdi/Data/ProductData.swift; sourceTree = SOURCE_ROOT; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				08D3CD132A5BFCED00497C16 /* CartView.swift */,
+				08775F692A6D0F0F005247C9 /* AdressForm.swift */,
 				08D3CD152A5BFD1200497C16 /* Cart_ViewModel.swift */,
 				082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */,
 			);
@@ -319,6 +322,7 @@
 				08D3CD162A5BFD1200497C16 /* Cart_ViewModel.swift in Sources */,
 				08F88E432A5EAA3500BA4C03 /* ProductEditView.swift in Sources */,
 				08767CC12A55962600F634D3 /* Product View Tab Bar.swift in Sources */,
+				08775F6A2A6D0F0F005247C9 /* AdressForm.swift in Sources */,
 				08D3CD142A5BFCED00497C16 /* CartView.swift in Sources */,
 				08767CB42A5572F700F634D3 /* Ilmezli logo.swift in Sources */,
 				08767CCC2A56BEDD00F634D3 /* ProductPosts_ViewModel.swift in Sources */,
