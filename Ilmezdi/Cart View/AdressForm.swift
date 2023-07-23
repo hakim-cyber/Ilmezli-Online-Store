@@ -26,8 +26,8 @@ struct AdressForm: View {
        
     
     var body: some View {
-        VStack{
-            Spacer()
+       
+           
             VStack(spacing: 25){
                 HStack(spacing: 25){
                     ForEach(AdressType.allCases , id:\.rawValue){type in
@@ -36,11 +36,11 @@ struct AdressForm: View {
                             
                             Text("\(type.rawValue.uppercased())")
                                 .fontWeight(.bold )
-                                .font(.system(size: 15))
+                                .font(.system(size: screen.width / 4 / 7))
                                 .foregroundColor(self.selectedAdresstype == type ? Color.accentColor:Color.primary)
                             
                             Text("\(catdirilmaPulu(type:type) == 0 ? String("Pulsuz") : String( "\(catdirilmaPulu(type: type) ) ₼"))")
-                                .font(.system(size: 11))
+                                .font(.system(size: screen.width / 4 / 9))
                                 .fontWeight(.bold)
                                 .foregroundColor(self.selectedAdresstype == type ? Color.accentColor.opacity(0.8) : Color.primary.opacity(0.5))
                             
@@ -59,7 +59,7 @@ struct AdressForm: View {
                     VStack{
                         HStack{
                             Text("Adresiniz")
-                                .font(.system(size: 14))
+                                .font(.system(size: screen.width / 4 / 7.2))
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.primary.opacity(0.5))
                             Spacer()
@@ -67,6 +67,7 @@ struct AdressForm: View {
                         TextField("",text: $adress)
                             .padding(8)
                             .padding(.horizontal,8)
+                            .frame(width: screen.width / 1.1,height: screen.height / 18)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
                             .keyboardType(.namePhonePad)
                             .listRowBackground(Color.clear)
@@ -86,6 +87,7 @@ struct AdressForm: View {
                         TextField("",text: $adress)
                             .padding(8)
                             .padding(.horizontal,8)
+                            .frame(width: screen.width / 1.1,height: screen.height / 18)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
                             .keyboardType(.namePhonePad)
                             .listRowBackground(Color.clear)
@@ -107,6 +109,7 @@ struct AdressForm: View {
                         TextField("",text: $adress)
                             .padding(8)
                             .padding(.horizontal,8)
+                            .frame(width: screen.width / 1.1,height: screen.height / 18)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
                             .keyboardType(.namePhonePad)
                             .listRowBackground(Color.clear)
@@ -126,7 +129,7 @@ struct AdressForm: View {
                 }label: {
                     Text("Tamamla")
                         .foregroundColor(.white)
-                        .frame(width: screen.width / 1.2,height: 40)
+                        .frame(width: screen.width / 1.6,height: screen.height / 16)
                         .listRowBackground(Color.clear)
                         .background(Color.accentColor)
                         .cornerRadius(10)
@@ -137,7 +140,7 @@ struct AdressForm: View {
             .padding(.top)
             .padding(.horizontal)
             .frame(height: screen.height * 0.35,alignment: .top)
-        }
+        
     }
     func placeOrder(){
         var countryCode = "+994"

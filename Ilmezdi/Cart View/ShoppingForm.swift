@@ -29,7 +29,7 @@ struct ShoppingForm: View {
                 
             }else{
                 VStack(spacing: 20){
-                    Spacer()
+                    
                     VStack(spacing: 10){
                         HStack(spacing: 15){
                             VStack(spacing:5){
@@ -47,7 +47,7 @@ struct ShoppingForm: View {
                                     .keyboardType(.namePhonePad)
                                     
                             }
-                            .frame(width: screen.width / 2.3)
+                            .frame(width: screen.width / 2.3,height: screen.height / 10)
                            
                             VStack(spacing:3){
                                 HStack{
@@ -63,7 +63,7 @@ struct ShoppingForm: View {
                                     .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
                                     .keyboardType(.namePhonePad)
                             }
-                            .frame(width: screen.width / 2.3)
+                            .frame(width: screen.width / 2.3,height: screen.height / 10)
                         }
                         
                         VStack(spacing:5){
@@ -80,12 +80,12 @@ struct ShoppingForm: View {
                                 .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
                                 
                                 .keyboardType(.phonePad)
+                                
                         }
+                        .frame(width: screen.width / 1.1,height: screen.height / 10)
                     }
                     
-                    Spacer()
-                    Spacer()
-                    Spacer()
+                  
                     Button{
                         withAnimation(.easeInOut){
                             self.shpwAdressForm = true
@@ -93,7 +93,7 @@ struct ShoppingForm: View {
                     }label: {
                         Text("Davam Ele")
                             .foregroundColor(.white)
-                            .frame(width: screen.width / 1.2,height: 40)
+                            .frame(width: screen.width / 1.6,height: screen.height / 16)
                             .listRowBackground(Color.clear)
                             .background(Color.accentColor)
                             .cornerRadius(10)
@@ -103,8 +103,10 @@ struct ShoppingForm: View {
                 }
                 .padding(.horizontal,20)
                 .padding(.vertical)
+                .frame(height: screen.height * 0.35)
                 .scrollDismissesKeyboard(.immediately)
                 .transition(.move(edge: .top))
+               
             }
         }
     }
