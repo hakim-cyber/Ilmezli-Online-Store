@@ -27,6 +27,8 @@ struct ImagePicker:UIViewControllerRepresentable{
                
                 let result = results[id]
                 let provider = result.itemProvider
+            
+            
                 
                
               
@@ -82,6 +84,7 @@ struct ImagePicker:UIViewControllerRepresentable{
         config.selectionLimit = 3 - imagesArray.count
         
         let picker = PHPickerViewController(configuration: config)
+        
         picker.delegate = context.coordinator
         return picker
     }

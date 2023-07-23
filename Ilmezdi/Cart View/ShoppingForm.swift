@@ -14,6 +14,7 @@ struct ShoppingForm: View {
     
     @AppStorage("name")  var name = ""
     @AppStorage("phoneNumber")  var phoneNumber = ""
+    
     @AppStorage("adress") var adress = ""
     
     @State private var shpwAdressForm = false
@@ -27,32 +28,25 @@ struct ShoppingForm: View {
             }else{
                 VStack(spacing: 20){
                     Spacer()
-                    Spacer()
-                    Spacer()
-                    HStack{
+                    VStack{
                         TextField("Adınız",text: $name)
                             .padding(8)
                             .padding(.horizontal,8)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
-                            .frame(width: screen.width / 2.3)
+                            
                             .keyboardType(.namePhonePad)
                         Spacer()
                         TextField("Nomrəniz",text: $phoneNumber)
                             .padding(8)
                             .padding(.horizontal,8)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
-                            .frame(width: screen.width / 2.3)
+                            
                             .keyboardType(.phonePad)
                     }
                     .listRowBackground(Color.clear)
-                    TextField("Adresiniz",text: $adress)
-                        .padding(8)
-                        .padding(.horizontal,8)
-                        .background(RoundedRectangle(cornerRadius: 10).stroke(adress == "" ? Color.red : Color.primary))
-                        .keyboardType(.namePhonePad)
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
                     Button{
                         withAnimation(.easeInOut){
                             self.shpwAdressForm = true
@@ -66,12 +60,10 @@ struct ShoppingForm: View {
                             .cornerRadius(10)
                     }
                     .disabled(name == "" || phoneNumber == "" || adress == "")
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Spacer()
+                  
                 }
                 .padding(.horizontal,20)
+                .padding(.vertical)
                 .scrollDismissesKeyboard(.immediately)
                 .transition(.move(edge: .top))
             }
