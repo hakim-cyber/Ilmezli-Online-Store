@@ -98,3 +98,54 @@ struct ImagePicker:UIViewControllerRepresentable{
 }
 
 
+
+
+struct PhotoCapture: UIViewControllerRepresentable {
+    
+    
+    
+ @Binding var imagesArray: [UIImage?]
+    
+ @Environment(\.presentationMode)  var presentationMode
+   
+ 
+    func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoCapture>) -> UIImagePickerController {
+ 
+        let imagePicker = UIImagePickerController()
+               imagePicker.allowsEditing = false
+               imagePicker.sourceType = .camera
+        imagePicker.delegate = context.coordinator
+               
+               return imagePicker
+    
+ 
+      
+    }
+ 
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<PhotoCapture>) {
+ 
+    }
+    
+   
+    func makeCoordinator() -> Coordinator {
+           Coordinator(self)
+       }
+       
+        class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+           
+           var parent: PhotoCapture
+           
+           init(_ parent: PhotoCapture) {
+               self.parent = parent
+           }
+           
+           func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+               
+               if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                   parent.imagesArray.append(image)
+               }
+               
+               parent.presentationMode.wrappedValue.dismiss()
+           }
+       }
+}

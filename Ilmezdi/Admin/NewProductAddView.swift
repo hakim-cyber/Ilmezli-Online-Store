@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import PhotosUI
+
+enum ImageSource:String{
+    case library,camera
+}
 
 struct NewProductAddView: View {
     var editingProduct:Product?
@@ -13,6 +18,7 @@ struct NewProductAddView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @State private var showImagePicker = false
+    @State private var showCapture = false
     @State private var screen = UIScreen.main.bounds
     
     @State private var imagesArray:[UIImage?] = []
@@ -21,6 +27,8 @@ struct NewProductAddView: View {
     @State private var titleOfProduct = ""
     @State private var descriptinOfProduct = ""
     @State private var priceOfProduct:Double?
+    
+  
     
     @State private var adding = false
     
@@ -31,10 +39,12 @@ struct NewProductAddView: View {
     
     @State private var writingDescription = false
    
+   
     
     var body: some View {
         NavigationStack{
             ZStack{
+            
                 
                 Color.gray.opacity(0.1).ignoresSafeArea()
                 
@@ -52,8 +62,23 @@ struct NewProductAddView: View {
                             if imagesArray.count < 3{
                                 HStack{
                                     
-                                    Button{
-                                        showImagePicker = true
+                                    Menu{
+                                        Button{
+                                           
+                                            showImagePicker = true
+                                        }label: {
+                                            Text("Galeri")
+                                            Image(systemName: "photo.artframe")
+                                            
+                                        }
+                                        Button{
+                                            
+                                            showCapture = true
+                                        }label: {
+                                            Image(systemName: "camera.fill")
+                                            Text("Camera")
+                                        }
+                                        
                                     }label: {
                                         HStack{
                                             Spacer()
@@ -180,7 +205,18 @@ struct NewProductAddView: View {
                     .scrollDismissesKeyboard(.interactively)
                     .scrollContentBackground(.hidden)
                     .sheet(isPresented: $showImagePicker){
-                        ImagePicker(imagesArray: $imagesArray)
+                       
+                            ImagePicker(imagesArray: $imagesArray)
+                      
+                    }
+                    .sheet(isPresented: $showCapture){
+                       
+                     
+                           
+                        PhotoCapture(imagesArray: $imagesArray)
+                          
+                        
+                      
                     }
                     .onAppear{
                         if editingProduct == nil{

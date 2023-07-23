@@ -171,18 +171,17 @@ struct AdressForm: View {
         }
         let text =
     """
-    Ad:\(name)
-    Soyad:\(soyad)
-    Nomre:\(phoneNumber)
-    Adress:\(generateAdressString())
+    Ad: \(name)
+    Soyad: \(soyad)
+    Nomre: \(phoneNumber)
+    Adress: \(generateAdressString())
     
     Zakaz:
     
     \(productstext)
-    \(catdirilmaPulu(type: selectedAdresstype) == 0 ? "Catdirilma \(selectedAdresstype.rawValue) Pulsuz" : "Catdirilma (\(selectedAdresstype.rawValue.uppercased())) 1 x  \(catdirilmaPulu(type: selectedAdresstype)) ₼" )
+    \(catdirilmaPulu(type: selectedAdresstype) == 0 ? "Catdirilma \(selectedAdresstype.rawValue) Pulsuz" : "Catdirilma (\(selectedAdresstype.rawValue.uppercased())) + \(catdirilmaPulu(type: selectedAdresstype)) ₼" )
     
-    Umumi: \(Double(cart.totalPrice + Double(catdirilmaPulu(type: selectedAdresstype))).formatted()) ₼
-    """
+    Umumi: \(Double(cart.totalPrice + Double(catdirilmaPulu(type: selectedAdresstype))).formatted()) ₼ """
         return text
     }
     
