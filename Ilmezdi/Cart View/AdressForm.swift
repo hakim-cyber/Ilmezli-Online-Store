@@ -38,7 +38,11 @@ struct AdressForm: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(self.selectedAdresstype == type ? Color.accentColor:Color.primary)
                             
-                          
+                            Text("\(catdirilmaPulu(type:type) == 0 ? String("Pulsuz") : String( "\(catdirilmaPulu(type: type) ) ₼"))")
+                                .font(.system(size: 11))
+                                .fontWeight(.bold)
+                                .foregroundColor(self.selectedAdresstype == type ? Color.accentColor.opacity(0.8) : Color.primary.opacity(0.5))
+                            
                         }
                         .onTapGesture {
                             withAnimation(.easeInOut){
@@ -56,7 +60,7 @@ struct AdressForm: View {
                             Text("Adresiniz")
                                 .font(.system(size: 14))
                                 .fontWeight(.bold)
-                                .foregroundColor(Color.gray.opacity(0.5))
+                                .foregroundColor(Color.primary.opacity(0.5))
                             Spacer()
                         }
                         TextField("",text: $adress)
@@ -75,7 +79,7 @@ struct AdressForm: View {
                             Text("Metro Stansiyasi")
                                 .font(.system(size: 14))
                                 .fontWeight(.bold)
-                                .foregroundColor(Color.gray.opacity(0.5))
+                                .foregroundColor(Color.primary.opacity(0.5))
                             Spacer()
                         }
                         TextField("",text: $adress)
@@ -90,10 +94,13 @@ struct AdressForm: View {
                 case .poct:
                     VStack{
                         HStack{
-                            Text("Poct Unvani Ve Indexi (AZ)")
-                                .font(.system(size: 14))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.gray.opacity(0.5))
+                            VStack(alignment: .leading,spacing:5){
+                                Text("Poct Unvani Ve Indexi (AZ)")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.primary.opacity(0.5))
+                                
+                            }
                             Spacer()
                         }
                         TextField("",text: $adress)
@@ -106,6 +113,7 @@ struct AdressForm: View {
                     }
                 case .yerinde:
                     Text("Bizim unvan: Ilmezdi")
+                       
                 }
                 
                 Spacer()
@@ -132,7 +140,7 @@ struct AdressForm: View {
     }
     func placeOrder(){
         var countryCode = "+994"
-        var mobileNumber = "708315103"
+        var mobileNumber = "519782020"
         
         var text = generateString()
         let url = "https://wa.me/\(countryCode)\(mobileNumber)/?text=\(text)"
@@ -167,9 +175,9 @@ struct AdressForm: View {
     Zakaz:
     
     \(productstext)
-    \(catdirilmaPulu() == 0 ? "Catdirilma \(selectedAdresstype.rawValue) Pulsuz" : "Catdirilma (\(selectedAdresstype.rawValue.uppercased())) 1 x  \(catdirilmaPulu()) ₼" )
+    \(catdirilmaPulu(type: selectedAdresstype) == 0 ? "Catdirilma \(selectedAdresstype.rawValue) Pulsuz" : "Catdirilma (\(selectedAdresstype.rawValue.uppercased())) 1 x  \(catdirilmaPulu(type: selectedAdresstype)) ₼" )
     
-    Umumi: \(Double(cart.totalPrice + Double(catdirilmaPulu())).formatted()) ₼
+    Umumi: \(Double(cart.totalPrice + Double(catdirilmaPulu(type: selectedAdresstype))).formatted()) ₼
     """
         return text
     }
@@ -186,8 +194,8 @@ struct AdressForm: View {
            return "Yerinde"
         }
     }
-    func catdirilmaPulu()->Int{
-        switch selectedAdresstype {
+    func catdirilmaPulu(type:AdressType)->Int{
+        switch type {
         case .seherDaxili:
             return 5
         case .metroya:
