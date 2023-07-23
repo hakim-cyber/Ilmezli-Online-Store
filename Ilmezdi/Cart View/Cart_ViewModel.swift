@@ -11,6 +11,7 @@ import SwiftUI
 class Cart_ViewModel:ObservableObject{
     @Published var cartProducts:[CartItem] = []
     
+    
     func addProduct(product:Product){
         if let id = cartProducts.firstIndex(where: {$0.product.id == product.id}){
             cartProducts[id].count += 1

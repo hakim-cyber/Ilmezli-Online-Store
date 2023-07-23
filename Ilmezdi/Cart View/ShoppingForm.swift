@@ -15,7 +15,7 @@ struct ShoppingForm: View {
     @AppStorage("name")  var name = ""
     @AppStorage("phoneNumber")  var phoneNumber = ""
     
-    @AppStorage("adress") var adress = ""
+    @AppStorage("soyad") var soyad = ""
     
     @State private var shpwAdressForm = false
     @State private var screen = UIScreen.main.bounds
@@ -28,22 +28,59 @@ struct ShoppingForm: View {
             }else{
                 VStack(spacing: 20){
                     Spacer()
-                    VStack{
-                        TextField("Adınız",text: $name)
-                            .padding(8)
-                            .padding(.horizontal,8)
-                            .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
-                            
-                            .keyboardType(.namePhonePad)
-                        Spacer()
-                        TextField("Nomrəniz",text: $phoneNumber)
-                            .padding(8)
-                            .padding(.horizontal,8)
-                            .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
-                            
-                            .keyboardType(.phonePad)
+                    VStack(spacing: 10){
+                        HStack(spacing: 15){
+                            VStack(spacing:5){
+                                HStack{
+                                    Text("Ad")
+                                        .font(.system(size: 14))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.gray.opacity(0.5))
+                                    Spacer()
+                                }
+                                TextField("",text: $name)
+                                    .padding(8)
+                                    .padding(.horizontal,8)
+                                    .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
+                                    .keyboardType(.namePhonePad)
+                                    
+                            }
+                            .frame(width: screen.width / 2.3)
+                           
+                            VStack(spacing:3){
+                                HStack{
+                                    Text("Soyad")
+                                        .font(.system(size: 14))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.gray.opacity(0.5))
+                                    Spacer()
+                                }
+                                TextField("",text: $soyad)
+                                    .padding(8)
+                                    .padding(.horizontal,8)
+                                    .background(RoundedRectangle(cornerRadius: 10).stroke(name == "" ? Color.red : Color.primary))
+                                    .keyboardType(.namePhonePad)
+                            }
+                            .frame(width: screen.width / 2.3)
+                        }
+                        
+                        VStack(spacing:5){
+                            HStack{
+                                Text("Nomre")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.gray.opacity(0.5))
+                                Spacer()
+                            }
+                            TextField("",text: $phoneNumber)
+                                .padding(8)
+                                .padding(.horizontal,8)
+                                .background(RoundedRectangle(cornerRadius: 10).stroke(phoneNumber == "" ? Color.red : Color.primary))
+                                
+                                .keyboardType(.phonePad)
+                        }
                     }
-                    .listRowBackground(Color.clear)
+                    
                     Spacer()
                     Spacer()
                     Spacer()
@@ -52,14 +89,14 @@ struct ShoppingForm: View {
                             self.shpwAdressForm = true
                         }
                     }label: {
-                        Text("Tamamla")
+                        Text("Davam Ele")
                             .foregroundColor(.white)
                             .frame(width: screen.width / 1.2,height: 40)
                             .listRowBackground(Color.clear)
                             .background(Color.accentColor)
                             .cornerRadius(10)
                     }
-                    .disabled(name == "" || phoneNumber == "" || adress == "")
+                    .disabled(name == "" || phoneNumber == "" || soyad == "")
                   
                 }
                 .padding(.horizontal,20)
@@ -69,46 +106,7 @@ struct ShoppingForm: View {
             }
         }
     }
-    func placeOrder(){
-        var countryCode = "+994"
-        var mobileNumber = "708315103"
-        
-        var text = generateString()
-        let url = "https://wa.me/\(countryCode)\(mobileNumber)/?text=\(text)"
-        
-        let  urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let Url = NSURL(string: urlEncoded)
-        
-        if UIApplication.shared.canOpenURL(Url! as URL){
-            print("Opening watsapp")
-            
-            UIApplication.shared.open(Url as! URL,options: [:]){status in
-                print("opened watsapp chat")
-                dismiss()
-            }
-        }else{
-            print("Cant open ")
-        }
-    }
-    func generateString()->String{
-        var productstext = ""
-        for product in cart.cartProducts{
-            let productText = " \(product.product.name)    \(product.count) x \(product.product.price.formatted()) ₼ \n"
-            productstext += productText
-        }
-        let text =
-    """
-    Ad:\(name)
-    Nomre:\(phoneNumber)
-    Adress:\(adress)
     
-    Zakaz:
-    
-    \(productstext)
-    Umumi: \(cart.totalPrice.formatted()) ₼
-    """
-        return text
-    }
 }
 
 struct ShoppingForm_Previews: PreviewProvider {
