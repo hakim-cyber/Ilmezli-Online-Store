@@ -14,8 +14,9 @@ class ProductsData:ObservableObject{
     
     
     
-    @Published var categories = [ Category(title: "Hamısı", image: "square.stack.3d.up.fill"),
+    @Published var categories = [ Category(title: "Hamısı", image: "square.stack.3d.up"),
         Category(title: "Ev", image: "house.lodge.circle"),Category(title: "Mətbəx", image: "fork.knife"),Category(title: "Texnika", image: "desktopcomputer"),Category(title: "Tikinti", image: "building.2.crop.circle"),Category(title: "Xırdavat", image: "light.ribbon"),
+                                  Category(title: "Idman", image: "dumbbell")
     ]
     
     private var db = CKContainer(identifier:"iCloud.com.hakimAliyev.ilmezdiCloud").publicCloudDatabase

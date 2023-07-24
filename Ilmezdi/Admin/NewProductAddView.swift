@@ -21,6 +21,7 @@ struct NewProductAddView: View {
     @State private var showCapture = false
     @State private var screen = UIScreen.main.bounds
     
+    
     @State private var imagesArray:[UIImage?] = []
     
     @State private var categoryOfProduct = ""
