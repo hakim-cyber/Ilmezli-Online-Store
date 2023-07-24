@@ -12,70 +12,144 @@ struct Product_ImageSlider: View {
     
     @State private var screen = UIScreen.main.bounds
     @State private var indexOfImage = 0
+    
+    @State private var showFull = false
     var body: some View {
         
         VStack(spacing: 0){
             HStack{
                
-                
-                ZStack{
-                    Color.gray.opacity(0.05)
-                        .frame(width: screen.width * 0.8,height: screen.height * 0.38)
-                        .clipped()
-                    
-                    images[indexOfImage]
-                        .resizable()
-                        .scaledToFill()
-                        .transition(.slide)
+              
+                    ZStack{
+                       
                         
-                    VStack{
-                        Spacer()
-                        HStack{
-                            ForEach(0..<images.count , id: \.self){num in
-                                Circle()
-                                    .fill(num == indexOfImage ? Color.primary : Color.secondary)
-                                    .frame(width: 10)
-                                    .transition(.slide)
+                        images[indexOfImage]
+                            .resizable()
+                            .scaledToFill()
+                            .transition(.slide)
+                        
+                        VStack{
+                            Spacer()
+                            HStack{
+                                ForEach(0..<images.count , id: \.self){num in
+                                    Circle()
+                                        .fill(num == indexOfImage ? Color.primary : Color.secondary)
+                                        .frame(width: 10)
+                                        .transition(.slide)
                                     
+                                }
                             }
                         }
-                    }
-                    .padding(.bottom,10)
-                    
-                }
-               
-               
-                .frame(width: screen.width * 0.8,height: screen.height * 0.38)
-               
-                .cornerRadius(10)
-                .gesture(
-                
-                DragGesture()
-                    .onChanged{info in
+                        .padding(.bottom,10)
                         
                     }
-                    .onEnded{info in
-                        if info.translation.width < 0{
-                            if indexOfImage != images.count - 1 {
-                                withAnimation(.easeInOut){
-                                    indexOfImage +=  1
-                                }
+                
+                    
+                    
+                    .frame(width: screen.width * 0.8,height: screen.height * 0.38)
+                    
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        self.showFull = true
+                    }
+                    .gesture(
+                        
+                        DragGesture()
+                            .onChanged{info in
+                                
                             }
-                        }else if info.translation.width > 0  {
-                            if indexOfImage != 0 {
-                                withAnimation(.easeInOut){
-                                    indexOfImage -=  1
+                            .onEnded{info in
+                                if info.translation.width < 0{
+                                    if indexOfImage != images.count - 1 {
+                                        withAnimation(.easeInOut){
+                                            indexOfImage +=  1
+                                        }
+                                    }
+                                }else if info.translation.width > 0  {
+                                    if indexOfImage != 0 {
+                                        withAnimation(.easeInOut){
+                                            indexOfImage -=  1
+                                        }
+                                    }
                                 }
+                                
                             }
-                        }
+                        
+                    )
+              
+            }
+            .sheet(isPresented: $showFull){
+                VStack{
+                    HStack{
+                        Button{
+                              self.showFull = false
+                                            }label: {
+                                                ZStack{
+                                                    Circle().fill(Color.gray.opacity(0.09))
+                                                    
+                                                    Image(systemName: "xmark")
+                                                        .font(.system(size: 13))
+                                                        .foregroundColor(Color.primary)
+                                                }
+                                                .frame(width: 40)
+                                               
+                                            }
+                        Spacer()
                        
                     }
+                    .padding(.horizontal)
+                    Spacer()
+                    ZStack{
+                        
+                        images[indexOfImage]
+                            .resizable()
+                            .scaledToFit()
+                          
+                        
+                        VStack{
+                            Spacer()
+                            HStack{
+                                ForEach(0..<images.count , id: \.self){num in
+                                    Circle()
+                                        .fill(num == indexOfImage ? Color.primary : Color.secondary)
+                                        .frame(width: 10)
+                                        .transition(.slide)
+                                    
+                                }
+                            }
+                        }
+                        .padding(.bottom,10)
+                        
+                    }
+                    
+                    .gesture(
+                        
+                        DragGesture()
+                            .onChanged{info in
+                                
+                            }
+                            .onEnded{info in
+                                if info.translation.width < 0{
+                                    if indexOfImage != images.count - 1 {
+                                        withAnimation(.easeInOut){
+                                            indexOfImage +=  1
+                                        }
+                                    }
+                                }else if info.translation.width > 0  {
+                                    if indexOfImage != 0 {
+                                        withAnimation(.easeInOut){
+                                            indexOfImage -=  1
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        
+                    )
+                    Spacer()
+                }
+                .padding(.top)
                 
-                )
-              
-               
-                
-              
             }
             
         }
