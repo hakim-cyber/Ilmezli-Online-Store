@@ -79,76 +79,78 @@ struct Product_ImageSlider: View {
               
             }
             .sheet(isPresented: $showFull){
-                VStack{
-                    HStack{
-                        Button{
-                              self.showFull = false
-                                            }label: {
-                                                ZStack{
-                                                    Circle().fill(Color.gray.opacity(0.09))
-                                                    
-                                                    Image(systemName: "xmark")
-                                                        .font(.system(size: 13))
-                                                        .foregroundColor(Color.primary)
-                                                }
-                                                .frame(width: 40)
-                                               
-                                            }
-                        Spacer()
-                       
-                    }
-                    .padding(.horizontal)
-                    Spacer()
-                    ZStack{
-                        
-                        images[indexOfImage]
-                            .resizable()
-                            .scaledToFit()
-                          
-                        
-                        VStack{
+                ZStack{
+                    VStack{
+                        HStack{
+                            Button{
+                                self.showFull = false
+                            }label: {
+                                ZStack{
+                                    Circle().fill(Color.gray.opacity(0.09))
+                                    
+                                    Image(systemName: "xmark")
+                                        .font(.system(size: 13))
+                                        .foregroundColor(Color.primary)
+                                }
+                                .frame(width: 40)
+                                
+                            }
                             Spacer()
-                            HStack{
-                                ForEach(0..<images.count , id: \.self){num in
-                                    Circle()
-                                        .fill(num == indexOfImage ? Color.primary : Color.secondary)
-                                        .frame(width: 10)
-                                        .transition(.slide)
+                            
+                        }
+                        .padding(.horizontal)
+                        Spacer()
+                        ZStack{
+                            
+                            images[indexOfImage]
+                                .resizable()
+                                .scaledToFit()
+                            
+                            
+                            VStack{
+                                Spacer()
+                                HStack{
+                                    ForEach(0..<images.count , id: \.self){num in
+                                        Circle()
+                                            .fill(num == indexOfImage ? Color.primary : Color.secondary.opacity(0.3))
+                                            .frame(width: 10)
+                                            .transition(.slide)
+                                        
+                                    }
+                                }
+                            }
+                            .padding(.bottom,10)
+                            
+                        }
+                        
+                        .gesture(
+                            
+                            DragGesture()
+                                .onChanged{info in
                                     
                                 }
-                            }
-                        }
-                        .padding(.bottom,10)
-                        
-                    }
-                    
-                    .gesture(
-                        
-                        DragGesture()
-                            .onChanged{info in
-                                
-                            }
-                            .onEnded{info in
-                                if info.translation.width < 0{
-                                    if indexOfImage != images.count - 1 {
-                                        withAnimation(.easeInOut){
-                                            indexOfImage +=  1
+                                .onEnded{info in
+                                    if info.translation.width < 0{
+                                        if indexOfImage != images.count - 1 {
+                                            withAnimation(.easeInOut){
+                                                indexOfImage +=  1
+                                            }
+                                        }
+                                    }else if info.translation.width > 0  {
+                                        if indexOfImage != 0 {
+                                            withAnimation(.easeInOut){
+                                                indexOfImage -=  1
+                                            }
                                         }
                                     }
-                                }else if info.translation.width > 0  {
-                                    if indexOfImage != 0 {
-                                        withAnimation(.easeInOut){
-                                            indexOfImage -=  1
-                                        }
-                                    }
+                                    
                                 }
-                                
-                            }
-                        
-                    )
-                    Spacer()
+                            
+                        )
+                        Spacer()
+                    }
+                    .padding(.top)
                 }
-                .padding(.top)
                 
             }
             
