@@ -113,8 +113,11 @@ struct NewProductAddView: View {
                                         ForEach(imagesArray.indices,id: \.self){id in
                                             Image(uiImage: imagesArray[id] ?? UIImage())
                                                 .resizable()
-                                                .scaledToFit()
-                                                .frame(maxHeight: 80 )
+                                                .scaledToFill()
+                                                .frame(width: screen.width * 0.4,height: screen.height * 0.15)
+                                                .clipped()
+                                                .cornerRadius(10)
+                                            
                                                 .overlay(alignment:.topTrailing){
                                                     Button{
                                                         withAnimation {
@@ -131,7 +134,7 @@ struct NewProductAddView: View {
                                                     .padding(.vertical,5)
                                                     
                                                 }
-                                                .frame(maxWidth: (screen.width * 0.88) / 2,maxHeight: (screen.height * 0.38) / 2 )
+                                               
                                             
                                             
                                         }
