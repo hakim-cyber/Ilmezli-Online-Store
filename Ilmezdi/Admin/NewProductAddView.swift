@@ -113,9 +113,8 @@ struct NewProductAddView: View {
                                         ForEach(imagesArray.indices,id: \.self){id in
                                             Image(uiImage: imagesArray[id] ?? UIImage())
                                                 .resizable()
-                                                .scaledToFill()
-                                                .frame(width: screen.width * 0.4,height: screen.height * 0.15)
-                                                .clipped()
+                                                .scaledToFit()
+                                                .frame(width: 80)
                                                 .cornerRadius(10)
                                             
                                                 .overlay(alignment:.topTrailing){
