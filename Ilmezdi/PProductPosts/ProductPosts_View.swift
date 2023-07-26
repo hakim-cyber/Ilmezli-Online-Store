@@ -21,7 +21,7 @@ struct ProductPosts_View: View {
                     VStack{
                         if vm.images == []{
                             Color.gray.opacity(0.05)
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.65 )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.7 )
                                 .overlay{
                                     Text("No Image")
                                 }
@@ -31,7 +31,7 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.65,alignment: .center )
+                                .frame(width: screen.width / 2.2, height:  (210) * 0.7,alignment: .top )
                                 .clipped()
                             
                                 
@@ -59,34 +59,21 @@ struct ProductPosts_View: View {
                             Text("\(vm.product.price.formatted()) ₼")
                                 .fontWeight(.medium)
                                 .foregroundColor(Color.accentColor)
-                                .font(.system(size: 14))
+                                .font(.system(size:  (210) * 0.3 / 4))
                             Spacer()
                         }
                         HStack{
                             Text(vm.product.name)
-                                .font(.system(size: 14))
+                                .font(.system(size:  (210) * 0.3 / 4))
                                 .foregroundColor(colorScheme == .dark ? .white :.black)
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
-                       
-                        
-                        HStack{
-                            Text(vm.product.category)
-                                .font(.system(size: 12))
-                                .foregroundColor(.secondary)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.leading)
-                                .padding(.leading,1)
-                            Spacer()
-                        }
-                       
-                        Spacer()
                     }
-                    .padding(.top,5)
+                    .padding(.vertical,5)
                     .padding(.horizontal,7)
-                    .frame(width: screen.width / 2.2, height:  (210) * 0.35 )
+                    .frame(width: screen.width / 2.2, height:  (210) * 0.3, alignment: .top )
                     
                 }
               
