@@ -23,6 +23,8 @@ struct NewProductAddView: View {
     
     
     @State private var imagesArray:[UIImage?] = []
+    @State private var newImages:[UIImage?] = []
+    
     
     @State private var categoryOfProduct = ""
     @State private var titleOfProduct = ""
@@ -41,7 +43,9 @@ struct NewProductAddView: View {
     @State private var writingDescription = false
    
    
-    
+    var allImages:[UIImage?]{
+        imagesArray + newImages
+    }
     var body: some View {
         NavigationStack{
             ZStack{
@@ -60,7 +64,7 @@ struct NewProductAddView: View {
                                 }
                             }
                             
-                            if imagesArray.count < 3{
+                            if allImages.count < 3{
                                 HStack{
                                     
                                     Menu{
@@ -108,11 +112,11 @@ struct NewProductAddView: View {
                             
                         }
                         Section{
-                            if imagesArray != []{
+                            if allImages != []{
                                 ScrollView(.horizontal,showsIndicators: false){
                                     HStack(spacing:5){
-                                        ForEach(imagesArray.indices,id: \.self){id in
-                                            Image(uiImage: imagesArray[id] ?? UIImage())
+                                        ForEach(allImages.indices,id: \.self){id in
+                                            Image(uiImage: allImages[id] ?? UIImage())
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 80)
@@ -121,7 +125,12 @@ struct NewProductAddView: View {
                                                 .overlay(alignment:.topTrailing){
                                                     Button{
                                                         withAnimation {
-                                                            imagesArray.removeAll(where: {$0 == imagesArray[id]})
+                                                           
+                                                            if imagesArray.first(where: {$0 == allImages[id]}) != nil{
+                                                                imagesArray.removeAll(where:  {$0 == allImages[id]})
+                                                            }else if newImages.first(where: {$0 == allImages[id]}) != nil{
+                                                                newImages.removeAll(where:  {$0 == allImages[id]})
+                                                            }
                                                         }
                                                     }label:{
                                                         Image(systemName: "xmark")
@@ -209,14 +218,14 @@ struct NewProductAddView: View {
                     .scrollContentBackground(.hidden)
                     .sheet(isPresented: $showImagePicker){
                        
-                            ImagePicker(imagesArray: $imagesArray)
+                            ImagePicker(imagesArray: $newImages)
                       
                     }
                     .sheet(isPresented: $showCapture){
                        
                      
                            
-                        PhotoCapture(imagesArray: $imagesArray)
+                        PhotoCapture(imagesArray: $newImages)
                           
                         
                       
@@ -313,7 +322,10 @@ struct NewProductAddView: View {
         
         var images:[String] = []
         for image in imagesArray{
-            images.append( productData.imageToString(image: image))
+            images.append( productData.imageToString(image: image,resize: false))
+        }
+        for image in newImages{
+            images.append( productData.imageToString(image: image,resize: true))
         }
        
         let product = Product(id: editingProduct!.id,recordId:editingProduct?.recordId , name: titleOfProduct, description: descriptinOfProduct, images: images, category: categoryOfProduct, price: priceOfProduct ?? 0.0, postDate: productData.dateToString(date: Date.now))

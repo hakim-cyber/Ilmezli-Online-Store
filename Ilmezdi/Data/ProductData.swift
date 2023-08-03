@@ -128,21 +128,28 @@ class ProductsData:ObservableObject{
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
-    func imageToString(image:UIImage?)->String{
+    func imageToString(image:UIImage?,resize:Bool = true)->String{
         guard let image = image else {
             print("Error: Unable to get image or convert to data")
             return ""
         }
-        
-        let resizedImage = image.resize(to: CGSize(width: image.size.width / 5, height: image.size.height / 5)) // Adjust the desired size
-        
-        guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.45) else {
-            print("Error: Unable to resize image or convert to data")
-            return ""
+        if resize{
+            
+            let resizedImage = image.resize(to: CGSize(width: image.size.width / 5, height: image.size.height / 5)) // Adjust the desired size
+            
+            guard let resizedImageData = resizedImage!.jpegData(compressionQuality: 0.45) else {
+                print("Error: Unable to resize image or convert to data")
+                return ""
+            }
+            
+            
+            let imageString = resizedImageData.base64EncodedString()
+            
+            return imageString
+        }else{
+            let imageString = (image.jpegData(compressionQuality: 1)?.base64EncodedString())!
+            return imageString
         }
-        
-        let imageString = resizedImageData.base64EncodedString()
-        return imageString
     }
 }
    
