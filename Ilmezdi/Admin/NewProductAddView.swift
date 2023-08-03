@@ -232,7 +232,7 @@ struct NewProductAddView: View {
                     }
                     .onAppear{
                         if editingProduct == nil{
-                            categoryOfProduct = productData.categories[1].title ?? ""
+                            categoryOfProduct = productData.categories[1].title 
                         }else{
                             
                             self.categoryOfProduct = editingProduct!.category

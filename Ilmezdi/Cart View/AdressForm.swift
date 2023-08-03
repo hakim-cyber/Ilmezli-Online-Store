@@ -143,10 +143,10 @@ struct AdressForm: View {
         
     }
     func placeOrder(){
-        var countryCode = "+994"
-        var mobileNumber = "519782020"
+        let countryCode = "+994"
+        let mobileNumber = "519782020"
         
-        var text = generateString()
+        let text = generateString()
         let url = "https://wa.me/\(countryCode)\(mobileNumber)/?text=\(text)"
         
         let  urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -155,7 +155,7 @@ struct AdressForm: View {
         if UIApplication.shared.canOpenURL(Url! as URL){
             print("Opening watsapp")
             
-            UIApplication.shared.open(Url as! URL,options: [:]){status in
+            UIApplication.shared.open(Url! as URL,options: [:]){status in
                 print("opened watsapp chat")
                 dismiss()
             }
