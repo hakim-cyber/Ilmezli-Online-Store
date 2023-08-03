@@ -218,7 +218,7 @@ struct NewProductAddView: View {
                     .scrollContentBackground(.hidden)
                     .sheet(isPresented: $showImagePicker){
                        
-                            ImagePicker(imagesArray: $newImages)
+                        ImagePicker(imagesArray: $newImages,max: 3 - allImages.count)
                       
                     }
                     .sheet(isPresented: $showCapture){

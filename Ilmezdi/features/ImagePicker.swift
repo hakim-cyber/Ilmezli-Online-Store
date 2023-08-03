@@ -13,6 +13,7 @@ import SwiftUI
 
 struct ImagePicker:UIViewControllerRepresentable{
     @Binding var imagesArray:[UIImage?]
+    let max:Int
     class Coordinator:NSObject,PHPickerViewControllerDelegate{
         
         var parent:ImagePicker
@@ -81,7 +82,7 @@ struct ImagePicker:UIViewControllerRepresentable{
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
-        config.selectionLimit = 3 - imagesArray.count
+        config.selectionLimit = max
         
         let picker = PHPickerViewController(configuration: config)
         
