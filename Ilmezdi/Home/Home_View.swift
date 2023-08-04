@@ -21,6 +21,15 @@ struct Home_View: View {
             VStack(spacing:20){
                
                     HStack(spacing:20){
+                        if showSearchView{
+                            Button{
+                                self.showSearchView = false
+                            }label: {
+                                Image(systemName: "chevron.left")
+                                    .font(.system(size: 23))
+                            }
+                            .padding(.trailing,-5)
+                        }
                         SearchBar(text: $vm.searchText,full: $showSearchView)
                       
                         Cart_(font: 26, itemCount: cart.cartProducts.count)

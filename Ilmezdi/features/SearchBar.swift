@@ -20,24 +20,19 @@ struct SearchBar: View {
             .keyboardType(.default)
             .background(RoundedRectangle(cornerRadius: 10).stroke(.gray.opacity(0.3),lineWidth: 1.5))
             .textFieldStyle(.plain)
-           
-            .overlay(alignment: .trailing, content: {
-                if full{
-                    Button{
-                        withAnimation(.easeInOut){
-                            text = ""
-                            self.focused = false
-                        }
-                    }label: {
-                        Image(systemName: "xmark.circle.fill")
-                    }
-                    .padding(.trailing,8)
-                }
-            })
             .focused($focused)
             .onChange(of: focused){bool in
                 withAnimation(.easeInOut(duration: 0.24)){
                     full = bool
+                    
+                }
+            }
+            .onChange(of: full){bool in
+                withAnimation(.easeInOut(duration: 0.34)){
+                    focused = bool
+                    if full == false{
+                        text = ""
+                    }
                 }
             }
             
