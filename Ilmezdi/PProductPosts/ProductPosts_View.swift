@@ -23,7 +23,7 @@ struct ProductPosts_View: View {
                             Color.gray.opacity(0.05)
                                 .frame(width: screen.width / 2.2, height:  (210) * 0.7 )
                                 .overlay{
-                                    Text("No Image")
+                                    Text("Sekil Yoxdu")
                                 }
                               
                             

@@ -197,10 +197,10 @@ struct NewProductAddView: View {
                                 }
                                 .foregroundColor(.white)
                                 .bold()
-                                .disabled(categoryOfProduct == ""  || allImages == [] || priceOfProduct == nil || descriptinOfProduct == "" || adding)
+                                .disabled(categoryOfProduct == ""  || priceOfProduct == nil || descriptinOfProduct == "" || adding)
                                 Spacer()
                             }
-                            .listRowBackground( categoryOfProduct == ""  || imagesArray == [] || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
+                            .listRowBackground( categoryOfProduct == ""   || priceOfProduct == nil || descriptinOfProduct == "" ? Color.secondary :  Color.accentColor)
                             
                         }
                         
