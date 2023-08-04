@@ -12,7 +12,7 @@ struct WishView: View {
     var body: some View {
         ZStack{
             Color.gray.opacity(0.1).ignoresSafeArea()
-            ProductsGrid(showWished: true)
+            ProductsGrid(showWished: true, showSearch: .constant(false))
         }
     }
 }

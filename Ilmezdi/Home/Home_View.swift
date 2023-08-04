@@ -42,7 +42,7 @@ struct Home_View: View {
                     Categories_Bar(selectedCategory: $vm.selectedCategory)
                 }
                 VStack{
-                    ProductsGrid(showSearch: showSearchView, selectedCategory: vm.selectedCategory,searchText: vm.searchText)
+                    ProductsGrid(showSearch: $showSearchView, selectedCategory: vm.selectedCategory,searchText: vm.searchText)
                     
                 }
                 .frame(maxWidth: .infinity,maxHeight:.infinity)

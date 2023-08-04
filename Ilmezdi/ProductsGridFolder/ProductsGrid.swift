@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductsGrid: View {
     var showWished:Bool = false
-    var showSearch:Bool = false
+    @Binding var showSearch:Bool
     var selectedCategory:Category?
     var searchText:String? = ""
      @StateObject var vm = ProductsGrid_ViewModel()
@@ -81,7 +81,12 @@ struct ProductsGrid: View {
                     if showSearch{
                         LazyVStack(spacing: 25){
                             ForEach(filteredProducts){product in
-                                SearcPost(product: product)
+                                SearcPost(product: product){
+                                    withAnimation(.easeInOut){
+                                        showSearch = false
+                                        selectedProduct = product
+                                    }
+                                }
                             }
                         }
                         .padding(6)
@@ -131,7 +136,7 @@ struct ProductsGrid: View {
 
 struct ProductsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        ProductsGrid(selectedCategory: nil)
+        ProductsGrid(showSearch: .constant(false), selectedCategory: nil)
             .environmentObject(ProductsData())
             .environmentObject(WishedProducts())
     }
