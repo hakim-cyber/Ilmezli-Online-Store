@@ -35,15 +35,16 @@ struct ProductsGrid: View {
             
         }else{
             var products = [Product]()
-            if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
-                
-                products =  productsData.exampleProducts
-                
-            }else{
-                products =   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
-                
-            }
+           
             if searchText == ""{
+                if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
+                    
+                    products =  productsData.exampleProducts
+                    
+                }else{
+                    products =   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
+                    
+                }
                 return products
             }else{
                 return products.filter({$0.name.localizedCaseInsensitiveContains(searchText!.trimmingCharacters(in: .whitespacesAndNewlines))})
