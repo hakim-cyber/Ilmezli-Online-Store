@@ -83,7 +83,7 @@ struct ProductsGrid: View {
                             ForEach(filteredProducts){product in
                                 SearcPost(product: product){
                                     withAnimation(.easeInOut){
-                                        showSearch = false
+                                      
                                         selectedProduct = product
                                     }
                                 }

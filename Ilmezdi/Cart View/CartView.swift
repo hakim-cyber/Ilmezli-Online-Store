@@ -81,7 +81,9 @@ struct CartView: View {
                                                 }else{
                                                     cart.useImage(text: product.product.images.first ?? "")
                                                         .resizable()
-                                                        .scaledToFit()
+                                                        .scaledToFill()
+                                                        .frame(width: 100)
+                                                        .clipped()
                                                         .cornerRadius(10)
                                                       
                                                         
