@@ -36,7 +36,7 @@ struct ProductsGrid: View {
         }else{
             var products = [Product]()
            
-            if searchText == ""{
+            if !showSearch{
                 if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
                     
                     products =  productsData.exampleProducts
@@ -47,7 +47,11 @@ struct ProductsGrid: View {
                 }
                 return products
             }else{
-                return products.filter({$0.name.localizedCaseInsensitiveContains(searchText!.trimmingCharacters(in: .whitespacesAndNewlines))})
+                if searchText == ""{
+                    return productsData.exampleProducts
+                }else{
+                    return productsData.exampleProducts.filter({$0.name.localizedCaseInsensitiveContains(searchText!.trimmingCharacters(in: .whitespacesAndNewlines))})
+                }
             }
         }
     }
@@ -75,9 +79,13 @@ struct ProductsGrid: View {
                
                 ScrollView(.vertical,showsIndicators: false){
                     if showSearch{
-                        LazyVStack{
-                            
+                        LazyVStack(spacing: 25){
+                            ForEach(filteredProducts){product in
+                                SearcPost(product: product)
+                            }
                         }
+                        .padding(6)
+                        .padding(.horizontal,8)
                     }else{
                         LazyVGrid(columns: columns){
                             ForEach(filteredProducts){product in

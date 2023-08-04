@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		082C515D2A655ADA00B9E7E5 /* ShoppingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */; };
+		086366E22A7D03C00061E7A9 /* SearcPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086366E12A7D03C00061E7A9 /* SearcPost.swift */; };
 		08767CA62A5572C500F634D3 /* IlmezdiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CA52A5572C500F634D3 /* IlmezdiApp.swift */; };
 		08767CA82A5572C500F634D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08767CA72A5572C500F634D3 /* ContentView.swift */; };
 		08767CAA2A5572C700F634D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08767CA92A5572C700F634D3 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		082C515C2A655ADA00B9E7E5 /* ShoppingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingForm.swift; sourceTree = "<group>"; };
+		086366E12A7D03C00061E7A9 /* SearcPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcPost.swift; sourceTree = "<group>"; };
 		08767CA22A5572C500F634D3 /* Ilmezdi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ilmezdi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08767CA52A5572C500F634D3 /* IlmezdiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IlmezdiApp.swift; sourceTree = "<group>"; };
 		08767CA72A5572C500F634D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				08767CD52A57411D00F634D3 /* ProductsGrid.swift */,
 				08767CD72A57412D00F634D3 /* ProductsGrid_ViewModel.swift */,
+				086366E12A7D03C00061E7A9 /* SearcPost.swift */,
 			);
 			path = ProductsGridFolder;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				08767CCC2A56BEDD00F634D3 /* ProductPosts_ViewModel.swift in Sources */,
 				08767CBB2A557A3E00F634D3 /* SearchBar.swift in Sources */,
 				08767CD82A57412D00F634D3 /* ProductsGrid_ViewModel.swift in Sources */,
+				086366E22A7D03C00061E7A9 /* SearcPost.swift in Sources */,
 				08767CCF2A56C0F000F634D3 /* structs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
