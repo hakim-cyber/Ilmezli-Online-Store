@@ -14,6 +14,8 @@ struct SearcPost: View {
     @State private var screen = UIScreen.main.bounds
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var cart:Cart_ViewModel
+    
+    @State private var askCount = false
     var body: some View {
         HStack{
             HStack(spacing: 10){
@@ -52,9 +54,10 @@ struct SearcPost: View {
             }
             Spacer()
             Button{
-               
+                withAnimation{
+                    askCount = true
                     cart.addProduct(product: product)
-                
+                }
             }label: {
                
             
