@@ -13,6 +13,7 @@ struct Home_View: View {
     @EnvironmentObject var cart:Cart_ViewModel
     @State private var screen = UIScreen.main.bounds
     
+    @State private var showSearchView = false
     
     var body: some View {
         ZStack{
@@ -20,7 +21,7 @@ struct Home_View: View {
             VStack(spacing:20){
                
                     HStack(spacing:20){
-                        SearchBar(text: $vm.searchText)
+                        SearchBar(text: $vm.searchText,full: $showSearchView)
                       
                         Cart_(font: 26, itemCount: cart.cartProducts.count)
                         
@@ -28,16 +29,14 @@ struct Home_View: View {
                     }
                     .padding(.horizontal)
                    
-                
+                if !showSearchView{
                     Categories_Bar(selectedCategory: $vm.selectedCategory)
-                
+                }
+                VStack{
+                    ProductsGrid(showSearch: showSearchView, selectedCategory: vm.selectedCategory,searchText: vm.searchText)
                     
-                    VStack{
-                        ProductsGrid(selectedCategory: vm.selectedCategory,searchText: vm.searchText)
-                        
-                    }
-                    .frame(maxWidth: .infinity,maxHeight:.infinity)
-                
+                }
+                .frame(maxWidth: .infinity,maxHeight:.infinity)
             
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)

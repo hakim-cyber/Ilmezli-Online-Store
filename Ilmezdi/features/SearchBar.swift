@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text:String
+    @Binding var full:Bool
     @FocusState var focused
     
     @State private var screen = UIScreen.main.bounds
@@ -21,23 +22,30 @@ struct SearchBar: View {
             .textFieldStyle(.plain)
            
             .overlay(alignment: .trailing, content: {
-                Button{
-                    withAnimation(.easeInOut){
-                        text = ""
-                        self.focused = false
+                if full{
+                    Button{
+                        withAnimation(.easeInOut){
+                            text = ""
+                            self.focused = false
+                        }
+                    }label: {
+                        Image(systemName: "xmark.circle.fill")
                     }
-                }label: {
-                    Image(systemName: "xmark")
+                    .padding(.trailing,8)
                 }
-                .padding(.trailing,8)
             })
             .focused($focused)
+            .onChange(of: focused){bool in
+                withAnimation(.easeInOut(duration: 0.24)){
+                    full = bool
+                }
+            }
             
     }
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(text: .constant(""))
+        SearchBar(text: .constant(""),full: .constant(false))
     }
 }

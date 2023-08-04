@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductsGrid: View {
     var showWished:Bool = false
+    var showSearch:Bool = false
     var selectedCategory:Category?
     var searchText:String? = ""
      @StateObject var vm = ProductsGrid_ViewModel()
@@ -72,23 +73,30 @@ struct ProductsGrid: View {
             VStack{
                
                 ScrollView(.vertical,showsIndicators: false){
-                    LazyVGrid(columns: columns){
-                        ForEach(filteredProducts){product in
-                            if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
-                                ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
-                                    .onTapGesture {
-                                        withAnimation(.easeInOut){
-                                            selectedProduct = product
-                                        }
-                                    }
-                            }else{
-                                
-                            }
+                    if showSearch{
+                        LazyVStack{
+                            
                         }
-                       
+                    }else{
+                        LazyVGrid(columns: columns){
+                            ForEach(filteredProducts){product in
+                                if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
+                                    ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
+                                        .onTapGesture {
+                                            withAnimation(.easeInOut){
+                                                selectedProduct = product
+                                            }
+                                        }
+                                }else{
+                                    
+                                }
+                            }
+                            
+                        }
+                        .padding(.top,showWished ? 25:6)
+                        .padding(.horizontal,8)
+                        
                     }
-                    .padding(.top,showWished ? 25:6)
-                    .padding(.horizontal,8)
                 }
             }
             
