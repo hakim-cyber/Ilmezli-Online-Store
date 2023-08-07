@@ -21,7 +21,7 @@ struct ProductPosts_View: View {
                     VStack{
                         if vm.images == []{
                             Color.gray.opacity(0.05)
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.7 )
+                                .frame(width: screen.width / 2.25, height:  (210) * 0.7 )
                                 .overlay{
                                     Text("Sekil Yoxdu")
                                 }
@@ -31,7 +31,7 @@ struct ProductPosts_View: View {
                             vm.images.first!
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: screen.width / 2.2, height:  (210) * 0.7,alignment: .top )
+                                .frame(width: screen.width / 2.25, height:  (210) * 0.7,alignment: .top )
                                 .clipped()
                             
                                 
@@ -73,7 +73,7 @@ struct ProductPosts_View: View {
                     }
                     .padding(.vertical,5)
                     .padding(.horizontal,7)
-                    .frame(width: screen.width / 2.2, height:  (210) * 0.3, alignment: .top )
+                    .frame(width: screen.width / 2.25, height:  (210) * 0.3, alignment: .top )
                     
                 }
               

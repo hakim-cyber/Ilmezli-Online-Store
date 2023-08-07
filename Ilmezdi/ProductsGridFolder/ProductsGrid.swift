@@ -93,7 +93,7 @@ struct ProductsGrid: View {
                         .padding(6)
                         .padding(.horizontal,8)
                     }else{
-                        LazyVGrid(columns: columns){
+                        LazyVGrid(columns: columns,spacing: 13){
                             ForEach(filteredProducts){product in
                                 if let id = productsData.exampleProducts.firstIndex(where: {$0.id == product.id}){
                                     ProductPosts_View(vm: ProductPosts_ViewModel(product:$productsData.exampleProducts[id]))
