@@ -347,7 +347,7 @@ struct NewProductAddView: View {
         self.adding = true
         
         var images:[String] = []
-        for image in imagesArray{
+        for image in newImages{
             images.append( productData.imageToString(image: image))
         }
        

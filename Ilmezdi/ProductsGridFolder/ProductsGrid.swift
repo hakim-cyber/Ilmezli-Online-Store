@@ -37,12 +37,13 @@ struct ProductsGrid: View {
             var products = [Product]()
            
             if !showSearch{
+                products =  productsData.exampleProducts.filter{$0.images.count != 0}
                 if selectedCategory == nil || selectedCategory?.title == "Hamısı"{
                     
-                    products =  productsData.exampleProducts
+                    
                     
                 }else{
-                    products =   productsData.exampleProducts.filter{$0.category == selectedCategory?.title}
+                    products =   products.filter{$0.category == selectedCategory?.title}
                     
                 }
                 return products
