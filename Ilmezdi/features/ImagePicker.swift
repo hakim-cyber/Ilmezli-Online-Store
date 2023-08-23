@@ -84,6 +84,7 @@ struct ImagePicker:UIViewControllerRepresentable{
         config.filter = .images
         config.selectionLimit = max
         
+        
         let picker = PHPickerViewController(configuration: config)
         
         picker.delegate = context.coordinator
