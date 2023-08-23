@@ -192,17 +192,18 @@ class ProductsData:ObservableObject{
         
         let notification = CKSubscription.NotificationInfo()
         
-        notification.title = "Teze Mallar Gelib 🔥"
+        notification.titleLocalizationKey = "🎉 %1$@ 🎉"
+        notification.titleLocalizationArgs = ["name"]
+        notification.soundName = "default"
         
         notification.alertLocalizationKey = "%1$@"
         notification.alertLocalizationArgs = ["description"]
     
         
-        notification.subtitleLocalizationKey = "%1$@"
-        notification.subtitleLocalizationArgs = ["name"]
+        
         notification.shouldSendContentAvailable = true
         
-        
+    
         
         subscription.notificationInfo = notification
         
