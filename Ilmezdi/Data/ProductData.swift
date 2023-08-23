@@ -191,9 +191,18 @@ class ProductsData:ObservableObject{
         let subscription = CKQuerySubscription(recordType: ProductRecordKeys.type.rawValue, predicate: NSPredicate(value: true),subscriptionID: "new_product_added",options: .firesOnRecordCreation)
         
         let notification = CKSubscription.NotificationInfo()
-        notification.alertBody = "Teze Mallar Gelib 🔥"
+        
+        notification.title = "Teze Mallar Gelib 🔥"
+        
+        notification.alertLocalizationKey = "%1$@"
+        notification.alertLocalizationArgs = ["description"]
+    
+        
+        notification.subtitleLocalizationKey = "%1$@"
+        notification.subtitleLocalizationArgs = ["name"]
         notification.shouldSendContentAvailable = true
-
+        
+        
         
         subscription.notificationInfo = notification
         
