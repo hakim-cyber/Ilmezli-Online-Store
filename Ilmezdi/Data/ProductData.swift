@@ -22,7 +22,20 @@ class ProductsData:ObservableObject{
     private var db = CKContainer(identifier:"iCloud.com.hakimAliyev.ilmezdiCloud").publicCloudDatabase
     // boolean to show cartView
     @Published var showCartView = false
+    @Published var subscribedToNotification = false
     
+    init(){
+        loadSubscribingBool()
+    }
+    func saveSubscribingBool(){
+        UserDefaults.standard.set(subscribedToNotification, forKey: "subscribedToNotification")
+    }
+    func loadSubscribingBool(){
+        
+       let bool = UserDefaults.standard.bool(forKey: "subscribedToNotification")
+        
+        self.subscribedToNotification = bool
+    }
     func useImage(text:String)->Image{
            let data = Data(base64Encoded: text) ?? Data()
            
@@ -78,12 +91,15 @@ class ProductsData:ObservableObject{
     
     
     func addNewProduct(product:Product,completion:@escaping ()->Void)async throws{
-        let record = try await db.save(product.record)
-        guard let task = Product(record: record) else {return}
-        DispatchQueue.main.async {
-            self.exampleProducts.append(task)
-        }
-        completion()
+       
+            let record = try await db.save(product.record)
+            guard let task = Product(record: record) else {return}
+            DispatchQueue.main.async {
+                self.exampleProducts.append(task)
+            }
+            completion()
+            print("added")
+      
     }
     func readProducts()async throws{
         let query = CKQuery(recordType: ProductRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
@@ -150,6 +166,52 @@ class ProductsData:ObservableObject{
             let imageString = (image.jpegData(compressionQuality: 1)?.base64EncodedString())!
             return imageString
         }
+    }
+    
+    func requestNotificationPermissions(completion:@escaping (Bool)-> Void){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { bool, error in
+            if let error =  error{
+                print(error)
+                completion(false)
+            }else if bool{
+                print("Succes")
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    completion(true)
+                }
+                
+               
+            }else{
+                print("failed for permission")
+                completion(false)
+            }
+        }
+    }
+    func subscribeToNotifications(completion:@escaping (Bool)-> Void){
+        let subscription = CKQuerySubscription(recordType: ProductRecordKeys.type.rawValue, predicate: NSPredicate(value: true),subscriptionID: "new_product_added",options: .firesOnRecordCreation)
+        
+        let notification = CKSubscription.NotificationInfo()
+        notification.alertBody = "Teze Mallar Gelib 🔥"
+        notification.shouldSendContentAvailable = true
+
+        
+        subscription.notificationInfo = notification
+        
+        db.save(subscription) { [self] returnedSubscription, error in
+            
+            if let error = error{
+                print("Error subscribing \(error)")
+                print("Error subscribing \(error)")
+                
+                completion(false)
+               
+            }else{
+                print("Succesfully added")
+                completion(true)
+                
+            }
+        }
+        
     }
 }
    

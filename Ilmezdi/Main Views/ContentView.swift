@@ -34,7 +34,24 @@ struct ContentView: View {
             
             CartView()
         })
-        
+        .onAppear{
+            print(self.productsData.subscribedToNotification)
+            if !self.productsData.subscribedToNotification{
+                productsData.requestNotificationPermissions { nice in
+                    if nice{
+                        productsData.subscribeToNotifications { bool in
+                            print(bool)
+                            DispatchQueue.main.async {
+                                self.productsData.subscribedToNotification = bool
+                            }
+                           
+                            self.productsData.saveSubscribingBool()
+                        }
+                    }
+                }
+            }
+            
+        }
        
     }
 }
