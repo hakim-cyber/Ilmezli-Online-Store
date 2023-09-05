@@ -134,8 +134,8 @@ struct PhotoCapture: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoCapture>) -> UIImagePickerController {
  
         let imagePicker = UIImagePickerController()
-               imagePicker.allowsEditing = false
-               imagePicker.sourceType = .camera
+               imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = context.coordinator
                
                return imagePicker

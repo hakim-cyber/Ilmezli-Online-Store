@@ -52,30 +52,7 @@ struct Product_ImageSlider: View {
                     .onTapGesture {
                         self.showFull = true
                     }
-                    .gesture(
-                        
-                        DragGesture()
-                            .onChanged{info in
-                                
-                            }
-                            .onEnded{info in
-                                if info.translation.width < 0{
-                                    if indexOfImage != images.count - 1 {
-                                        withAnimation(.easeInOut){
-                                            indexOfImage +=  1
-                                        }
-                                    }
-                                }else if info.translation.width > 0  {
-                                    if indexOfImage != 0 {
-                                        withAnimation(.easeInOut){
-                                            indexOfImage -=  1
-                                        }
-                                    }
-                                }
-                                
-                            }
-                        
-                    )
+                    
               
             }
             .sheet(isPresented: $showFull){
